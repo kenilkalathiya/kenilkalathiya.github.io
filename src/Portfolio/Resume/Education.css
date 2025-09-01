@@ -3,6 +3,9 @@
     flex-direction: column;
     gap: 20px;
     z-index: -1;
+    overflow-y: auto;    /* Enable vertical scrolling */
+    overflow-x: hidden;  /* Hide horizontal overflow */
+    max-height: 90%;
   }
 
   .timeline-item{

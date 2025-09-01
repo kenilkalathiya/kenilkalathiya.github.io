@@ -35,7 +35,7 @@ export default function AboutMe() {
             </div>
             <div className="profile-buttons">
               <button className="hire-me-btn buttons">Hire Me</button>
-              <a href="Kenil Kalathiya.pdf" download="Kenil Kalathiya.pdf">
+              <a href="/Kenil-Kalathiya.pdf" download="Kenil-Kalathiya.pdf">
                 <button className="resume-btn buttons">Get Resume</button>
               </a>
             </div>

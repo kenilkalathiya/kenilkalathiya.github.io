@@ -8,7 +8,7 @@ export default function Intrest() {
           <div class="timeline-item">
             <div class="dot"></div>
             <div class="content">
-              <h3>Musik</h3>
+              <h3>Music</h3>
               <p>Listening to soothing music is something I can never compromise with, skimming through party song is at times the best stress reliver that I can get my hands on. </p>
             </div>
           </div>

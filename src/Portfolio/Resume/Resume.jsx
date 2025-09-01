@@ -14,6 +14,16 @@ export default function Resume() {
   const [activeComponent, setActiveComponent] = useState("Education");
   const [isActive, setIsActive] = useState("edu");
 
+  const [isLeaving, setIsLeaving] = useState(false);
+
+  const handleSectionChange = (section, key) => {
+    setIsLeaving(true);
+    setTimeout(() => {
+      setActiveComponent(section);
+      setIsLeaving(false);
+    }, 400);
+  };
+
   return (
     <>
       <div className="title-main" id="resume">
@@ -25,93 +35,78 @@ export default function Resume() {
         <div className="resume-main">
           <div className="r-box">
             <div className="side-bar">
-              <div className={`side1 ${
-                      isActive === "edu" ? "active" : ""
-                    }`} onClick={() => {
-                      setActiveComponent("Education");
-                      setIsActive("edu");
-                    }}>
+              <div
+                className={`side1 ${isActive === "edu" ? "active" : ""}`}
+                onClick={() => {
+                  handleSectionChange("Education");
+                  setIsActive("edu");
+                }}
+              >
                 <div className="side-icon">
                   <FaUserGraduate />
                 </div>
                 <div className="side-main">
-                  <li
-                    className="side-main-content"  
-                  >
-                    Education
-                  </li>
+                  <li className="side-main-content">Education</li>
                 </div>
               </div>
 
-              <div className={`side1 ${
-                      isActive === "exp" ? "active" : ""
-                    }`} onClick={() => {
-                      setActiveComponent("Experience");
-                      setIsActive("exp");
-                    }}>
+              <div
+                className={`side1 ${isActive === "exp" ? "active" : ""}`}
+                onClick={() => {
+                  handleSectionChange("Experience");
+                  setIsActive("exp");
+                }}
+              >
                 <div className="side-icon">
-                <MdWorkOutline />
+                  <MdWorkOutline />
                 </div>
                 <div className="side-main">
-                  <li
-                    className="side-main-content"  
-                  >
-                    Experience
-                  </li>
+                  <li className="side-main-content">Experience</li>
                 </div>
               </div>
 
-              <div className={`side1 ${
-                      isActive === "pro" ? "active" : ""
-                    }`} onClick={() => {
-                      setActiveComponent("Project");
-                      setIsActive("pro");
-                    }}>
+              <div
+                className={`side1 ${isActive === "pro" ? "active" : ""}`}
+                onClick={() => {
+                  handleSectionChange("Project");
+                  setIsActive("pro");
+                }}
+              >
                 <div className="side-icon">
                   <IoBarChart />
                 </div>
                 <div className="side-main">
-                  <li
-                    className="side-main-content"  
-                  >
-                    Project
-                  </li>
+                  <li className="side-main-content">Project</li>
                 </div>
               </div>
 
-              <div className={`side1 ${
-                      isActive === "proS" ? "active" : ""
-                    }`} onClick={() => {
-                      setActiveComponent("ProgrammingSkill");
-                      setIsActive("proS");
-                    }}>
+              <div
+                className={`side1 ${isActive === "proS" ? "active" : ""}`}
+                onClick={() => {
+                  handleSectionChange("ProgrammingSkill");
+                  setIsActive("proS");
+                }}
+              >
                 <div className="side-icon">
                   <FaLaptopCode />
                 </div>
                 <div className="side-main">
-                  <li
-                    className="side-main-content"  
-                  >
-                    Programming Skill
-                  </li>
+                  <li className="side-main-content">Programming Skill</li>
                 </div>
               </div>
 
-              <div className={`side1 ${
-                      isActive === "int" ? "active" : ""
-                    }`} onClick={() => {
-                      setActiveComponent("Intrest");
-                      setIsActive("int");
-                    }}>
+              <div
+                className={`side1 ${isActive === "int" ? "active" : ""}`}
+                onClick={() => {
+                  handleSectionChange("Intrest");
+                  setIsActive("int");
+                }}
+              >
                 <div className="side-icon">
                   <FaPalette />
                 </div>
                 <div className="side-main">
-                  <li
-                    className="side-main-content"  
-                  >
-                    Intrest
-                  </li>
+                  <li className="side-main-content">Intrest</li>
                 </div>
               </div>
 
@@ -119,11 +114,21 @@ export default function Resume() {
                  </div> */}
             </div>
             <div className="side-content">
-              {activeComponent === "Education" && <Education />}
+              <div
+                key={activeComponent}
+                className={`side-content-animate${isLeaving ? " leave" : ""}`}
+              >
+                {activeComponent === "Education" && <Education />}
+                {activeComponent === "Experience" && <Experience />}
+                {activeComponent === "Project" && <Project />}
+                {activeComponent === "ProgrammingSkill" && <ProgrammingSkill />}
+                {activeComponent === "Intrest" && <Intrest />}
+              </div>
+              {/* {activeComponent === "Education" && <Education />}
               {activeComponent === "Experience" && <Experience />}
               {activeComponent === "Project" && <Project />}
               {activeComponent === "ProgrammingSkill" && <ProgrammingSkill />}
-              {activeComponent === "Intrest" && <Intrest />}
+              {activeComponent === "Intrest" && <Intrest />} */}
             </div>
           </div>
         </div>
