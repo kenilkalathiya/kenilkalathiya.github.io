@@ -1,5 +1,5 @@
 import React from "react";
-import { SiInstagram, SiLinkedin, SiTwitter,SiGithub } from 'react-icons/si';
+import { SiInstagram, SiLinkedin, SiX,SiGithub } from 'react-icons/si';
 import Typical from "react-typical";
 import "./home.css";
 
@@ -21,7 +21,7 @@ export default function Home() {
                                     <SiLinkedin />
                                 </a>
                                 <a href="https://twitter.com/KenilKalathiya1">
-                                    <SiTwitter />
+                                <SiX />
                                 </a>
                             </div>
 
@@ -51,7 +51,7 @@ export default function Home() {
                                 <button className="hire-me button">
                                     Hire Me
                                 </button>
-                                <a href="Kenil Resume.pdf" download='Kenil Resume.pdf'>
+                                <a href="/Kenil-Kalathiya.pdf" download="Kenil-Kalathiya.pdf">
                                     <button className="resume button">Get Resume</button>
                                 </a>
                             </div>

@@ -58,7 +58,47 @@
     cursor: pointer;
     font-size: 20px;
 
-}   
+}  
+
+.side-content-animate {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideFadeIn 0.4s forwards;
+}
+
+.side-content-animate.leave {
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideFadeOut 0.4s forwards;
+}
+
+@keyframes slideFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideFadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+}
+/* .side-content-animate {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideFadeIn 0.5s forwards;
+}
+
+@keyframes slideFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} */
+
+
 
 .side1:hover{
     background-position: left bottom;
