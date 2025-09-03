@@ -64,7 +64,7 @@ export default function Home() {
                 </div>
                 
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#1f2233" 
+            <svg className="svg-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#1f2233" 
             fill-opacity="1" d="M0,128L60,138.7C120,149,240,171,360,154.7C480,139,600,85,720,58.7C840
             ,32,960,32,1080,42.7C1200,53,1320,75,1380,85.3L1440,96L1440,0L1380,0C1320,0,1200,0,1080,
             0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>

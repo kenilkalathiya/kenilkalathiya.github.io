@@ -126,6 +126,10 @@
     transition: 1s ease-out;
 }
 
+.svg-img{
+    margin-top: -2px;
+}
+
 /* Heading of all section */
 
 .title-main{
