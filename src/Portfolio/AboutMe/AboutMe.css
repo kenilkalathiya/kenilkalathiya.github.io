@@ -8,8 +8,6 @@
     --darkgrey-color:rgb(22, 25, 46);
 }
 
-
-
 .about-me{
     display:flex;
     margin: 30px;
@@ -49,6 +47,18 @@
     padding-left: 20px;
     /* justify-content: center;
     align-items: center; */
+}
+
+.detail p{
+    padding: 0px 15px;
+}
+
+.list{
+    padding: 0px 15px;;
+}
+
+.detail p{
+    text-align: justify;
 }
 
 .list ul li{
@@ -93,4 +103,67 @@
 .hire-me-btn:hover{
     border:2px solid var(--orange-color);
     color: white;
+}
+
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .about-me .extra {
+        flex-direction: column;
+        width: 80%;
+        height: auto;
+    }
+
+    .photo img {
+        width: 100%;
+        height: 300px;
+        border-radius: 15px 15px 0 0;
+        clip-path: none;
+    }
+
+    .detail {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .profile-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .buttons {
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .about-me {
+        margin: 15px; /* smaller margins */
+    }
+
+    .about-me .extra {
+        width: 95%; /* almost full width */
+    }
+
+    .photo img {
+        width: 100%; /* image fills container */
+        height: auto; /* maintain aspect ratio */
+    }
+
+    .detail{
+        width: 100%; /* detail section matches container */
+        padding: 15px; /* smaller padding */
+        
+    }
+
+    .profile-buttons {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+
 }

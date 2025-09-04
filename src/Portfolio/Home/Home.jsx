@@ -34,7 +34,7 @@ export default function Home() {
                                     <Typical
                                     loop={Infinity}
                                     steps={[
-                                        "Front-end Developer 💻",
+                                        "Full-Stack Developer",
                                         1500,
                                         "Freelancer " ,
                                         1500,
@@ -45,7 +45,7 @@ export default function Home() {
                                 </h1>
 
                                 <span className="profile-role-tagline">
-                                    Developer and problem solver for front end development.
+                                    Full-Stack Innovator with a Front-End Focus and a Passion for Problem Solving
                                 </span>
                             <div className="profile-button">
                                 <button className="hire-me button">
