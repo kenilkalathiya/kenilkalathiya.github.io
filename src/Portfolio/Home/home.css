@@ -13,31 +13,6 @@ body, html {
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-/* .main-profile{
-    position: relative;
-    background-color: #1f2233;
-} */
-
-
-/* .profile-container{
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    padding-top: 80px;
-    height: 20%;
-    min-height: fit-content;
-    background: var(--grey-color);
-    background-attachment: fixed;
-    width: 100%;
-    max-width: 100%;
-}
-
-.profile-content{
-    display: flex;
-    color: white;
-    width: 100%;
-} */
 
 .profile-container {
     display: flex;
@@ -135,19 +110,6 @@ body, html {
     border-color: var(--orange-color);
     color: black;
 }
-
-
-
-/* .profile-img{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 2px 0px 0px white;
-    border-radius: 50%;
-    height: 380px;
-    width: 380px;
-    z-index: 2;
-} */
 
 .profile-img {
     display: flex;
