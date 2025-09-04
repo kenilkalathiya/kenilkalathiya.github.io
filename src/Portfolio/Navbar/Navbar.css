@@ -113,23 +113,33 @@
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
+/* Prevent scrolling when menu is open */
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+
 /* Responsive dropdown menu */
 @media screen and (max-width: 768px) {
   /* Hide desktop nav */
+ 
+
   .navigation {
-    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--grey-color);
+    position: fixed;
+    top: 70px;
+    right: -100%; /* hidden off the screen */
+    width: 50%; /* only half the screen */
+    height: 100vh; /* full height of viewport */
+    transition: right 0.4s ease;
+    padding: 20px;
   }
 
-  /* Show nav when active */
   .links.active .navigation {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--darkgrey-color);
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    /* padding: 20px; */
+    right: 0; /* slides into view */
   }
 
   .navigation li {

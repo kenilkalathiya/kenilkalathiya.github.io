@@ -22,11 +22,21 @@
 //   );
 // }
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+
+  // 🚀 Disable scroll when menu is open
+useEffect(() => {
+  if (isOpen) {
+    document.body.classList.add("no-scroll");
+  } else {
+    document.body.classList.remove("no-scroll");
+  }
+}, [isOpen]);
+
 
   const handleLinkClick = () => {
     setIsOpen(false); // Close menu when link is clicked
