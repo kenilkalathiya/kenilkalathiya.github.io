@@ -7,10 +7,19 @@
     --grey-color:rgb(31, 34, 51);
 }
 
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
 /* .main-profile{
+    position: relative;
+    background-color: #1f2233;
 } */
 
-.profile-container{
+
+/* .profile-container{
     display: flex;
     align-items: center;
     text-align: center;
@@ -20,14 +29,45 @@
     min-height: fit-content;
     background: var(--grey-color);
     background-attachment: fixed;
+    width: 100%;
+    max-width: 100%;
 }
 
 .profile-content{
     display: flex;
     color: white;
-    width: 50%;
-    
+    width: 100%;
+} */
+
+.profile-container {
+    display: flex;
+    align-items: center;       /* vertically align text & image */
+    justify-content: center;   /* center the whole group */
+    gap: 250px;                /* space between text and image */
+    padding: 80px 20px;
+    background: var(--grey-color);
+    background-attachment: fixed;
+    width: 100%;
+    /* max-width: 1200px;         limit max width for large screens */
+    margin: 0 auto;            /* center container on screen */
+    box-sizing: border-box;
 }
+
+
+.profile-content {
+    display: flex;
+    flex-direction: column; /* stack inside text */
+    align-items: flex-start; /* align text to left (looks better) */
+    justify-content: center;
+    color: white;
+    max-width: 500px;
+    width: 100%;
+    text-align: left;        /* left align text */
+}
+
+
+
+    
 .social-media{
     margin-bottom: 15px;
     font-size: 25px;
@@ -98,7 +138,7 @@
 
 
 
-.profile-img{
+/* .profile-img{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -107,8 +147,19 @@
     height: 380px;
     width: 380px;
     z-index: 2;
-    /* margin: 0 0px 0 10px; */
+} */
+
+.profile-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 350px;
+    width: 350px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0px 2px 0px 0px white;
 }
+
 
 .picture-background{
     height: 92%;
@@ -126,9 +177,13 @@
     transition: 1s ease-out;
 }
 
-.svg-img{
-    margin-top: -2px;
+.svg-img {
+    display: block;
+    width: 100%;
+    margin: 0; /* Remove gap */
+
 }
+
 
 /* Heading of all section */
 
@@ -160,6 +215,105 @@
 @media screen and (max-width: 360px) {
     .profile-container{
         flex-direction: column-reverse;
+        padding-top: 70px;
+        gap: 0px;
+    }
+
+    .profile-img{
+        height: 250px;
+        width: 250px;
+        /* margin-bottom: 20px; */
+    }
+
+    .profile-content{
+        width: 90%;
+        /* margin-top: 20px; */
+    }
+    
+    .profile-name{
+        font-size: 16px;
+    }
+
+    .profile-name .name{
+        font-size: 22px;
+    }
+
+    .profile-role{
+        font-size: 22px;
+    }
+
+    .profile-role-tagline{
+        font-size: 14px;
+    }
+
+    .social-media a{
+        font-size: 20px;
+        padding: 0px 10px;
+    }
+}
+
+@media screen and (min-width: 361px) and (max-width: 768px) {
+    .profile-container{
+        flex-direction: column-reverse;
+        padding-top: 70px;
+        gap: 0px;
+    }
+
+    .profile-img{
+        height: 300px;
+        width: 300px;
+        margin-bottom: 20px;
+    }
+
+    .profile-content{
+        width: 80%;
+        margin-top: 20px;
+    }
+
+    .profile-name{
+        font-size: 18px;
+    }
+
+    .profile-name .name{
+        font-size: 26px;
+    }
+
+    .profile-role{
+        font-size: 28px;
+    }
+
+    .profile-role-tagline{
+        font-size: 16px;
+    }
+
+    .social-media a{
+        font-size: 22px;
+        padding: 0px 12px;
+    }
+
+    .button{
+        font-size: 16px;
+        padding: 8px 18px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .picture-background:hover{
+        transform: scale(1.05);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .svg-img{
+        margin-top: 0px;
+    }
+}
+
+
+/* @media screen and (max-width: 360px) {
+    .profile-container{
+        flex-direction: column-reverse;
     }
 
     .profile-img{
@@ -187,5 +341,5 @@
     .profile-role-tagline{
         font-size: 16px;
     }
-}
+} */
 
