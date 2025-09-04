@@ -1,6 +1,5 @@
 import React from "react";
 import { SiInstagram, SiLinkedin, SiX,SiGithub } from 'react-icons/si';
-import Typical from "react-typical";
 import "./home.css";
 
 export default function Home() {
@@ -26,23 +25,12 @@ export default function Home() {
                             </div>
 
                                 <span className="profile-name">
-                                Hi, I'm <span className="name">Kenil Kalathiya</span>
+                                Hi, My Name is <br/><span className="name">Kenil Kalathiya</span>
                                 </span>
 
-                                <h1 className="profile-role">
-                                    {""}
-                                    <Typical
-                                    loop={Infinity}
-                                    steps={[
-                                        "Full-Stack Developer",
-                                        1500,
-                                        "Freelancer " ,
-                                        1500,
-                                        "React.Js Developer ",
-                                        1500,
-                                    ]}
-                                    />
-                                </h1>
+                                <p className="profile-role">
+                                    I AM <span>Full Stack Developer</span>
+                                </p>
 
                                 <span className="profile-role-tagline">
                                     Full-Stack Innovator with a Front-End Focus and a Passion for Problem Solving
@@ -62,12 +50,17 @@ export default function Home() {
                         
                     </div>
                 </div>
+
+                <div className="blob blob1"></div>
+<div className="blob blob2"></div>
+<div className="blob blob3"></div>
+
                 
             </div>
-            <svg className="svg-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#1f2233" 
+            {/* <svg className="svg-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#1f2233" 
             fill-opacity="1" d="M0,128L60,138.7C120,149,240,171,360,154.7C480,139,600,85,720,58.7C840
             ,32,960,32,1080,42.7C1200,53,1320,75,1380,85.3L1440,96L1440,0L1380,0C1320,0,1200,0,1080,
-            0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
+            0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg> */}
 
         </div>
     </>

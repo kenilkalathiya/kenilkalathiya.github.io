@@ -7,11 +7,18 @@
     --grey-color:rgb(31, 34, 51);
 }
 
+:root{
+  --next-section: #1f2233; /* same as your next section bg */
+}
+
+
 body, html {
     margin: 0;
     padding: 0;
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
+
+
 
 
 .profile-container {
@@ -20,12 +27,58 @@ body, html {
     justify-content: center;   
     gap: 250px;                
     padding: 80px 20px;
-    background: var(--grey-color);
+    /* background: var(--grey-color); */
     background-attachment: fixed;
     width: 100%;
     margin: 0 auto;            
     box-sizing: border-box;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    position: relative;   /* so blobs can be positioned inside */
+    overflow: hidden;     /* hide blobs overflow */
+
 }
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.35;
+  filter: blur(80px);
+  animation: move 20s infinite alternate ease-in-out;
+  z-index: 0; /* keep behind content */
+}
+
+.blob1 {
+  width: 400px;
+  height: 400px;
+  background: #3b82f6; /* blue */
+  top: -100px;
+  left: -150px;
+}
+
+.blob2 {
+  width: 300px;
+  height: 300px;
+  background: #f43f5e; /* pink */
+  bottom: -120px;
+  right: -120px;
+  animation-delay: 5s;
+}
+
+.blob3 {
+  width: 250px;
+  height: 250px;
+  background: #22c55e; /* green */
+  bottom: 50px;
+  left: 30%;
+  animation-delay: 10s;
+}
+
+@keyframes move {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(50px, -50px) scale(1.1); }
+  100% { transform: translate(-30px, 30px) scale(0.9); }
+}
+
 
 
 
@@ -40,6 +93,10 @@ body, html {
     text-align: left;        /* left align text */
 }
 
+.profile-content, .profile-img {
+  position: relative;
+  z-index: 2;
+}
 
 
     
@@ -62,13 +119,17 @@ body, html {
 
 .profile-name .name{
     color: var(--WhitishOrange-color);
-    font-size: 30px;
+    font-size: 60px;
 }
 
 .profile-role{
-    font-size: 45px;
+    font-size: 20px;
     width: 100%;
     margin: 14px 0px 34px 0px;
+}
+
+.profile-role span{
+    font-size: 45px;
 }
 
 .profile-role-tagline{
@@ -116,8 +177,8 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 420px;
-    width: 420px;
+    height: 520px;
+    width: 520px;
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0px 2px 0px 0px white;
