@@ -28,8 +28,7 @@ export default function AboutMe() {
                 <li> Web Developer with good knowledge</li>
                 <li> Front end developer as per design</li>
                 <li> HTML, CSS, JavaScript, ReactJs</li>
-                <li> API Integration</li>
-                <li> Managing Database</li>
+                <li> API Integration & Managing Database</li>
                 <li> Emdedded System</li>
               </ul>
             </div>

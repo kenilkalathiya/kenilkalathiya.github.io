@@ -16,17 +16,17 @@ body, html {
 
 .profile-container {
     display: flex;
-    align-items: center;       /* vertically align text & image */
-    justify-content: center;   /* center the whole group */
-    gap: 250px;                /* space between text and image */
+    align-items: center;       
+    justify-content: center;   
+    gap: 250px;                
     padding: 80px 20px;
     background: var(--grey-color);
     background-attachment: fixed;
     width: 100%;
-    /* max-width: 1200px;         limit max width for large screens */
-    margin: 0 auto;            /* center container on screen */
+    margin: 0 auto;            
     box-sizing: border-box;
 }
+
 
 
 .profile-content {
@@ -66,12 +66,13 @@ body, html {
 }
 
 .profile-role{
-    font-size: 35px;
+    font-size: 45px;
+    width: 100%;
     margin: 14px 0px 34px 0px;
 }
 
 .profile-role-tagline{
-    font-size: 17px;
+    font-size: 20px;
 }
 
 .profile-button{
@@ -115,8 +116,8 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 350px;
-    width: 350px;
+    height: 420px;
+    width: 420px;
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0px 2px 0px 0px white;
