@@ -1,11 +1,71 @@
-html{
-    scroll-behavior:smooth;
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.title {
+  text-align: center;
+  padding-top: 80px;
+}
+
+.title h1 {
+  display: inline-block;
+  border-bottom: 2px solid var(--orange-color);
+  border-radius: 10px;
+  width: 200px;
+  padding-bottom: 5px;
+}
+
+.title p {
+  font-size: 14px;
+}
+
+/* --- Add this at the end of the file --- */
+
+@media screen and (max-width: 600px) {
+  .title h1 {
+    font-size: 2rem; /* Adjust heading size */
+    width: 150px;
   }
-  
-  body{
-    -ms-overflow-style: none;
+  .title p {
+    font-size: 13px; /* Adjust subheading size */
   }
-  
-  body::-webkit-scrollbar{
-    display: none;
-  }
+}
+
+/* --- Add this code to the end of the file --- */
+
+.section-container {
+  position: relative;
+}
+
+/* The ::before pseudo-element will hold our background text */
+/* Replace the old ::before rule with this one */
+.section-container::before {
+  content: var(--bg-text, "");
+  position: absolute;
+  top: 50%;
+  left: -5%; /* Start slightly off-screen to the left */
+  width: 110%; /* Make it wider than the viewport */
+  text-align: center;
+  transform: translateY(-50%) rotate(-15deg); /* Center vertically and rotate */
+  font-size: 28vw; /* Larger, viewport-based font size */
+  font-family: 'Dancing Script', cursive;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.04);
+  z-index: 0;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* Make sure the main content always stays on top of the background text */
+.title, .about-grid, .resume-main, .projects-grid {
+  position: relative;
+  z-index: 1;
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SiInstagram, SiLinkedin, SiX,SiGithub } from 'react-icons/si';
+import { SiInstagram, SiLinkedin, SiX, SiGithub } from "react-icons/si";
 import "./Navbar.css";
 
 export default function Navbar() {
@@ -7,12 +7,24 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   // 🚀 Disable scroll when menu is open
+  // This is the new, improved hook
   useEffect(() => {
+    const htmlElement = document.documentElement;
+    const bodyElement = document.body;
+
     if (isOpen) {
-      document.body.classList.add("no-scroll");
+      htmlElement.classList.add("no-scroll");
+      bodyElement.classList.add("no-scroll");
     } else {
-      document.body.classList.remove("no-scroll");
+      htmlElement.classList.remove("no-scroll");
+      bodyElement.classList.remove("no-scroll");
     }
+
+    // Cleanup function to be safe
+    return () => {
+      htmlElement.classList.remove("no-scroll");
+      bodyElement.classList.remove("no-scroll");
+    };
   }, [isOpen]);
 
   // 🚀 Detect scroll
@@ -34,8 +46,9 @@ export default function Navbar() {
 
   return (
     <div className={`navbar ${scrolled ? "scrolled" : ""}`}>
-      <div className="portfolio">
-        <h2>Portfolio</h2>
+      <div className="logo">
+        <span className="logo-mr">Mr.</span>
+        <span className="logo-name">Kenil</span>
       </div>
 
       {/* Navigation links (desktop + mobile sliding menu) */}
@@ -50,32 +63,29 @@ export default function Navbar() {
           <a href="#resume" onClick={handleLinkClick}>
             <li>Resume</li>
           </a>
-          <a href="#project" onClick={handleLinkClick}>
-            <li>Project</li>
+          <a href="#projects" onClick={handleLinkClick}>
+            <li>Projects</li>
           </a>
           <a href="#contact" onClick={handleLinkClick}>
             <li>Contact Me</li>
           </a>
 
           <div className="social-media">
-        <a href="https://www.instagram.com/kenil_kalathiya_007">
-          <SiInstagram />
-        </a>
-        <a href="https://github.com/kenilkalathiya">
-          <SiGithub />
-        </a>
-        <a href="https://www.linkedin.com/in/kenil-kalathiya-9422021b6/">
-          <SiLinkedin />
-        </a>
-        <a href="https://twitter.com/KenilKalathiya1">
-          <SiX />
-        </a>
-      </div>
+            <a href="https://www.instagram.com/kenil_kalathiya_007">
+              <SiInstagram />
+            </a>
+            <a href="https://github.com/kenilkalathiya">
+              <SiGithub />
+            </a>
+            <a href="https://www.linkedin.com/in/kenil-kalathiya-9422021b6/">
+              <SiLinkedin />
+            </a>
+            <a href="https://twitter.com/KenilKalathiya1">
+              <SiX />
+            </a>
+          </div>
         </ul>
-      
-      
       </div>
-
 
       {/* Hamburger icon (always on far right) */}
       <div

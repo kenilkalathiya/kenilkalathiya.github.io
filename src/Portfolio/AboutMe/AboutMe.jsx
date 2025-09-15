@@ -51,8 +51,8 @@ import "./AboutMe.css";
 
 export default function AboutMe() {
   return (
-    <div className="about-section" id="about-me">
-      <div className="title1 title">
+    <div className="about-section section-container" id="about-me" style={{ '--bg-text': '"Services"' }}>
+      <div className="title">
         <h1>WHAT I DO</h1>
         <p><span className="highlight">My</span> Services</p>
       </div>
@@ -97,7 +97,7 @@ export default function AboutMe() {
           <a href="#contact" className="contact-link">Contact me →</a>
         </div>
 
-        <div className="about-card">
+        {/* <div className="about-card">
           <h4>BACKEND DEVELOPMENT</h4>
           <h2>Node ( JS / TS )</h2>
           <p>
@@ -119,7 +119,7 @@ export default function AboutMe() {
             backbone that supports seamless user interactions.
           </p>
           <a href="#contact" className="contact-link">Contact me →</a>
-        </div>
+        </div> */}
       </div>
     </div>
   );

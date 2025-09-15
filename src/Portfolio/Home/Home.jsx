@@ -5,7 +5,7 @@ import "./home.css";
 export default function Home() {
   return (
     <>
-        <div className="main-profile">
+        <div className="main-profile" id="home">
             <div className="profile-container">
                 <div className="profile-content">
                     <div className="profile-detail">

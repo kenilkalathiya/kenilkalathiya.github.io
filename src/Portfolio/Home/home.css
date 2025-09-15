@@ -129,7 +129,7 @@ body, html {
 }
 
 .profile-role span{
-    font-size: 45px;
+    font-size: 40px;
 }
 
 .profile-role-tagline{
@@ -188,7 +188,7 @@ body, html {
 .stats {
   position: absolute;
   bottom: 0px;  /* adjust */
-  right: 14%;    /* adjust based on image position */
+  right: 17%;    /* adjust based on image position */
   display: flex;
   gap: 20px;
   z-index: 100;   /* ✅ keep above everything */
@@ -238,7 +238,7 @@ body, html {
 .picture-background{
     height: 92%;
     width: 92%;
-    background-image: url(../../Assets/Home/profile-pic.jpg);
+    background-image: url(../../Assets/Home/Profile-pic.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -265,27 +265,7 @@ body, html {
 .title-main{
     height: 100vh;
 }
-.title{
-    text-align: center;
-    padding-top: 80px;
-}
 
-.title h1{
-    display: inline-block;
-    border-bottom: 2px solid var(--orange-color);
-    border-radius: 10px;
-    width: 200px;
-    padding-bottom: 5px;
-}
-
-.title p{
-    font-size: 14px;
-}
-
-
-/* svg{
-    height: 400px;
-} */
 
 @media screen and (max-width: 360px) {
     .profile-container{
@@ -297,24 +277,28 @@ body, html {
     .profile-img{
         height: 250px;
         width: 250px;
-        /* margin-bottom: 20px; */
+        margin-bottom: 20px; /* Add some space below the image */
     }
 
     .profile-content{
         width: 90%;
-        /* margin-top: 20px; */
     }
-    
+
     .profile-name{
         font-size: 16px;
     }
 
     .profile-name .name{
-        font-size: 22px;
+        font-size: 38px; /* Adjusted from 60px */
     }
 
     .profile-role{
-        font-size: 22px;
+        font-size: 18px; /* Adjusted font size */
+        margin: 10px 0 20px 0;
+    }
+
+    .profile-role span {
+        font-size: 32px; /* Adjusted from 45px */
     }
 
     .profile-role-tagline{
@@ -350,7 +334,7 @@ body, html {
     }
 
     .profile-name .name{
-        font-size: 26px;
+        font-size: 46px;
     }
 
     .profile-role{
