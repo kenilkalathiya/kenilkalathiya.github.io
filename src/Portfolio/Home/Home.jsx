@@ -49,7 +49,20 @@ export default function Home() {
                     <div className="picture-background">
                         
                     </div>
+                    <div className="stats">
+    <div className="stat-card">
+      <h2>1+</h2>
+      <p>Years of <br /> Experience</p>
+    </div>
+    <div className="stat-card">
+      <h2>15+</h2>
+      <p>Completed <br /> Projects</p>
+    </div>
+  </div>
                 </div>
+                
+                
+
 
                 <div className="blob blob1"></div>
 <div className="blob blob2"></div>

@@ -180,9 +180,59 @@ body, html {
     height: 520px;
     width: 520px;
     border-radius: 50%;
-    overflow: hidden;
+
     box-shadow: 0px 2px 0px 0px white;
 }
+
+/* Stats Cards */
+.stats {
+  position: absolute;
+  bottom: 0px;  /* adjust */
+  right: 14%;    /* adjust based on image position */
+  display: flex;
+  gap: 20px;
+  z-index: 100;   /* ✅ keep above everything */
+}
+
+.stat-card {
+  background: white;
+  color: black;
+  padding: 15px 25px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.stat-card h2 {
+    font-size: 24px;
+    margin: 0;
+    color: var(--orange-color);
+}
+
+.stat-card p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.stat-card span {
+    font-weight: bold;
+    color: var(--WhitishOrange-color);
+}
+
+/* Positioning */
+.profile-img {
+    position: relative;  /* ✅ make child absolute positioning possible */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 420px;
+    width: 420px;
+    border-radius: 50%;
+    /* overflow: hidden; */
+}
+
 
 
 .picture-background{
@@ -194,6 +244,7 @@ body, html {
     background-position: center;
     border-radius: 50%;
     z-index: 2;
+    overflow: hidden;
 }
 
 .picture-background:hover{
@@ -325,14 +376,38 @@ body, html {
     .picture-background:hover{
         transform: scale(1.05);
     }
+
+    /* .profile-container {
+    flex-direction: column;
+    gap: 40px;
+  } */
+
+  .stats {
+    position: absolute;   /* stack below image */
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    left: 50px;
+    bottom: 0px;
+  }
+
+  .stat-card {
+    padding: 8px 12px;
+    font-size: 12px;
+    min-width: 90px;
+  }
+
+  .stat-card h2 {
+    font-size: 18px;
+  }
 }
 
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
     .svg-img{
         margin-top: 0px;
     }
-}
+} */
 
 
 /* @media screen and (max-width: 360px) {
