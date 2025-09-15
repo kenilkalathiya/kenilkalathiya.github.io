@@ -28,8 +28,24 @@
 }
 
 
-.portfolio {
-  font-size: 25px;
+/* Add these new rules */
+.logo {
+  display: flex;
+  align-items: baseline; /* Aligns the text nicely at the bottom */
+  cursor: pointer;
+}
+
+.logo-mr {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.6rem; /* Adjust size as needed */
+  font-weight: 700;
+  color: var(--orange-color); /* Makes "Mr." stand out */
+  margin-right: 5px;
+}
+
+.logo-name {
+  font-size: 3rem; /* Adjust size as needed */
+  color: white;
 }
 
 /* Desktop navigation */
@@ -84,7 +100,7 @@
 /* Prevent scrolling when menu is open */
 .no-scroll {
   overflow: hidden;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 
@@ -93,18 +109,19 @@
   /* Hide desktop nav */
  
 
-  .navigation {
-    flex-direction: column;
-    align-items: center;
-    background: linear-gradient(to right, #182c50, #141d30);
-    position: fixed;
-    top: 70px;
-    right: -100%; /* hidden off the screen */
-    width: 50%; /* only half the screen */
-    height: 100vh; /* full height of viewport */
-    transition: right 0.4s ease;
-    padding: 20px;
-  }
+  /* Change this rule */
+.navigation {
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to right, #182c50, #141d30);
+  position: fixed;
+  top: 70px;
+  right: -100%; /* hidden off the screen */
+  width: 60%; /* Changed from 50% to 60% */
+  height: 100vh; /* full height of viewport */
+  transition: right 0.4s ease;
+  padding: 20px;
+}
 
   .links.active .navigation {
     right: 0; /* slides into view */
@@ -128,5 +145,12 @@
 
   .social-media a {
     color: white;
+  }
+}
+
+/* --- Add this at the end of the file --- */
+@media screen and (max-width: 480px) {
+  .navigation {
+    width: 75%; /* Make menu wider on small devices */
   }
 }

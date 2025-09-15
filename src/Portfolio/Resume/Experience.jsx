@@ -1,27 +1,24 @@
 import React from 'react';
-import "./Experience.css";
+import './Timeline.css'; // Use the new stylesheet
 
 export default function Experience() {
   return (
-    <>
-    <div class="container">
-        <div class="company-header">
-            <h2>Bigscal Technologies Pvt. Ltd. – Surat, India </h2>
-            <div class="date">Feb,2023-Apr,2023</div>
+    <div className="timeline-container">
+      <div className="timeline-entry">
+        <div className="timeline-dot"></div>
+        <div className="timeline-content">
+          <div className="timeline-header">
+            <h3 className="timeline-title">Bigscal Technologies Pvt. Ltd. - India</h3>
+            <span className="timeline-badge">Oct 2022 - Apr 2023</span>
+          </div>
+          <p className="timeline-subtitle">Web Developer (Intern)</p>
+          <ul className="timeline-details">
+            <li>Spearheaded the development of web applications, to demonstrating expertise in both front-end (ReactJs) and back-end (Python) web technologies.</li>
+            <li>Implemented new components or functionalities using Flask and ReactJs as per User Requirements.</li>
+            <li>Successfully delivered projects within tight deadlines, receiving positive feedback for quality and innovation.</li>
+          </ul>
         </div>
-        <div class="position-title">Trainee Web Developer</div>
-        <p class="description">
-            Worked as Full Stack stack web developer.
-        </p>
-        <ul class="tasks">
-            <li>Spearheaded the development of web applications, to demonstrating expertise in 
-            both front-end (ReactJs) and back-end (Python) web technologies.</li>
-            <li>Implemented new components or functionalities using Flask and ReactJs as per User 
-            Requirements. </li>
-            <li>Successfully delivered projects within tight deadlines, receiving positive feedback 
-            for quality and innovation. </li>
-        </ul>
+      </div>
     </div>
-    </>
   );
 }
