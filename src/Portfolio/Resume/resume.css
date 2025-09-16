@@ -5,6 +5,13 @@
   align-items: center;
 }
 
+
+.title-main{
+    height: 100vh;
+      background-color: #f9f9f9;
+}
+
+
 .resume-main .r-box {
   box-shadow: 1px 1px 1px 1px rgba(12, 12, 12, 0.3);
   display: flex;

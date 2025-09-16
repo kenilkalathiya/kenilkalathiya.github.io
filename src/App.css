@@ -55,11 +55,11 @@ body::-webkit-scrollbar {
   width: 110%; /* Make it wider than the viewport */
   text-align: center;
   transform: translateY(-50%) rotate(-15deg); /* Center vertically and rotate */
-  font-size: 28vw; /* Larger, viewport-based font size */
+  font-size: 24vw; /* Larger, viewport-based font size */
   font-family: 'Dancing Script', cursive;
   font-weight: 800;
   color: rgba(0, 0, 0, 0.04);
-  z-index: 0;
+  z-index: 1;
   white-space: nowrap;
   user-select: none;
 }
