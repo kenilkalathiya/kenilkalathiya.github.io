@@ -18,7 +18,11 @@ body, html {
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-
+.main-profile {
+  position: relative;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  width: 100%;
+}
 
 
 .profile-container {
@@ -26,15 +30,14 @@ body, html {
     align-items: center;       
     justify-content: center;   
     gap: 250px;                
-    padding: 80px 20px;
-    /* background: var(--grey-color); */
+    padding: 80px 20px 200px;
     background-attachment: fixed;
     width: 100%;
     margin: 0 auto;            
     box-sizing: border-box;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
+    /* background: linear-gradient(135deg, #0f172a, #1e293b); */
     position: relative;   /* so blobs can be positioned inside */
-    overflow: hidden;     /* hide blobs overflow */
+    overflow: hidden;  
 
 }
 
@@ -260,13 +263,6 @@ body, html {
 }
 
 
-/* Heading of all section */
-
-.title-main{
-    height: 100vh;
-}
-
-
 @media screen and (max-width: 360px) {
     .profile-container{
         flex-direction: column-reverse;
@@ -386,43 +382,24 @@ body, html {
   }
 }
 
+.custom-shape-divider {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
 
-/* @media screen and (max-width: 768px) {
-    .svg-img{
-        margin-top: 0px;
-    }
-} */
+.custom-shape-divider svg {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 150px; /* You can adjust this height */
+}
 
-
-/* @media screen and (max-width: 360px) {
-    .profile-container{
-        flex-direction: column-reverse;
-    }
-
-    .profile-img{
-        height: 300px;
-        width: 300px;
-    }
-
-    .profile-content{
-        margin-top: 20px;
-        width: 90%;
-    }
-    
-    .profile-name{
-        font-size: 16px;
-    }
-
-    .profile-name .name{
-        font-size: 22px;
-    }
-
-    .profile-role{
-        font-size: 25px;
-    }
-
-    .profile-role-tagline{
-        font-size: 16px;
-    }
-} */
-
+.custom-shape-divider .shape-fill {
+    /* This color MUST match the background of the next section (AboutMe) */
+    fill: #FFFFFF; 
+}

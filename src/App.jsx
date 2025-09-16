@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import Home from "./Portfolio/Home/Home";
 import AboutMe from "./Portfolio/AboutMe/AboutMe";
 import Navbar from "./Portfolio/Navbar/Navbar";
@@ -12,6 +12,7 @@ import "../src/App.css";
 
 
 const App =() => {
+
     return (
         <>
         <CursorShadow />

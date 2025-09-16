@@ -15,11 +15,9 @@
   pointer-events: none; /* Allows clicks to pass through the element */
   transform: translate(-50%, -50%); /* Center the element on the cursor */
   transition: transform 0.1s ease-out; /* Optional: adds a slight delay for smoother feel */
+  display: none;
 }
 
-/* Hide the cursor on devices that don't have a hover capability (like touch screens) */
-@media (hover: none) {
-  .cursor-shadow {
-    display: none;
-  }
+.cursor-shadow.visible {
+  display: block;
 }

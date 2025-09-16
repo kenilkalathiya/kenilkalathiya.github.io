@@ -1,6 +1,5 @@
 .projects-section {
   padding: 80px 20px;
-  background-color: #f9f9f9;
   min-height: 100vh;
   box-sizing: border-box;
   display: flex;
@@ -80,6 +79,43 @@
   border-radius: 15px;
   font-size: 0.85rem;
   font-weight: 500;
+}
+
+/* --- Add these new styles at the end of your existing CSS file --- */
+
+/* Styling for the new "More Projects" card */
+.more-projects-card {
+  background: linear-gradient(135deg, var(--orange-color), var(--WhitishYellow-color));
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 25px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.more-projects-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(255, 81, 78, 0.4);
+}
+
+.more-projects-card h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.3rem;
+  color: white; /* Ensure text is white */
+}
+
+.more-projects-card .arrow-icon {
+  font-size: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.more-projects-card:hover .arrow-icon {
+  transform: translateX(10px);
 }
 
 /* --- Responsive Adjustments --- */
