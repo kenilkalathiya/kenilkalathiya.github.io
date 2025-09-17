@@ -4,8 +4,8 @@ import AboutMe from "./Portfolio/AboutMe/AboutMe";
 import Navbar from "./Portfolio/Navbar/Navbar";
 import Resume from "./Portfolio/Resume/Resume";
 import Projects from "./Portfolio/Projects/Projects";
-import CursorShadow from "./Portfolio/CursorShadow/CursorShadow";
-// import Contact from "./Contact";
+// import CursorShadow from "./Portfolio/CursorShadow/CursorShadow";
+import ContactMe from "./Portfolio/ContactMe/ContactMe";
 // import{ Routes, Route } from "react-router-dom";
 import "../src/App.css";
 
@@ -15,12 +15,13 @@ const App =() => {
 
     return (
         <>
-        <CursorShadow />
+        {/* <CursorShadow /> */}
         <Navbar />
         <Home />
         <AboutMe />
         <Resume/>
         <Projects />
+        <ContactMe />
         {/* <Home /> */}
             {/* <Routes>
                 <Route path="/" element={<Home />} />

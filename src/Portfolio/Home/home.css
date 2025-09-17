@@ -357,11 +357,6 @@ body, html {
         transform: scale(1.05);
     }
 
-    /* .profile-container {
-    flex-direction: column;
-    gap: 40px;
-  } */
-
   .stats {
     position: absolute;   /* stack below image */
     flex-direction: row;
