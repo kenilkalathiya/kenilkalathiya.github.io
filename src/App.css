@@ -12,15 +12,16 @@ body::-webkit-scrollbar {
 
 .title {
   text-align: center;
-  padding-top: 80px;
+  padding: 30px 0PX 50PX 0PX;
 }
 
 .title h1 {
   display: inline-block;
   border-bottom: 2px solid var(--orange-color);
   border-radius: 10px;
-  width: 200px;
+  width: auto;
   padding-bottom: 5px;
+  white-space: nowrap;
 }
 
 .title p {
@@ -32,7 +33,6 @@ body::-webkit-scrollbar {
 @media screen and (max-width: 600px) {
   .title h1 {
     font-size: 2rem; /* Adjust heading size */
-    width: 150px;
   }
   .title p {
     font-size: 13px; /* Adjust subheading size */
