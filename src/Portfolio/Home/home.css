@@ -385,16 +385,20 @@ body, html {
     overflow: hidden;
     line-height: 0;
     transform: rotate(180deg);
+    z-index: 1;
 }
 
 .custom-shape-divider svg {
     position: relative;
     display: block;
     width: 100%;
-    height: 150px; /* You can adjust this height */
+    height: 160px;
+    /* transform: scaleY(-1);
+    transform: scaleX(-1); */
+    /* transform-origin: bottom; */
+    filter: drop-shadow(0px -5px 0px rgb(0 0 0 / 5.4));
 }
 
 .custom-shape-divider .shape-fill {
-    /* This color MUST match the background of the next section (AboutMe) */
     fill: #FFFFFF; 
 }
