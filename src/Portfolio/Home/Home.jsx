@@ -1,5 +1,6 @@
 import React from "react";
 import { SiInstagram, SiLinkedin, SiX, SiGithub } from "react-icons/si";
+// import { TypeAnimation } from 'react-type-animation';
 import "./home.css";
 
 export default function Home() {
