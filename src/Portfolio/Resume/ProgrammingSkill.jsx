@@ -1,25 +1,6 @@
 import React from 'react';
 import './ProgrammingSkill.css';
-
-const skillData = {
-  "Frontend Development": [
-    { name: "React.js", level: 85 },
-    { name: "JavaScript", level: 95 },
-    { name: "HTML/CSS", level: 95 },
-    { name: "Bootstrap", level: 85 },
-  ],
-  "Backend Development": [
-    { name: "Node.js", level: 75 },
-    { name: "Python", level: 80 },
-    { name: "Django/Flask", level: 75 },
-  ],
-  "Databases & Tools": [
-    { name: "MongoDB", level: 75 },
-    { name: "SQL", level: 70 },
-    { name: "GitHub", level: 85 },
-    { name: "JSON/JWT", level: 90 },
-  ],
-};
+import { resume } from '../../data';
 
 const SkillBar = ({ name, level }) => (
   <div className="skill-bar-item">
@@ -36,7 +17,7 @@ const SkillBar = ({ name, level }) => (
 export default function ProgrammingSkill() {
   return (
     <div className="categorized-skills-container">
-      {Object.entries(skillData).map(([category, skills]) => (
+      {Object.entries(resume.skills).map(([category, skills]) => (
         <div key={category} className="skill-category">
           <h3 className="category-title">{category}</h3>
           <div className="skills-wrapper">

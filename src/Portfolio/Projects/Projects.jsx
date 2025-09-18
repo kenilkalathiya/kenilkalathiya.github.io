@@ -1,32 +1,7 @@
 import React from 'react';
 import { FaGithub, FaArrowRight } from 'react-icons/fa';
 import './Projects.css';
-
-const projectsData = [
-  {
-    title: 'Health Scal - Health Care Application',
-    description: 'Developed a user-friendly application to predict various diseases based on patient medical reports, utilizing machine learning models for accurate decision-making.',
-    tech: ['React.js', 'Flask', 'Machine Learning'],
-    github: 'https://github.com/kenilkalathiya/Health-Scal',
-  },
-  {
-    title: 'Movie/Series Information System',
-    description: 'Created a comprehensive information system for movies and series, allowing users to track watched content and discover new titles through a responsive interface built with the MERN stack.',
-    tech: ['React.js', 'Node.js', 'MongoDB'],
-    github: 'https://github.com/kenilkalathiya/GMTV_Project',
-  },
-  {
-    title: 'Spam Predictor',
-    description: 'Designed a web application for real-time content analysis to detect spam emails and identify fake news, leveraging a machine learning backend.',
-    tech: ['HTML/CSS', 'JavaScript', 'ML'],
-    github: 'https://github.com/kenilkalathiya/Spam-Prediction-Using-Machine-Learning-Model',
-  },
-  // Add this new object for the GitHub link card
-  {
-    isGithubLink: true,
-    github: 'https://github.com/kenilkalathiya/',
-  }
-];
+import { resume } from '../../data';
 
 const ProjectCard = ({ title, description, tech, github }) => (
   <div className="project-card">
@@ -59,7 +34,7 @@ export default function Projects() {
         <p>A selection of my recent work</p>
       </div>
       <div className="projects-grid">
-        {projectsData.map(project => (
+        {resume.projects.map(project => (
           project.isGithubLink
             ? <MoreProjectsCard key="more-projects" {...project} />
             : <ProjectCard key={project.title} {...project} />
@@ -68,3 +43,5 @@ export default function Projects() {
     </div>
   );
 }
+
+
