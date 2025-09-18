@@ -1,38 +1,23 @@
 import React from 'react';
-import './Timeline.css'; // Use the new stylesheet
+import './Timeline.css';
+import { resume } from '../../data';
 
-export default function Intrest() {
+export default function Interest() {
   return (
     <div className="timeline-container">
-      <div className="timeline-entry">
-        <div className="timeline-dot"></div>
-        <div className="timeline-content">
-          <h3 className="timeline-title">Music</h3>
-          <ul className="timeline-details">
-            <li>Listening to a diverse range of music is my go-to for relaxation and focus.</li>
-          </ul>
+      {resume.interests.map((interest, index) => (
+        <div className="timeline-entry" key={index}>
+          <div className="timeline-dot"></div>
+          <div className="timeline-content">
+            <h3 className="timeline-title">{interest.title}</h3>
+            <ul className="timeline-details">
+              {interest.details.map((detail, i) => (
+                <li key={i}>{detail}</li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
-
-      <div className="timeline-entry">
-        <div className="timeline-dot"></div>
-        <div className="timeline-content">
-          <h3 className="timeline-title">Travelling</h3>
-          <ul className="timeline-details">
-            <li>I'm passionate about exploring new places, as each journey adds a new perspective and story to my life.</li>
-          </ul>
-        </div>
-      </div>
-
-       <div className="timeline-entry">
-        <div className="timeline-dot"></div>
-        <div className="timeline-content">
-          <h3 className="timeline-title">Gaming</h3>
-          <ul className="timeline-details">
-            <li>I enjoy challenging my reflexes and strategic thinking in competitive online games.</li>
-          </ul>
-        </div>
-      </div>
+      ))}
     </div>
   );
 }
