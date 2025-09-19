@@ -60,6 +60,12 @@ export const resume = {
     },
   ],
   projects: [
+    {
+        title: 'Real-Time Collaborative Workspace',
+        description: 'Developed a full-stack collaborative workspace application enabling users to draw on a shared whiteboard and edit code in real-time, utilizing the MERN stack and WebSockets for a dynamic, multi-user experience.',
+        tech: ['MERN Stack', 'JWT', 'RESTful APIs', 'WebSockets'],
+        github: 'https://github.com/kenilkalathiya/Health-Scal',
+      },
       {
         title: 'Health Scal - Health Care Application',
         description: 'Developed a user-friendly application to predict various diseases based on patient medical reports, utilizing machine learning models for accurate decision-making.',
