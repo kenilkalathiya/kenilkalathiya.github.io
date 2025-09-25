@@ -6,19 +6,19 @@ export const aboutMe = {
       title: "FULL STACK DEVELOPMENT",
       stack: "MERN / MEAN Stack",
       description: "I create seamless, end-to-end web applications by combining front-end flair with back-end robustness. From crafting dynamic user interfaces to managing databases and servers, I bring your digital vision to life.",
-      link: "#contact",
+      link: "/#contact",
     },
     {
       title: "FRONTEND DEVELOPMENT",
       stack: "React / Angular",
       description: "I design engaging, user-friendly interfaces that enhance user experience through interactive and responsive designs. By utilizing the latest technologies and best practices, I bring your ideas to the screen with creativity and precision.",
-      link: "#contact",
+      link: "/#contact",
     },
     {
       title: "BACKEND DEVELOPMENT",
       stack: "Node ( JS / TS )",
       description: "I build and maintain the server-side logic that powers your applications, ensuring robust, scalable, and secure solutions. From managing databases to implementing APIs, I create the backbone that supports seamless user interactions.",
-      link: "#contact",
+      link: "/#contact",
     },
   ],
 };
@@ -61,34 +61,42 @@ export const resume = {
   ],
   projects: [
     {
-        title: 'Real-Time Collaborative Workspace',
-        description: 'Developed a full-stack collaborative workspace application enabling users to draw on a shared whiteboard and edit code in real-time, utilizing the MERN stack and WebSockets for a dynamic, multi-user experience.',
-        tech: ['MERN Stack', 'JWT', 'RESTful APIs', 'WebSockets'],
-        github: 'https://github.com/kenilkalathiya/collab-sphere',
-      },
-      {
-        title: 'Health Scal - Health Care Application',
-        description: 'Developed a user-friendly application to predict various diseases based on patient medical reports, utilizing machine learning models for accurate decision-making.',
-        tech: ['React.js', 'Flask', 'Machine Learning'],
-        github: 'https://github.com/kenilkalathiya/Health-Scal',
-      },
-      {
-        title: 'Movie/Series Information System',
-        description: 'Created a comprehensive information system for movies and series, allowing users to track watched content and discover new titles through a responsive interface built with the MERN stack.',
-        tech: ['React.js', 'Node.js', 'MongoDB'],
-        github: 'https://github.com/kenilkalathiya/GMTV_Project',
-      },
-      {
-        title: 'Spam Predictor',
-        description: 'Designed a web application for real-time content analysis to detect spam emails and identify fake news, leveraging a machine learning backend.',
-        tech: ['HTML/CSS', 'JavaScript', 'ML'],
-        github: 'https://github.com/kenilkalathiya/Spam-Prediction-Using-Machine-Learning-Model',
-      },
-      {
-        isGithubLink: true,
-        github: 'https://github.com/kenilkalathiya/',
-      }
-    ],
+      id: 'real-time-workspace',
+      title: 'Real-Time Collaborative Workspace',
+      description: 'Developed a full-stack collaborative workspace application enabling users to draw on a shared whiteboard and edit code in real-time, utilizing the MERN stack and WebSockets for a dynamic, multi-user experience.',
+      tech: ['MERN Stack', 'JWT', 'RESTful APIs', 'WebSockets'],
+      github: 'https://github.com/kenilkalathiya/collab-sphere',
+      imageUrl: '/collab-sphere.jpg', // Add image path
+    },
+    {
+      id: 'health-scal',
+      title: 'Health Scal - Health Care Application',
+      description: 'Developed a user-friendly application to predict various diseases based on patient medical reports, utilizing machine learning models for accurate decision-making.',
+      tech: ['React.js', 'Flask', 'Machine Learning'],
+      github: 'https://github.com/kenilkalathiya/Health-Scal',
+      imageUrl: '/health-scal.jpg', // Add image path
+    },
+    {
+      id: 'movie-series-info',
+      title: 'Movie/Series Information System',
+      description: 'Created a comprehensive information system for movies and series, allowing users to track watched content and discover new titles through a responsive interface built with the MERN stack.',
+      tech: ['React.js', 'Node.js', 'MongoDB'],
+      github: 'https://github.com/kenilkalathiya/GMTV_Project',
+      imageUrl: '/gmtv.jpg', // Add image path
+    },
+    {
+      id: 'spam-predictor',
+      title: 'Spam Predictor',
+      description: 'Designed a web application for real-time content analysis to detect spam emails and identify fake news, leveraging a machine learning backend.',
+      tech: ['HTML/CSS', 'JavaScript', 'ML'],
+      github: 'https://github.com/kenilkalathiya/Spam-Prediction-Using-Machine-Learning-Model',
+      imageUrl: '/spam-predictor.jpg', // Add image path
+    },
+    {
+      isGithubLink: true,
+      github: 'https://github.com/kenilkalathiya/',
+    }
+  ],
   skills: {
     "Frontend Development": [
         { name: "React.js", level: 85 },

@@ -118,6 +118,46 @@
   transform: translateX(10px);
 }
 
+/* Add this to your existing Projects.css file */
+
+.project-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex; /* Helps with card height consistency */
+}
+
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.project-description {
+  flex-grow: 1; /* Pushes the button to the bottom */
+}
+
+.view-project-button {
+  margin-top: auto; /* Aligns button to the bottom */
+  padding-top: 15px;
+  color: var(--orange-color);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .view-project-button {
+  opacity: 1;
+}
+
 /* --- Responsive Adjustments --- */
 
 /* Tablet View */

@@ -2,6 +2,7 @@
 import React from "react";
 import "./AboutMe.css";
 import { aboutMe } from "../../data.js";
+import { HashLink } from "react-router-hash-link";
 
 export default function AboutMe() {
   return (
@@ -24,9 +25,9 @@ export default function AboutMe() {
             <h4>{service.title}</h4>
             <h2>{service.stack}</h2>
             <p>{service.description}</p>
-            <a href={service.link} className="contact-link">
+            <HashLink smooth to="/#contact" className="contact-link">
               Contact me →
-            </a>
+            </HashLink>
           </div>
         ))}
       </div>
