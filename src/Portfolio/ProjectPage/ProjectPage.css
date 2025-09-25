@@ -1,0 +1,106 @@
+.project-page-container,
+.project-not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  padding: 90px 20px 20px;
+  color: white;
+  text-align: center;
+}
+
+.project-page-card {
+  background: white;
+  color: #333;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  width: 100%;
+  text-align: left;
+}
+
+.project-page-image {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.project-page-details {
+  padding: 30px;
+}
+
+.project-page-details h1 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.project-page-details p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.project-tech-stack-details {
+  margin-bottom: 30px;
+}
+
+.project-tech-stack-details strong {
+  display: block;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.project-tech-stack-details .tech-tag {
+  background-color: #f0f0f0;
+  border-radius: 15px;
+  padding: 5px 12px;
+  margin: 5px 5px 5px 0;
+  display: inline-block;
+  font-size: 0.9rem;
+}
+
+.project-page-buttons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.github-link,
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.github-link {
+  background-color: var(--orange-color);
+  color: white;
+}
+
+.github-link:hover {
+  background-color: var(--WhitishOrange-color);
+  transform: translateY(-2px);
+}
+
+.back-link {
+  background-color: transparent;
+  border: 2px solid var(--orange-color);
+  color: var(--orange-color);
+}
+
+.back-link:hover {
+  background-color: var(--orange-color);
+  color: white;
+}

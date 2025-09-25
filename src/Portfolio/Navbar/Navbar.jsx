@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { HashLink } from 'react-router-hash-link'; // Use HashLink
 import { SiInstagram, SiLinkedin, SiX, SiGithub } from "react-icons/si";
 import "./Navbar.css";
 
@@ -54,21 +55,11 @@ export default function Navbar() {
       {/* Navigation links (desktop + mobile sliding menu) */}
       <div className={`links ${isOpen ? "active" : ""}`}>
         <ul className="navigation">
-          <a href="#home" onClick={handleLinkClick}>
-            <li>Home</li>
-          </a>
-          <a href="#about-me" onClick={handleLinkClick}>
-            <li>About Me</li>
-          </a>
-          <a href="#resume" onClick={handleLinkClick}>
-            <li>Resume</li>
-          </a>
-          <a href="#projects" onClick={handleLinkClick}>
-            <li>Projects</li>
-          </a>
-          <a href="#contact" onClick={handleLinkClick}>
-            <li>Contact Me</li>
-          </a>
+          <li><HashLink smooth to="/#home" onClick={handleLinkClick}>Home</HashLink></li>
+          <li><HashLink smooth to="/#about-me" onClick={handleLinkClick}>About Me</HashLink></li>
+          <li><HashLink smooth to="/#resume" onClick={handleLinkClick}>Resume</HashLink></li>
+          <li><HashLink smooth to="/#projects" onClick={handleLinkClick}>Projects</HashLink></li>
+          <li><HashLink smooth to="/#contact-me" onClick={handleLinkClick}>Contact Me</HashLink></li>
 
           <div className="social-media">
             <a href="https://www.instagram.com/kenil_kalathiya_007">
