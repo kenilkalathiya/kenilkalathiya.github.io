@@ -1,5 +1,6 @@
 import React from "react";
 import { SiInstagram, SiLinkedin, SiX, SiGithub } from "react-icons/si";
+import { HashLink } from "react-router-hash-link";
 // import { TypeAnimation } from 'react-type-animation';
 import "./home.css";
 
@@ -39,7 +40,10 @@ export default function Home() {
                 Problem Solving
               </span>
               <div className="profile-button">
-                <button className="hire-me button">Hire Me</button>
+                {/* <button className="hire-me button">Hire Me</button> */}
+                <HashLink smooth to="/#contact" className="hire-me button">
+                              Hire Me
+                            </HashLink>
                 <a href="/Kenil-Kalathiya.pdf" download="Kenil-Kalathiya.pdf">
                   <button className="resume button">Get Resume</button>
                 </a>
