@@ -59,7 +59,7 @@ export default function Navbar() {
           <li><HashLink smooth to="/#about-me" onClick={handleLinkClick}>About Me</HashLink></li>
           <li><HashLink smooth to="/#resume" onClick={handleLinkClick}>Resume</HashLink></li>
           <li><HashLink smooth to="/#projects" onClick={handleLinkClick}>Projects</HashLink></li>
-          <li><HashLink smooth to="/#contact-me" onClick={handleLinkClick}>Contact Me</HashLink></li>
+          <li><HashLink smooth to="/#contact" onClick={handleLinkClick}>Contact Me</HashLink></li>
 
           <div className="social-media">
             <a href="https://www.instagram.com/kenil_kalathiya_007">
