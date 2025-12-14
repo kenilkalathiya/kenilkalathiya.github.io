@@ -1,3 +1,7 @@
+import Health from "../src/Assets/Projects/Home.png";
+import Movie from "../src/Assets/Projects/Movie.png";
+import Spam from "../src/Assets/Projects/Spam1.png";
+
 export const aboutMe = {
   title: "WHAT I DO",
   subtitle: "My Services",
@@ -66,7 +70,7 @@ export const resume = {
       description: 'Developed a full-stack collaborative workspace application enabling users to draw on a shared whiteboard and edit code in real-time, utilizing the MERN stack and WebSockets for a dynamic, multi-user experience.',
       tech: ['MERN Stack', 'JWT', 'RESTful APIs', 'WebSockets'],
       github: 'https://github.com/kenilkalathiya/collab-sphere',
-      imageUrl: '/collab-sphere.jpg', // Add image path
+      imageUrl: '../public/Projects/', // Add image path
     },
     {
       id: 'health-scal',
@@ -74,7 +78,7 @@ export const resume = {
       description: 'Developed a user-friendly application to predict various diseases based on patient medical reports, utilizing machine learning models for accurate decision-making.',
       tech: ['React.js', 'Flask', 'Machine Learning'],
       github: 'https://github.com/kenilkalathiya/Health-Scal',
-      imageUrl: '/health-scal.jpg', // Add image path
+      imageUrl: Health, // Add image path
     },
     {
       id: 'movie-series-info',
@@ -82,7 +86,7 @@ export const resume = {
       description: 'Created a comprehensive information system for movies and series, allowing users to track watched content and discover new titles through a responsive interface built with the MERN stack.',
       tech: ['React.js', 'Node.js', 'MongoDB'],
       github: 'https://github.com/kenilkalathiya/GMTV_Project',
-      imageUrl: '/gmtv.jpg', // Add image path
+      imageUrl: Movie, // Add image path
     },
     {
       id: 'spam-predictor',
@@ -90,7 +94,7 @@ export const resume = {
       description: 'Designed a web application for real-time content analysis to detect spam emails and identify fake news, leveraging a machine learning backend.',
       tech: ['HTML/CSS', 'JavaScript', 'ML'],
       github: 'https://github.com/kenilkalathiya/Spam-Prediction-Using-Machine-Learning-Model',
-      imageUrl: '/spam-predictor.jpg', // Add image path
+      imageUrl: Spam, // Add image path
     },
     {
       isGithubLink: true,
