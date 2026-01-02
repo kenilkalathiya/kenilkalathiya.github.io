@@ -2,6 +2,8 @@ import Health from "../src/Assets/Projects/Home.png";
 import Movie from "../src/Assets/Projects/Movie.png";
 import Spam from "../src/Assets/Projects/Spam1.png";
 import adas from "../src/Assets/Projects/adas.png";
+import isaVideo1 from "../src/Assets/Projects/CarlaUE4.mp4";
+import isaVideo2 from "../src/Assets/Projects/Front Camera.mp4";
 
 export const aboutMe = {
   title: "WHAT I DO",
@@ -68,6 +70,22 @@ export const resume = {
     },
   ],
   projects: [
+    {
+      id: "isa-cruise-control",
+      title: "Intelligent Speed Adaptation (ISA) with Cruise Control",
+      description:
+        "Designed and implemented an Intelligent Speed Adaptation (ISA) system in the CARLA simulator featuring state-based cruise control, waypoint-based steering, and real-time camera visualization. The system dynamically adapts vehicle speed using zone-based speed limits to ensure stable operation under simulator and hardware constraints, with a perception pipeline prepared for future vision-based speed sign detection.",
+      tech: [
+        "Python",
+        "CARLA Simulator",
+        "OpenCV",
+        "NumPy",
+        "PID Control",
+        "ADAS",
+      ],
+      github: "https://github.com/kenilkalathiya/isa-cruise-control",
+      videoUrls: [isaVideo1, isaVideo2],
+    },
     {
       id: "vision-based-adas",
       title: "Vision-Based ADAS System",
