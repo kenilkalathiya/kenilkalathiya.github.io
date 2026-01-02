@@ -21,17 +21,60 @@ export default function ProjectPage() {
   return (
     <div className="project-page-container">
       <div className="project-page-card">
-        <img
+        {/* <img
           src={project.imageUrl}
           alt={project.title}
           className="project-page-image"
-        />
+        /> */}
+
+          {/* --- MEDIA SECTION START --- */}
+        <div className="project-media-wrapper">
+          {/* Case A: Multiple Videos */}
+          {project.videoUrls && project.videoUrls.length > 0 ? (
+            <div className="video-grid">
+              {project.videoUrls.map((video, index) => (
+                <div key={index} className="video-item">
+                  <video
+                    controls
+                    className="project-page-video"
+                  >
+                    <source src={video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              ))}
+            </div>
+          ) 
+          
+          /* Case B: Single Video */
+          : project.videoUrl ? (
+            <video
+              controls
+              className="project-page-video single-video"
+              poster={project.imageUrl} // Optional: use image as poster
+            >
+              <source src={project.videoUrl} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          ) 
+          
+          /* Case C: Image Fallback */
+          : (
+            <img
+              src={project.imageUrl}
+              alt={project.title}
+              className="project-page-image"
+            />
+          )}
+        </div>
+        {/* --- MEDIA SECTION END --- */}
+
         <div className="project-page-details">
           <h1>{project.title}</h1>
           <p>{project.description}</p>
           <div className="project-tech-stack-details">
             <strong>Technologies Used:</strong>
-            <div>
+            <div className='tech-tag-div'>
               {project.tech.map(t => <span key={t} className="tech-tag">{t}</span>)}
             </div>
           </div>
