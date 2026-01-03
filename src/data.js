@@ -72,9 +72,9 @@ export const resume = {
   projects: [
     {
       id: "isa-cruise-control",
-      title: "Intelligent Speed Adaptation (ISA) with Cruise Control",
+      title: "Intelligent Speed Assistance & Adaptive Cruise Control (CARLA Simulation)",
       description:
-        "Designed and implemented an Intelligent Speed Adaptation (ISA) system in the CARLA simulator featuring state-based cruise control, waypoint-based steering, and real-time camera visualization. The system dynamically adapts vehicle speed using zone-based speed limits to ensure stable operation under simulator and hardware constraints, with a perception pipeline prepared for future vision-based speed sign detection.",
+        "Designed and implemented an ADAS prototype featuring Intelligent Speed Assistance (ISA) and Adaptive Cruise Control (ACC) in CARLA, including driver override logic, safe-distance control, and realistic lead-vehicle interaction.",
       tech: [
         "Python",
         "CARLA Simulator",
