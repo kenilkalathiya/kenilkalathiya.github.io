@@ -1,15 +1,24 @@
-/* Container: Fits screen, no outer scroll */
+/* Container: Fits screen, accounts for Fixed Navbar */
 .project-page-container {
   display: flex;
   flex-direction: column;
   justify-content: center; /* Centers card vertically */
   align-items: center;     /* Centers card horizontally */
-  height: 100vh;           /* Full Viewport Height */
+  
   width: 100vw;
+  height: 100vh;           /* Standard viewport height */
+  height: 100dvh;          /* Modern mobile viewport height */
+  
   background: linear-gradient(135deg, #0f172a, #1e293b);
-  padding: 20px;
-  overflow: hidden;        /* Prevents body scroll */
-  box-sizing: border-box;
+  
+  /* CRITICAL: Space for the 70px Fixed Navbar */
+  padding-top: 90px;      /* 70px Navbar + 20px buffer */
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  
+  overflow: hidden;        /* Prevents outer body scroll */
+  box-sizing: border-box;  /* Includes padding in height/width calculations */
 }
 
 /* Card: Fixed Max Size, Internal Scroll */
@@ -23,11 +32,14 @@
   
   width: 100%;
   max-width: 900px;
-  max-height: 90vh; /* Limits card height to 90% of screen */
   
-  overflow-y: auto; /* Enables scroll INSIDE the card */
+  /* Height Management */
+  height: auto;
+  max-height: 100%;       /* Fills available space defined by container padding */
+  
+  overflow-y: auto;       /* Enables scroll INSIDE the card */
   overflow-x: hidden;
-  scrollbar-width: thin; /* Firefox */
+  scrollbar-width: thin;  /* Firefox */
 }
 
 /* Card Scrollbar Styling (Chrome/Safari) */
@@ -42,15 +54,16 @@
   border-radius: 4px;
 }
 
-/* Media Wrapper */
+/* --- MEDIA SECTION --- */
 .project-media-wrapper {
   width: 100%;
-  height: 350px;
+  height: auto;
+  min-height: 250px;
   background-color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-shrink: 0; /* Prevents video area from squishing */
+  flex-shrink: 0; 
 }
 
 /* Video Grid */
@@ -60,31 +73,39 @@
   width: 100%;
   gap: 2px;
   background-color: #1e293b;
+  justify-content: center;
 }
 
 .video-item {
-  flex: 1 1 400px; /* Side-by-side on desktop, stack on mobile */
+  flex: 1 1 400px;    /* Desktop: Side-by-side */
   min-width: 300px;
+  aspect-ratio: 16/9;
+  position: relative;
 }
 
 .project-page-video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: black;
   display: block;
 }
 
 .single-video {
-  max-height: 500px;
+  width: 100%;
+  max-height: 500px; 
+  aspect-ratio: auto;
 }
 
 .project-page-image {
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
   display: block;
 }
 
-/* Details Section */
+/* --- DETAILS SECTION --- */
 .project-page-details {
   padding: 30px;
 }
@@ -93,43 +114,50 @@
   font-size: 2.2rem;
   font-weight: bold;
   margin-bottom: 15px;
+  line-height: 1.2;
 }
 
 .project-page-details p {
   font-size: 1.1rem;
   line-height: 1.7;
   margin-bottom: 25px;
+  color: #444;
 }
 
-.tech-tags-container {
+.project-tech-stack-details strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.tech-tag-div {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 5px;
   margin-bottom: 25px;
-}
-
-.tech-tag-div{
-  margin: 15px 0px;
 }
 
 .tech-tag {
   background-color: #f0f0f0;
   border-radius: 15px;
-  padding: 5px 12px;
+  padding: 6px 14px;
   font-size: 0.9rem;
   font-weight: 500;
+  color: #333;
 }
 
+/* --- BUTTONS --- */
 .project-page-buttons {
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .github-link, .back-link {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 12px 24px;
   border-radius: 25px;
@@ -137,11 +165,13 @@
   font-weight: bold;
   transition: all 0.3s ease;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .github-link {
   background-color: #e65100; /* Orange */
   color: white;
+  border: 2px solid #e65100;
 }
 
 .back-link {
@@ -152,5 +182,55 @@
 
 .github-link:hover, .back-link:hover {
   opacity: 0.9;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(230, 81, 0, 0.2);
+}
+
+/* =========================================
+   Responsive Design (Mobile & Tablet)
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+  .project-page-container {
+    /* Reduce side padding on mobile so card is wider */
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    /* Maintain top padding for Navbar */
+    padding-top: 80px; 
+  }
+
+  .project-page-card {
+    border-radius: 8px;
+  }
+
+  .video-item {
+    flex: 1 1 100%; /* Stack videos vertically on mobile */
+    min-width: 100%;
+  }
+
+  .project-page-details {
+    padding: 20px;
+  }
+
+  .project-page-details h1 {
+    font-size: 1.6rem;
+  }
+
+  .project-page-details p {
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  /* Stack buttons full width */
+  .project-page-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .github-link, .back-link {
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
