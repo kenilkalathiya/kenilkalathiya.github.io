@@ -36,8 +36,7 @@ export default function Home() {
               </p>
 
               <span className="profile-role-tagline">
-                Full-Stack Innovator with a Front-End Focus and a Passion for
-                Problem Solving
+                Full-Stack Innovator & Automotive Developer with a Passion for Problem Solving
               </span>
               <div className="profile-button">
                 {/* <button className="hire-me button">Hire Me</button> */}
@@ -60,7 +59,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="stat-card">
-                <h2>15+</h2>
+                <h2>17+</h2>
                 <p>
                   Completed <br /> Projects
                 </p>

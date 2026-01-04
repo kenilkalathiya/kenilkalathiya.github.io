@@ -10,6 +10,13 @@ export const aboutMe = {
   subtitle: "My Services",
   services: [
     {
+    title: "AUTOMOTIVE & ADAS SOLUTIONS",
+    stack: "Python / C++ / CARLA",
+    description:
+      "I design and simulate Advanced Driver Assistance Systems (ADAS) and autonomous driving features. Utilizing CARLA, OpenCV, and PID control logic, I build intelligent safety systems like Adaptive Cruise Control and Lane Detection.",
+    link: "/#contact",
+    },
+    {
       title: "FULL STACK DEVELOPMENT",
       stack: "MERN / MEAN Stack",
       description:
@@ -157,11 +164,18 @@ export const resume = {
       { name: "Python", level: 80 },
       { name: "Django/Flask", level: 75 },
     ],
+    "Automotive & Computer Vision": [
+    { name: "CARLA Simulator", level: 80 },
+    { name: "OpenCV / Vision", level: 80 },
+    { name: "YOLOv8 / Deep Learning", level: 75 },
+    { name: "ADAS / PID Control", level: 75 },
+    ],
     "Databases & Tools": [
       { name: "MongoDB", level: 75 },
       { name: "SQL", level: 70 },
-      { name: "GitHub", level: 85 },
       { name: "JSON/JWT", level: 90 },
+      { name: "Git & GitHub", level: 85 },
+      { name: "Jira", level: 80 },
     ],
   },
   interests: [

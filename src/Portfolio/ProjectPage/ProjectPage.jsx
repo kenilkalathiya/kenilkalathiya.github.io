@@ -21,11 +21,6 @@ export default function ProjectPage() {
   return (
     <div className="project-page-container">
       <div className="project-page-card">
-        {/* <img
-          src={project.imageUrl}
-          alt={project.title}
-          className="project-page-image"
-        /> */}
 
           {/* --- MEDIA SECTION START --- */}
         <div className="project-media-wrapper">
