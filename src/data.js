@@ -169,6 +169,7 @@ export const resume = {
     { name: "OpenCV / Vision", level: 80 },
     { name: "YOLOv8 / Deep Learning", level: 75 },
     { name: "ADAS / PID Control", level: 75 },
+    { name: "ISO 26262", level: 70 },
     ],
     "Databases & Tools": [
       { name: "MongoDB", level: 75 },
