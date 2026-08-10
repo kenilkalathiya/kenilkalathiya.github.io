@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: var(--bg-base);
 }
 
 .projects-grid {
@@ -18,18 +19,21 @@
 }
 
 .project-card {
-  background: white;
-  border-radius: 12px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
   padding: 25px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .project-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent-dim);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
 }
 
 .project-header {
@@ -40,26 +44,27 @@
 }
 
 .project-title {
-  font-size: 1.3rem;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
   font-weight: 700;
-  color: var(--grey-color);
+  color: var(--text-primary);
   margin: 0;
 }
 
 .project-links a {
-  color: var(--grey-color);
+  color: var(--text-secondary);
   font-size: 1.5rem;
   margin-left: 15px;
   transition: color 0.3s ease;
 }
 
 .project-links a:hover {
-  color: var(--orange-color);
+  color: var(--accent);
 }
 
 .project-description {
   font-size: 1rem;
-  color: #555;
+  color: var(--text-secondary);
   line-height: 1.6;
   flex-grow: 1;
   margin-bottom: 20px;
@@ -73,11 +78,14 @@
 }
 
 .tech-tag {
-  background-color: #f0f0f0;
-  color: #333;
-  padding: 5px 12px;
-  border-radius: 15px;
-  font-size: 0.85rem;
+  background-color: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
   font-weight: 500;
 }
 
@@ -85,32 +93,37 @@
 
 /* Styling for the new "More Projects" card */
 .more-projects-card {
-  background: linear-gradient(135deg, var(--orange-color), var(--WhitishYellow-color));
-  color: white;
+  background: var(--bg-panel);
+  border: 1px solid var(--accent-dim);
+  color: var(--accent);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 25px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   text-decoration: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .more-projects-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 8px 24px rgba(255, 81, 78, 0.4);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #05070a;
+  box-shadow: 0 12px 32px var(--accent-glow);
 }
 
 .more-projects-card h3 {
   margin: 0 0 15px 0;
-  font-size: 1.3rem;
-  color: white; /* Ensure text is white */
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: inherit;
 }
 
 .more-projects-card .arrow-icon {
-  font-size: 2rem;
+  font-size: 1.6rem;
   transition: transform 0.3s ease;
 }
 
@@ -126,18 +139,6 @@
   display: flex; /* Helps with card height consistency */
 }
 
-.project-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
 .project-description {
   flex-grow: 1; /* Pushes the button to the bottom */
 }
@@ -145,7 +146,11 @@
 .view-project-button {
   margin-top: auto; /* Aligns button to the bottom */
   padding-top: 15px;
-  color: var(--orange-color);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   font-weight: bold;
   display: flex;
   align-items: center;

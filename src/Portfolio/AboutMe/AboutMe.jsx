@@ -3,8 +3,11 @@ import React from "react";
 import "./AboutMe.css";
 import { aboutMe } from "../../data.js";
 import { HashLink } from "react-router-hash-link";
+import useReveal from "../../hooks/useReveal";
 
 export default function AboutMe() {
+  const gridRef = useReveal();
+
   return (
     <div
       className="about-section section-container"
@@ -18,8 +21,8 @@ export default function AboutMe() {
         </p>
       </div>
 
-      
-      <div className="about-grid">
+
+      <div className="about-grid reveal" ref={gridRef}>
         {aboutMe.services.map((service, index) => (
           <div className="about-card" key={index}>
             <h4>{service.title}</h4>

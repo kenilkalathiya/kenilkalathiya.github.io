@@ -32,7 +32,7 @@ export default function Home() {
               </span>
 
               <p className="profile-role">
-                I AM <span>Full Stack Developer</span>
+                I AM <span>ADAS &amp; Autonomous Systems Engineer</span>
               </p>
 
               <span className="profile-role-tagline">

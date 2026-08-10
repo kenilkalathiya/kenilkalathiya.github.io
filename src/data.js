@@ -7,7 +7,7 @@ import isaVideo2 from "../src/Assets/Projects/Front Camera.mp4";
 
 export const aboutMe = {
   title: "WHAT I DO",
-  subtitle: "My Services",
+  subtitle: "Services",
   services: [
     {
     title: "AUTOMOTIVE & ADAS SOLUTIONS",

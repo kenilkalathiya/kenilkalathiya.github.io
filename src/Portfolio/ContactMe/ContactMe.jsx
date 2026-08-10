@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
 import { BsPersonWorkspace } from "react-icons/bs";
+import useReveal from '../../hooks/useReveal';
 import './ContactMe.css';
 
 export default function ContactMe() {
+  const containerRef = useReveal();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -53,7 +55,7 @@ export default function ContactMe() {
         <p>Let's Talk About Ideas</p>
       </div>
 
-      <div className="contact-container">
+      <div className="contact-container reveal" ref={containerRef}>
         <div className="contact-info">
           <div className="info-line">
             <div className="info-icon-wrapper">
