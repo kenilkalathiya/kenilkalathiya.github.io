@@ -1,9 +1,8 @@
 
 .navbar {
   display: flex;
-  /* background-color: var(--grey-color); */
   background: transparent;
-  color: white;
+  color: var(--text-primary);
   width: 100%;
   height: 70px;
   position: fixed;
@@ -13,14 +12,15 @@
   padding: 0 20px;
   top: 0;
   left: 0;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-  /* position: absolute; */
-
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border-bottom: 1px solid transparent;
 }
 
 .navbar.scrolled {
-  background: linear-gradient(135deg, #0f172a, #1e293b); /* solid color after scroll */
- box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  background: rgba(10, 12, 15, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-hairline);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
 }
 
 .social-media {
@@ -36,16 +36,29 @@
 }
 
 .logo-mr {
-  font-family: 'Dancing Script', cursive;
-  font-size: 1.6rem; /* Adjust size as needed */
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
   font-weight: 700;
-  color: var(--orange-color); /* Makes "Mr." stand out */
-  margin-right: 5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent); /* Makes "Mr." stand out */
+  margin-right: 10px;
 }
 
 .logo-name {
-  font-size: 3rem; /* Adjust size as needed */
-  color: white;
+  font-family: var(--font-heading);
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-shadow: 0 0 24px var(--accent-glow);
+}
+
+@media screen and (max-width: 480px) {
+  .logo-name {
+    font-size: 1.6rem;
+  }
 }
 
 /* Desktop navigation */
@@ -57,8 +70,37 @@
 }
 
 .navigation a {
+  position: relative;
   text-decoration: none;
-  color: white;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding-bottom: 6px;
+  transition: color var(--transition-fast);
+}
+
+.navigation a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width var(--transition-fast);
+}
+
+.navigation a:hover,
+.navigation a:focus-visible {
+  color: var(--text-primary);
+}
+
+.navigation a:hover::after,
+.navigation a:focus-visible::after {
+  width: 100%;
 }
 
 .navigation li {
@@ -77,9 +119,9 @@
 }
 
 .hamburger span {
-  height: 5px;
+  height: 3px;
   width: 100%;
-  background: white;
+  background: var(--accent);
   border-radius: 2px;
   transition: all 0.3s ease;
 }
@@ -113,7 +155,8 @@
 .navigation {
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(to right, #182c50, #141d30);
+  background: rgba(10, 12, 15, 0.98);
+  border-left: 1px solid var(--border-hairline);
   position: fixed;
   top: 70px;
   right: -100%; /* hidden off the screen */
@@ -144,7 +187,12 @@
   }
 
   .social-media a {
-    color: white;
+    color: var(--text-secondary);
+    transition: color var(--transition-fast);
+  }
+
+  .social-media a:hover {
+    color: var(--accent);
   }
 }
 

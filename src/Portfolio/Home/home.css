@@ -1,16 +1,7 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    --orange-color:rgb(255, 81, 78);
-    --WhitishOrange-color: rgb(249, 121, 118);
-    --WhitishYellow-color: rgb(252, 171, 109);
-    --grey-color:rgb(31, 34, 51);
 }
-
-:root{
-  --next-section: #1f2233; /* same as your next section bg */
-}
-
 
 body, html {
     margin: 0;
@@ -20,8 +11,21 @@ body, html {
 
 .main-profile {
   position: relative;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
+  background: var(--bg-base);
   width: 100%;
+}
+
+.main-profile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border-hairline) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-hairline) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 
@@ -41,39 +45,35 @@ body, html {
 
 }
 
+/* Single restrained accent glow — replaces the previous multi-colour blur blobs */
 .blob {
   position: absolute;
   border-radius: 50%;
-  opacity: 0.35;
-  filter: blur(80px);
-  animation: move 20s infinite alternate ease-in-out;
+  opacity: 0.16;
+  filter: blur(110px);
+  animation: move 24s infinite alternate ease-in-out;
   z-index: 0; /* keep behind content */
+  background: var(--accent);
 }
 
 .blob1 {
-  width: 400px;
-  height: 400px;
-  background: #3b82f6; /* blue */
-  top: -100px;
+  width: 420px;
+  height: 420px;
+  top: -120px;
   left: -150px;
 }
 
 .blob2 {
-  width: 300px;
-  height: 300px;
-  background: #f43f5e; /* pink */
+  width: 260px;
+  height: 260px;
   bottom: -120px;
   right: -120px;
-  animation-delay: 5s;
+  opacity: 0.1;
+  animation-delay: 6s;
 }
 
 .blob3 {
-  width: 250px;
-  height: 250px;
-  background: #22c55e; /* green */
-  bottom: 50px;
-  left: 30%;
-  animation-delay: 10s;
+  display: none; /* one restrained glow reads cleaner than three */
 }
 
 @keyframes move {
@@ -90,7 +90,7 @@ body, html {
     flex-direction: column; /* stack inside text */
     align-items: flex-start; /* align text to left (looks better) */
     justify-content: center;
-    color: white;
+    color: var(--text-primary);
     max-width: 500px;
     width: 100%;
     text-align: left;        /* left align text */
@@ -108,8 +108,13 @@ body, html {
     font-size: 25px;
 }
 .social-media a{
-    color: white;
+    color: var(--text-secondary);
     padding: 0px 15px;
+    transition: color var(--transition-fast);
+}
+
+.social-media a:hover{
+    color: var(--accent);
 }
 
 .profile-detail{
@@ -118,25 +123,38 @@ body, html {
 
 .profile-name{
     font-size: 20px;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
 }
 
 .profile-name .name{
-    color: var(--WhitishOrange-color);
+    color: var(--text-primary);
+    font-family: var(--font-heading);
     font-size: 60px;
+    font-weight: 700;
 }
 
 .profile-role{
     font-size: 20px;
     width: 100%;
     margin: 14px 0px 34px 0px;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .profile-role span{
-    font-size: 40px;
+    font-size: 32px;
+    color: var(--accent);
+    text-transform: none;
+    letter-spacing: 0.02em;
 }
 
 .profile-role-tagline{
-    font-size: 20px;
+    font-size: 18px;
+    color: var(--text-secondary);
 }
 
 .profile-button{
@@ -150,22 +168,26 @@ body, html {
     font-weight: 550;
     margin-left: 15px;
     padding: 10px 20px 10px 20px;
-    background-color: var(--orange-color);
-    border-radius: 20px;
+    background-color: var(--accent);
+    color: var(--text-primary);
+    border-radius: var(--radius-sm);
     cursor: pointer;
     transition: 0.3s;
     text-decoration: none;
+    font-family: var(--font-mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
 }
 
 .resume:hover{
-    background-color: var(--WhitishOrange-color);
+    background-color: var(--accent-bright);
 }
 
 .hire-me{
-    border: 2px solid white;
-    color: white;
+    border: 1px solid var(--border-strong);
+    color: var(--text-primary);
     background-color: transparent;
-    background: linear-gradient(to right, var(--orange-color) 50%, transparent 50%);
+    background: linear-gradient(to right, var(--accent) 50%, transparent 50%);
     background-size: 200% 100%;
     background-position: right bottom;
     transition: all .3s ease-out;
@@ -173,8 +195,8 @@ body, html {
 
 .hire-me:hover{
     background-position: left bottom;
-    border-color: var(--orange-color);
-    color: black;
+    border-color: var(--accent);
+    color: #05070a;
 }
 
 .profile-img {
@@ -184,8 +206,6 @@ body, html {
     height: 520px;
     width: 520px;
     border-radius: 50%;
-
-    box-shadow: 0px 2px 0px 0px white;
 }
 
 /* Stats Cards */
@@ -199,30 +219,41 @@ body, html {
 }
 
 .stat-card {
-  background: white;
-  color: black;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-hairline);
+  color: var(--text-primary);
   padding: 15px 25px;
-  border-radius: 20px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+  border-radius: var(--radius-md);
+  box-shadow: 0px 4px 16px rgba(0,0,0,0.4);
   font-size: 16px;
   font-weight: bold;
   text-align: center;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.stat-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
 }
 
 .stat-card h2 {
     font-size: 24px;
     margin: 0;
-    color: var(--orange-color);
+    font-family: var(--font-mono);
+    color: var(--accent);
 }
 
 .stat-card p {
-    font-size: 14px;
-    margin: 0;
+    font-size: 12px;
+    margin: 4px 0 0;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
 }
 
 .stat-card span {
     font-weight: bold;
-    color: var(--WhitishOrange-color);
+    color: var(--accent-bright);
 }
 
 /* Positioning */
@@ -234,12 +265,19 @@ body, html {
     height: 420px;
     width: 420px;
     border-radius: 50%;
-    /* overflow: hidden; */
 }
 
-
+.profile-img::before {
+    content: "";
+    position: absolute;
+    inset: -14px;
+    border-radius: 50%;
+    border: 1px dashed var(--border-strong);
+    pointer-events: none;
+}
 
 .picture-background{
+    position: relative;
     height: 92%;
     width: 92%;
     background-image: url(../../Assets/Home/Profile-pic.png);
@@ -247,13 +285,15 @@ body, html {
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 50%;
+    border: 1px solid var(--border-strong);
+    box-shadow: 0 0 0 6px var(--bg-base), 0 0 40px var(--accent-glow);
     z-index: 2;
     overflow: hidden;
 }
 
 .picture-background:hover{
-    transform: scale(1.07);
-    transition: 1s ease-out;
+    transform: scale(1.05);
+    transition: transform .6s ease-out;
 }
 
 .svg-img {
@@ -401,5 +441,5 @@ body, html {
 }
 
 .custom-shape-divider .shape-fill {
-    fill: #FFFFFF; 
+    fill: var(--bg-base);
 }

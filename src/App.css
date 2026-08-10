@@ -12,20 +12,28 @@ body::-webkit-scrollbar {
 
 .title {
   text-align: center;
-  padding: 30px 0PX 50PX 0PX;
+  padding: 30px 0px 50px 0px;
 }
 
 .title h1 {
   display: inline-block;
-  border-bottom: 2px solid var(--orange-color);
-  border-radius: 10px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--accent);
   width: auto;
-  padding-bottom: 5px;
+  padding-bottom: 8px;
   white-space: nowrap;
 }
 
 .title p {
-  font-size: 14px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-top: 10px;
 }
 
 /* --- Add this at the end of the file --- */
@@ -35,7 +43,7 @@ body::-webkit-scrollbar {
     font-size: 2rem; /* Adjust heading size */
   }
   .title p {
-    font-size: 13px; /* Adjust subheading size */
+    font-size: 11px; /* Adjust subheading size */
   }
 }
 
@@ -45,26 +53,7 @@ body::-webkit-scrollbar {
   position: relative;
 }
 
-/* The ::before pseudo-element will hold our background text */
-/* Replace the old ::before rule with this one */
-.section-container::before {
-  content: var(--bg-text, "");
-  position: absolute;
-  top: 50%;
-  left: -5%; /* Start slightly off-screen to the left */
-  width: 110%; /* Make it wider than the viewport */
-  text-align: center;
-  transform: translateY(-50%) rotate(-15deg); /* Center vertically and rotate */
-  font-size: 24vw; /* Larger, viewport-based font size */
-  font-family: 'Dancing Script', cursive;
-  font-weight: 800;
-  color: rgba(0, 0, 0, 0.04);
-  z-index: 1;
-  white-space: nowrap;
-  user-select: none;
-}
-
-/* Make sure the main content always stays on top of the background text */
+/* Make sure the main content always stays on top of section content */
 .title, .about-grid, .resume-main, .projects-grid {
   position: relative;
   z-index: 1;

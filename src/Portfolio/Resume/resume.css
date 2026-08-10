@@ -7,19 +7,19 @@
 
 
 .title-main{
-    /* height: 100vh; */
-    background-color: #f9f9f9;
+    background-color: var(--bg-base);
 }
 
 
 .resume-main .r-box {
-  box-shadow: 1px 1px 1px 1px rgba(12, 12, 12, 0.3);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-hairline);
   display: flex;
   justify-content: center;
   align-items: center;
   width: 1500px;
   height: 560px;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
 }
 
 .side-bar {
@@ -28,20 +28,19 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
-  clip-path: inset(0px -10px 0px 0px);
-  background-color: var(--grey-color);
-  border-radius: 10px 0 0 10px;
+  border-right: 1px solid var(--border-hairline);
+  background-color: var(--bg-panel);
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
   z-index: 2;
 }
 
 .side1 {
   background-color: transparent;
-  background: linear-gradient(to right, var(--orange-color) 50%, transparent 50%);
+  background: linear-gradient(to right, var(--accent) 50%, transparent 50%);
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all 0.3s ease-out;
-  color: white;
+  color: var(--text-secondary);
   display: flex;
   width: 100%;
   align-items: center;
@@ -62,7 +61,10 @@
   margin: 5px;
   padding: 22px 0px 22px 0px;
   cursor: pointer;
-  font-size: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .side-content-animate {
@@ -133,20 +135,20 @@
 
 .side1:hover {
   background-position: left bottom;
-  color: white;
-  border-radius: 10px;
+  color: var(--text-primary);
 }
 
 .active {
-  border-radius: 10px;
-  background-color: var(--orange-color);
-  color: white;
+  background-color: var(--accent);
+  color: #05070a;
 }
 
 .side-content {
   height: 100%;
   width: 65%;
   overflow: hidden;
+  background-color: var(--bg-panel-soft);
+  color: var(--text-primary);
 }
 
 /* --- Add this code to the end of the file --- */
@@ -166,7 +168,7 @@
     flex-wrap: wrap;
     justify-content: center;
     height: auto;
-    border-radius: 10px 10px 0 0;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
     clip-path: none;
     padding: 10px 0;
   }
@@ -174,13 +176,13 @@
   .side1 {
     width: auto;
     background-size: 200% 100%;
-    border-radius: 25px;
+    border-radius: var(--radius-sm);
     margin: 5px;
     border: 1px solid transparent;
   }
-  
+
   .active {
-    border: 1px solid var(--orange-color);
+    border: 1px solid var(--accent);
   }
 
   .side-main-content {

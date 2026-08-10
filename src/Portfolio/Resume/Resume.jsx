@@ -5,9 +5,11 @@ import Education from "./Education";
 import Experience from "./Experience";
 import ProgrammingSkill from "./ProgrammingSkill";
 import Intrest from "./Intrest";
+import useReveal from "../../hooks/useReveal";
 import "./resume.css";
 
 export default function Resume() {
+  const boxRef = useReveal();
   const sections = [
     { name: "Education", icon: <FaUserGraduate />, component: <Education /> },
     { name: "Experience", icon: <MdWorkOutline />, component: <Experience /> },
@@ -45,7 +47,7 @@ export default function Resume() {
       </div>
 
       <div className="resume-main">
-        <div className="r-box">
+        <div className="r-box reveal" ref={boxRef}>
           <div className="side-bar">
             {sections.map((section, index) => (
               <div

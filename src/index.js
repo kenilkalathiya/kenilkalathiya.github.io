@@ -1,6 +1,7 @@
 import React from "react";
 // import ReactDOM from "react-dom";
 import App from "./App";
+import "./theme.css";
 import "./index.css";
 // Change this import from BrowserRouter to HashRouter
 import { HashRouter } from "react-router-dom";

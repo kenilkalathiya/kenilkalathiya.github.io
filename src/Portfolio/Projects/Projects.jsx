@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'; // Import Link
 import { FaArrowRight } from 'react-icons/fa';
 import './Projects.css';
 import { resume } from '../../data';
+import useReveal from '../../hooks/useReveal';
 
 // Add a "View Project" button and wrap the whole card in a Link
 const ProjectCard = ({ id, title, description, tech }) => (
@@ -30,13 +31,15 @@ const MoreProjectsCard = ({ github }) => (
 );
 
 export default function Projects() {
+  const gridRef = useReveal();
+
   return (
     <div className="projects-section section-container" id="projects" style={{ '--bg-text': '"Projects"' }}>
       <div className="title">
         <h1>PROJECTS</h1>
         <p>A selection of my recent work</p>
       </div>
-      <div className="projects-grid">
+      <div className="projects-grid reveal" ref={gridRef}>
         {resume.projects.map(project => (
           project.isGithubLink
             ? <MoreProjectsCard key="more-projects" {...project} />

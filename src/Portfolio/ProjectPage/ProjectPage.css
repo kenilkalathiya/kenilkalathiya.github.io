@@ -9,8 +9,8 @@
   height: 100vh;           /* Standard viewport height */
   height: 100dvh;          /* Modern mobile viewport height */
   
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  
+  background: var(--bg-base);
+
   /* CRITICAL: Space for the 70px Fixed Navbar */
   padding-top: 90px;      /* 70px Navbar + 20px buffer */
   padding-bottom: 20px;
@@ -23,35 +23,30 @@
 
 /* Card: Fixed Max Size, Internal Scroll */
 .project-page-card {
-  background: white;
-  color: #333;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background: var(--bg-panel);
+  border: 1px solid var(--border-hairline);
+  color: var(--text-primary);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  
+
   width: 100%;
   max-width: 900px;
-  
+
   /* Height Management */
   height: auto;
   max-height: 100%;       /* Fills available space defined by container padding */
-  
+
   overflow-y: auto;       /* Enables scroll INSIDE the card */
   overflow-x: hidden;
-  scrollbar-width: thin;  /* Firefox */
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
 }
 
-/* Card Scrollbar Styling (Chrome/Safari) */
+/* Hide scrollbar (Chrome/Safari) while keeping the card scrollable */
 .project-page-card::-webkit-scrollbar {
-  width: 8px;
-}
-.project-page-card::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-.project-page-card::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
+  display: none;
 }
 
 /* --- MEDIA SECTION --- */
@@ -111,23 +106,29 @@
 }
 
 .project-page-details h1 {
+  font-family: var(--font-heading);
   font-size: 2.2rem;
-  font-weight: bold;
+  font-weight: 700;
   margin-bottom: 15px;
   line-height: 1.2;
+  color: var(--text-primary);
 }
 
 .project-page-details p {
   font-size: 1.1rem;
   line-height: 1.7;
   margin-bottom: 25px;
-  color: #444;
+  color: var(--text-secondary);
 }
 
 .project-tech-stack-details strong {
   display: block;
   margin-bottom: 10px;
-  font-size: 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
 }
 
 .tech-tag-div {
@@ -138,12 +139,14 @@
 }
 
 .tech-tag {
-  background-color: #f0f0f0;
-  border-radius: 15px;
-  padding: 6px 14px;
-  font-size: 0.9rem;
+  background-color: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 5px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
   font-weight: 500;
-  color: #333;
+  color: var(--text-secondary);
 }
 
 /* --- BUTTONS --- */
@@ -160,8 +163,12 @@
   justify-content: center;
   gap: 8px;
   padding: 12px 24px;
-  border-radius: 25px;
+  border-radius: var(--radius-sm);
   text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   font-weight: bold;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -169,21 +176,27 @@
 }
 
 .github-link {
-  background-color: #e65100; /* Orange */
-  color: white;
-  border: 2px solid #e65100;
+  background-color: var(--accent);
+  color: #05070a;
+  border: 1px solid var(--accent);
 }
 
 .back-link {
   background-color: transparent;
-  border: 2px solid #e65100;
-  color: #e65100;
+  border: 1px solid var(--border-strong);
+  color: var(--text-secondary);
 }
 
 .github-link:hover, .back-link:hover {
-  opacity: 0.9;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(230, 81, 0, 0.2);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 6px 18px var(--accent-glow);
+}
+
+.github-link:hover {
+  color: #05070a;
+  background-color: var(--accent-bright);
 }
 
 /* =========================================
