@@ -1,21 +1,16 @@
 import React from "react";
-// import ReactDOM from "react-dom";
-import App from "./App";
-import "./theme.css";
-import "./index.css";
-// Change this import from BrowserRouter to HashRouter
+import { createRoot } from "react-dom/client";
 import { HashRouter } from "react-router-dom";
-import { createRoot } from 'react-dom/client';
+import App from "./App";
+import "./index.css";
 
-const container = document.getElementById('root');
-const root = createRoot(container); // Create a root.
+const container = document.getElementById("root");
+const root = createRoot(container);
 
 root.render(
-  <>
-    <React.StrictMode>
+  <React.StrictMode>
     <HashRouter>
       <App />
     </HashRouter>
   </React.StrictMode>
-  </>
 );

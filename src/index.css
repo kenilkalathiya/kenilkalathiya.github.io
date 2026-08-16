@@ -1,19 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   Theme tokens — "night" (dark, default) and "day" (light) color grading.
+   Values are "R G B" triplets so Tailwind's opacity modifiers keep working.
+   The active theme is set via [data-theme] on <html> (see public/index.html
+   for the pre-hydration script that avoids a flash of the wrong theme).
+   ========================================================================== */
+:root,
+[data-theme="night"] {
+  --color-night: 10 12 15;
+  --color-panel: 18 21 27;
+  --color-panel-soft: 15 18 23;
+  --color-panel-elev: 24 28 35;
+  --color-hairline: rgba(255, 255, 255, 0.09);
+  --color-strong: rgba(255, 255, 255, 0.18);
+
+  --color-accent: 226 99 44;
+  --color-accent-bright: 245 130 74;
+  --color-accent-dim: 164 73 31;
+
+  --color-ink: 233 235 239;
+  --color-ink-secondary: 139 145 156;
+  --color-ink-muted: 91 97 107;
+
+  --grid-line: rgba(255, 255, 255, 0.06);
+  --shadow-glow: 0 8px 30px rgba(226, 99, 44, 0.25);
+  --shadow-panel: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="day"] {
+  --color-night: 244 245 247;
+  --color-panel: 255 255 255;
+  --color-panel-soft: 249 250 251;
+  --color-panel-elev: 236 238 241;
+  --color-hairline: rgba(10, 12, 15, 0.08);
+  --color-strong: rgba(10, 12, 15, 0.16);
+
+  --color-accent: 194 65 12;
+  --color-accent-bright: 216 88 30;
+  --color-accent-dim: 154 52 10;
+
+  --color-ink: 17 20 26;
+  --color-ink-secondary: 74 80 90;
+  --color-ink-muted: 122 128 138;
+
+  --grid-line: rgba(10, 12, 15, 0.05);
+  --shadow-glow: 0 8px 30px rgba(194, 65, 12, 0.18);
+  --shadow-panel: 0 4px 20px rgba(15, 18, 23, 0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  margin: 0;
-  font-family: var(--font-body);
-  background-color: var(--bg-base);
-  color: var(--text-primary);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-tap-highlight-color: transparent;
+  @apply bg-night text-ink font-sans antialiased;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
 
 ::selection {
-  background: var(--accent);
-  color: #05070a;
+  @apply bg-accent text-night;
 }
 
-code {
-  font-family: var(--font-mono);
+/* Hide scrollbar chrome while keeping native scroll behavior */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@layer components {
+  .section-shell {
+    @apply relative mx-auto w-full max-w-content px-6 py-24 sm:px-10 lg:px-16;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded border border-accent px-6 py-3 font-mono text-sm font-semibold uppercase tracking-widest text-ink transition-all duration-300;
+    background-image: linear-gradient(to right, rgb(var(--color-accent)) 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+  }
+  .btn:hover {
+    @apply -translate-y-0.5 text-night shadow-glow;
+    background-position: left bottom;
+  }
+  .btn-ghost {
+    @apply border-strong bg-transparent bg-none hover:border-accent hover:bg-transparent hover:text-accent hover:shadow-none;
+  }
+
+  .tag {
+    @apply rounded border border-strong px-3 py-1 font-mono text-xs tracking-wide text-ink-secondary;
+  }
+
+  .panel {
+    @apply rounded-lg border border-hairline bg-panel shadow-panel;
+  }
 }
