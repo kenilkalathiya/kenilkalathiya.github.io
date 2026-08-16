@@ -14,7 +14,7 @@ export default function Footer() {
     <footer className="border-t border-hairline bg-night">
       <Container className="flex flex-col items-center gap-6 py-10 sm:flex-row sm:justify-between">
         <p className="font-mono text-xs tracking-wide text-ink-muted">
-          © {new Date().getFullYear()} Kenil Kalathiya — Built with React &amp; Tailwind
+          © {new Date().getFullYear()} Kenil Kalathiya
         </p>
 
         <div className="flex items-center gap-6 text-lg text-ink-secondary">

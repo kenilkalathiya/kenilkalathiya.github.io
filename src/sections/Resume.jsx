@@ -51,7 +51,10 @@ export default function Resume() {
             })}
           </div>
 
-          <div className="relative min-h-[320px] flex-1 overflow-hidden bg-panel-soft p-5 sm:p-6 md:min-h-[440px] md:p-8">
+          {/* Fixed height (not min-height) so every tab occupies the same
+              space — content that runs longer (like Skills) scrolls inside
+              this box instead of growing the whole section. */}
+          <div className="no-scrollbar relative h-[380px] w-full overflow-y-auto bg-panel-soft p-5 sm:p-6 md:h-[440px] md:w-auto md:flex-1 md:p-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
