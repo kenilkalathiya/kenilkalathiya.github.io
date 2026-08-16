@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.b3d5c51d.css",
-    "main.js": "/static/js/main.1a3bf124.js",
-    "static/media/CarlaUE4.mp4": "/static/media/CarlaUE4.cc397f75901f93632b54.mp4",
-    "static/media/Front Camera.mp4": "/static/media/Front Camera.f0ad66f3bec4c668e1e2.mp4",
+    "main.css": "/static/css/main.c9c60dfc.css",
+    "main.js": "/static/js/main.9d49761d.js",
+    "static/media/carla-ue4.mp4": "/static/media/carla-ue4.cc397f75901f93632b54.mp4",
+    "static/media/front-camera.mp4": "/static/media/front-camera.f0ad66f3bec4c668e1e2.mp4",
     "static/media/adas.png": "/static/media/adas.f1482d42dcb6b9ed353e.png",
-    "static/media/Profile-pic.png": "/static/media/Profile-pic.e364aa7ffc03d16d05b2.png",
-    "static/media/Home.png": "/static/media/Home.8e4d688e949c0f976301.png",
-    "static/media/Movie.png": "/static/media/Movie.8c3890392e90b1561690.png",
-    "static/media/Spam1.png": "/static/media/Spam1.5ae5a2cc2ac486b75e86.png",
+    "static/media/profile-pic.png": "/static/media/profile-pic.e364aa7ffc03d16d05b2.png",
+    "static/media/health-scal.png": "/static/media/health-scal.8e4d688e949c0f976301.png",
+    "static/media/movie-series.png": "/static/media/movie-series.8c3890392e90b1561690.png",
+    "static/media/spam-predictor.png": "/static/media/spam-predictor.5ae5a2cc2ac486b75e86.png",
     "index.html": "/index.html",
-    "main.b3d5c51d.css.map": "/static/css/main.b3d5c51d.css.map",
-    "main.1a3bf124.js.map": "/static/js/main.1a3bf124.js.map"
+    "main.c9c60dfc.css.map": "/static/css/main.c9c60dfc.css.map",
+    "main.9d49761d.js.map": "/static/js/main.9d49761d.js.map"
   },
   "entrypoints": [
-    "static/css/main.b3d5c51d.css",
-    "static/js/main.1a3bf124.js"
+    "static/css/main.c9c60dfc.css",
+    "static/js/main.9d49761d.js"
   ]
 }
