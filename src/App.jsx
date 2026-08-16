@@ -1,35 +1,22 @@
-import React from "react";
-import Home from "./Portfolio/Home/Home";
-import AboutMe from "./Portfolio/AboutMe/AboutMe";
-import Navbar from "./Portfolio/Navbar/Navbar";
-import Resume from "./Portfolio/Resume/Resume";
-import Projects from "./Portfolio/Projects/Projects";
-import ContactMe from "./Portfolio/ContactMe/ContactMe";
-import ProjectPage from "./Portfolio/ProjectPage/ProjectPage";
-import{ Routes, Route } from "react-router-dom";
-import "../src/App.css";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import AmbientBackground from "./components/layout/AmbientBackground";
+import Loader from "./components/layout/Loader";
+import Home from "./pages/Home";
+import ProjectDetail from "./pages/ProjectDetail";
 
-const MainPage = () => (
-  <>
-    <Home />
-    <AboutMe />
-    <Resume />
-    <Projects />
-    <ContactMe />
-  </>
-);
-
-const App = () => {
+export default function App() {
   return (
     <>
-      {/* <CursorShadow /> */}
+      <Loader />
+      <AmbientBackground />
       <Navbar />
       <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/project/:projectId" element={<ProjectPage />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/project/:projectId" element={<ProjectDetail />} />
       </Routes>
+      <Footer />
     </>
   );
-};
-
-export default App;
+}
