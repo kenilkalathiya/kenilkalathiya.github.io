@@ -8,20 +8,26 @@ import { resume } from "../data/site";
 
 const FEATURED_COUNT = 2;
 
+// isa-cruise-control's clip is a confirmed true 16:9 capture with useful
+// content anchored top-left and an L-shaped dead margin baked into the
+// footage on the right/bottom — cropping from the top-left compensates for
+// that specific recording. Other projects' videos haven't been checked for
+// the same issue (UAV1.mp4, for one, is a ~1.94:1 capture, not 16:9), so
+// this crop is scoped to that one project rather than applied blanket.
+const TOP_LEFT_CROP_PROJECT_IDS = ["isa-cruise-control"];
+
 function FeaturedMedia({ project }) {
   if (project.videoUrls?.length) {
-    // The source recording is a true 16:9 capture (matches this aspect-video
-    // frame exactly), but the useful content is anchored top-left with an
-    // L-shaped dead margin baked into the footage on the right/bottom.
-    // Anchoring the crop to the top-left and zooming trims that margin away
-    // instead of a center-crop, which would only shrink it evenly.
+    const useTopLeftCrop = TOP_LEFT_CROP_PROJECT_IDS.includes(project.id);
     // No autoPlay: forcing a big video to stream immediately on page load
     // is both bad for performance and unreliable against CRA's dev server
     // for large files — this links through to the real player instead.
     return (
       <Link to={`/project/${project.id}`} className="group relative block h-full w-full">
         <video
-          className="h-full w-full origin-top-left scale-[1.35] object-cover object-left-top"
+          className={`h-full w-full object-cover ${
+            useTopLeftCrop ? "origin-top-left scale-[1.35] object-left-top" : ""
+          }`}
           src={project.videoUrls[0]}
           muted
           loop

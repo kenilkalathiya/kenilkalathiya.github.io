@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { FaGithub, FaArrowLeft } from "react-icons/fa";
+import { SiGitlab } from "react-icons/si";
 import { resume } from "../data/site";
 import Container from "../components/ui/Container";
 import Tag from "../components/ui/Tag";
@@ -56,6 +57,9 @@ export default function ProjectDetail() {
     );
   }
 
+  const hasMedia = Boolean(project.videoUrls?.length || project.videoUrl || project.imageUrl);
+  const isGitLab = project.github?.includes("gitlab");
+
   const handleBack = () => {
     // Prefer real browser "back" so the visitor lands exactly where they
     // left off in the Projects grid, not just the top of the section —
@@ -74,15 +78,17 @@ export default function ProjectDetail() {
         ref={scrollRef}
         className="no-scrollbar relative z-10 mx-auto h-[calc(100vh-70px)] max-w-4xl overflow-y-auto"
       >
-        <RevealOnScroll className="overflow-hidden border-b border-hairline bg-black">
-          <ProjectMedia project={project} />
-        </RevealOnScroll>
+        {hasMedia && (
+          <RevealOnScroll className="overflow-hidden border-b border-hairline bg-black">
+            <ProjectMedia project={project} />
+          </RevealOnScroll>
+        )}
 
         <div className="px-6 py-8 sm:px-10">
           <RevealOnScroll>
             <h1 className="font-heading text-2xl font-bold text-ink sm:text-3xl">{project.title}</h1>
             <p className="mt-4 text-sm leading-relaxed text-ink-secondary sm:text-base">
-              {project.description}
+              {project.longDescription || project.description}
             </p>
 
             <div className="mt-6">
@@ -98,7 +104,7 @@ export default function ProjectDetail() {
 
             <div className="mt-8 flex flex-wrap gap-4">
               <Button href={project.github} target="_blank" rel="noopener noreferrer">
-                <FaGithub /> View on GitHub
+                {isGitLab ? <SiGitlab /> : <FaGithub />} View on {isGitLab ? "GitLab" : "GitHub"}
               </Button>
               <Button variant="ghost" onClick={handleBack}>
                 <FaArrowLeft /> Back to Projects

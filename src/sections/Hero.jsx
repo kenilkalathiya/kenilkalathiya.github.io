@@ -15,7 +15,7 @@ const SOCIALS = [
 
 const STATS = [
   { value: "1+", label: "Years of Experience" },
-  { value: "17+", label: "Completed Projects" },
+  { value: "18+", label: "Completed Projects" },
 ];
 
 export default function Hero() {
