@@ -67,6 +67,16 @@ export const resume = {
   ],
   experience: [
     {
+      company: "Technische Universität Chemnitz - Germany",
+      duration: "Apr 2026 - Present",
+      role: "Research Intern",
+      tasks: [
+        "Designed a real-time ROS2 sensor pipeline for a UAV rotor-arm structural health monitoring system, integrated with PX4 SITL and Gazebo Harmonic.",
+        "Communicated with and commanded the UAV platform using MAVLink messages via MAVSDK-scripted flight maneuvers to exercise the system under controlled conditions.",
+        "Worked in a Linux (Ubuntu) environment throughout, using Python and structured, self-documented tooling and Git-based version control.",
+      ],
+    },
+    {
       company: "Bigscal Technologies Pvt. Ltd. - India",
       duration: "Oct 2022 - Apr 2023",
       role: "Web Developer (Intern)",
