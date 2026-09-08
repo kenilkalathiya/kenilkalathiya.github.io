@@ -1,4 +1,5 @@
 import { HashLink } from "react-router-hash-link";
+import { useLocation } from "react-router-dom";
 import { SiInstagram, SiLinkedin, SiX, SiGithub } from "react-icons/si";
 import Container from "../ui/Container";
 
@@ -10,6 +11,8 @@ const SOCIALS = [
 ];
 
 export default function Footer() {
+  const { pathname } = useLocation();
+
   return (
     <footer className="border-t border-hairline bg-night">
       <Container className="flex flex-col items-center gap-6 py-10 sm:flex-row sm:justify-between">
@@ -27,7 +30,7 @@ export default function Footer() {
 
         <HashLink
           smooth
-          to="/#home"
+          to={`${pathname}#home`}
           className="font-mono text-xs uppercase tracking-[0.2em] text-ink-secondary transition-colors hover:text-accent"
         >
           Back to top ↑

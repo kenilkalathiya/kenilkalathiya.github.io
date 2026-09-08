@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import AmbientBackground from "./components/layout/AmbientBackground";
@@ -20,7 +20,13 @@ export default function App() {
       <ScrollManager />
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* "/" is a bare redirect — visitors land directly on a track rather
+            than the unfiltered combined view. Autonomous Systems is the
+            chosen default, matching the site's overall branding. */}
+        <Route path="/" element={<Navigate to="/autonomous-systems" replace />} />
+        <Route path="/all" element={<Home />} />
+        <Route path="/software" element={<Home track="software" />} />
+        <Route path="/autonomous-systems" element={<Home track="automotive" />} />
         <Route path="/project/:projectId" element={<ProjectDetail />} />
       </Routes>
       {!isProjectPage && <Footer />}

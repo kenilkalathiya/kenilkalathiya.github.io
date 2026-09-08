@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { HashLink } from "react-router-hash-link";
+import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { SiInstagram, SiLinkedin, SiX, SiGithub } from "react-icons/si";
 import { HiMenu, HiX } from "react-icons/hi";
@@ -11,7 +12,17 @@ const NAV_LINKS = [
   { id: "about", label: "About" },
   { id: "resume", label: "Resume" },
   { id: "projects", label: "Projects" },
+  { id: "blog", label: "Blog" },
   { id: "contact", label: "Contact" },
+];
+
+// The tracks, each its own route (Home reused with a `track` prop, "All"
+// leaves it unset for the combined/unfiltered view) — separate from
+// NAV_LINKS, which just scroll within whichever page is currently active.
+const TRACKS = [
+  { path: "/all", label: "All" },
+  { path: "/software", label: "Software" },
+  { path: "/autonomous-systems", label: "Autonomous Systems" },
 ];
 
 const SOCIALS = [
@@ -21,9 +32,32 @@ const SOCIALS = [
   { icon: SiX, href: "https://twitter.com/KenilKalathiya1", label: "X" },
 ];
 
+function TrackLinks({ className = "", pillClassName = "", onNavigate }) {
+  const { pathname } = useLocation();
+  return (
+    <div className={className}>
+      {TRACKS.map((t) => (
+        <Link
+          key={t.path}
+          to={t.path}
+          onClick={onNavigate}
+          className={`rounded font-mono uppercase tracking-wide transition-colors ${pillClassName} ${
+            pathname === t.path
+              ? "bg-accent text-night"
+              : "text-ink-secondary hover:bg-panel-elev hover:text-ink"
+          }`}
+        >
+          {t.label}
+        </Link>
+      ))}
+    </div>
+  );
+}
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { pathname } = useLocation();
   const activeId = useActiveSection(NAV_LINKS.map((link) => link.id));
 
   useEffect(() => {
@@ -56,13 +90,15 @@ export default function Navbar() {
             </span>
           </HashLink>
 
-          <div className="hidden items-center gap-10 md:flex">
+          <div className="hidden items-center gap-8 lg:flex">
+            <TrackLinks className="flex items-center gap-1 rounded border border-hairline p-1" pillClassName="px-3 py-1.5 text-xs" />
+            <span className="h-6 w-px bg-hairline" />
             <nav className="flex items-center gap-8">
               {NAV_LINKS.map((link) => (
                 <HashLink
                   key={link.id}
                   smooth
-                  to={`/#${link.id}`}
+                  to={`${pathname}#${link.id}`}
                   className={`font-mono text-base uppercase tracking-[0.1em] transition-colors ${
                     activeId === link.id ? "text-accent" : "text-ink-secondary hover:text-ink"
                   }`}
@@ -74,7 +110,7 @@ export default function Navbar() {
             <ThemeToggle />
           </div>
 
-          <div className="flex items-center gap-3 md:hidden">
+          <div className="flex items-center gap-3 lg:hidden">
             <ThemeToggle />
             <button
               aria-label={isOpen ? "Close menu" : "Open menu"}
@@ -87,10 +123,11 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile menu — a sibling of <header>, not nested inside it, and only
-          mounted at all while open (via AnimatePresence) rather than hidden
-          with a CSS transform. That rules out the whole class of "technically
-          hidden but still interfering" bugs this element kept hitting. */}
+      {/* Mobile/tablet menu — a sibling of <header>, not nested inside it, and
+          only mounted at all while open (via AnimatePresence) rather than
+          hidden with a CSS transform. That rules out the whole class of
+          "technically hidden but still interfering" bugs this element kept
+          hitting. */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -107,25 +144,33 @@ export default function Navbar() {
               zIndex: 40,
               backgroundColor: "rgb(var(--color-night))",
             }}
-            className="flex flex-col justify-between border-l border-hairline md:hidden"
+            className="flex flex-col justify-between border-l border-hairline lg:hidden"
           >
-            <nav className="flex flex-col items-center gap-3 pt-16">
-              {NAV_LINKS.map((link) => (
-                <HashLink
-                  key={link.id}
-                  smooth
-                  to={`/#${link.id}`}
-                  onClick={() => setIsOpen(false)}
-                  className={`w-4/5 max-w-xs rounded px-6 py-3 text-center font-mono text-xl uppercase tracking-[0.15em] transition-colors ${
-                    activeId === link.id
-                      ? "bg-accent text-night"
-                      : "text-ink-secondary hover:bg-panel-elev hover:text-ink"
-                  }`}
-                >
-                  {link.label}
-                </HashLink>
-              ))}
-            </nav>
+            <div className="flex flex-col items-center gap-8 pt-16">
+              <TrackLinks
+                className="flex items-center gap-2"
+                pillClassName="border border-hairline px-4 py-2 text-xs"
+                onNavigate={() => setIsOpen(false)}
+              />
+
+              <nav className="flex flex-col items-center gap-3">
+                {NAV_LINKS.map((link) => (
+                  <HashLink
+                    key={link.id}
+                    smooth
+                    to={`${pathname}#${link.id}`}
+                    onClick={() => setIsOpen(false)}
+                    className={`w-4/5 max-w-xs rounded px-6 py-3 text-center font-mono text-xl uppercase tracking-[0.15em] transition-colors ${
+                      activeId === link.id
+                        ? "bg-accent text-night"
+                        : "text-ink-secondary hover:bg-panel-elev hover:text-ink"
+                    }`}
+                  >
+                    {link.label}
+                  </HashLink>
+                ))}
+              </nav>
+            </div>
             <div className="flex justify-center gap-8 pb-12 text-2xl text-ink-secondary">
               {SOCIALS.map(({ icon: Icon, href, label }) => (
                 <a key={label} href={href} aria-label={label} className="transition-colors hover:text-accent">
