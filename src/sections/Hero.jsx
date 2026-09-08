@@ -1,10 +1,37 @@
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { HashLink } from "react-router-hash-link";
+import { useLocation } from "react-router-dom";
 import { SiInstagram, SiLinkedin, SiX, SiGithub } from "react-icons/si";
 import { HiOutlineArrowDown } from "react-icons/hi";
 import Button from "../components/ui/Button";
 import profilePic from "../assets/home/profile-pic.png";
+
+// Per-track re-emphasis of the same roles/tagline used on the combined "/"
+// page — reordered/trimmed to the relevant half, nothing invented.
+const TRACK_CONTENT = {
+  automotive: {
+    roles: ["ADAS Engineer", 2000, "Autonomous Systems Engineer", 2000, "Drone & Automation Enthusiast", 2000],
+    tagline: "Autonomous Systems Developer with a Passion for Problem Solving",
+  },
+  software: {
+    roles: ["Full-Stack Developer", 2000, "Frontend Developer", 2000, "Backend Developer", 2000],
+    tagline: "Full-Stack Innovator with a Passion for Building End-to-End Web Applications",
+  },
+  default: {
+    roles: [
+      "ADAS Engineer",
+      2000,
+      "Autonomous Systems Engineer",
+      2000,
+      "Drone & Automation Enthusiast",
+      2000,
+      "Full-Stack Developer",
+      2000,
+    ],
+    tagline: "Full-Stack Innovator & Automotive Developer with a Passion for Problem Solving",
+  },
+};
 
 const SOCIALS = [
   { icon: SiGithub, href: "https://github.com/kenilkalathiya", label: "GitHub" },
@@ -18,7 +45,10 @@ const STATS = [
   { value: "18+", label: "Completed Projects" },
 ];
 
-export default function Hero() {
+export default function Hero({ track }) {
+  const { pathname } = useLocation();
+  const { roles, tagline } = TRACK_CONTENT[track] || TRACK_CONTENT.default;
+
   return (
     <section
       id="home"
@@ -56,16 +86,7 @@ export default function Hero() {
           <div className="mt-4 flex min-h-[2.5rem] items-center font-heading text-xl font-semibold text-accent sm:text-2xl lg:text-3xl">
             <span className="mr-2 text-ink-muted">I AM</span>
             <TypeAnimation
-              sequence={[
-                "ADAS Engineer",
-                2000,
-                "Autonomous Systems Engineer",
-                2000,
-                "Drone & Automation Enthusiast",
-                2000,
-                "Full-Stack Developer",
-                2000,
-              ]}
+              sequence={roles}
               wrapper="span"
               speed={50}
               repeat={Infinity}
@@ -74,11 +95,11 @@ export default function Hero() {
           </div>
 
           <p className="mt-6 max-w-lg text-base leading-relaxed text-ink-secondary">
-            Full-Stack Innovator &amp; Automotive Developer with a Passion for Problem Solving
+            {tagline}
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4 lg:justify-start">
-            <Button hash="/#contact">Hire Me</Button>
+            <Button hash={`${pathname}#contact`}>Hire Me</Button>
             <Button variant="ghost" href="/Kenil-Kalathiya.pdf" download="Kenil-Kalathiya.pdf">
               Get Resume
             </Button>
@@ -122,7 +143,7 @@ export default function Hero() {
 
       <HashLink
         smooth
-        to="/#about"
+        to={`${pathname}#about`}
         aria-label="Scroll to About section"
         className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 animate-bounce text-ink-muted sm:block"
       >

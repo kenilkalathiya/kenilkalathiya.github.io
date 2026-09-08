@@ -16,6 +16,15 @@ export const aboutMe = {
     description:
       "I design and simulate Advanced Driver Assistance Systems (ADAS) and autonomous driving features. Utilizing CARLA, OpenCV, and PID control logic, I build intelligent safety systems like Adaptive Cruise Control and Lane Detection.",
     link: "/#contact",
+    category: "automotive",
+    },
+    {
+      title: "DRONE SYSTEMS DEVELOPMENT",
+      stack: "ROS2 / PX4 / Gazebo",
+      description:
+        "I build structural health monitoring and flight-control systems for UAVs, simulating rotor-arm sensing and flight behavior in PX4 SITL and Gazebo. From ROS2 sensor pipelines to MAVSDK-scripted flight maneuvers, I develop the software that keeps drones flying safely and intelligently.",
+      link: "/#contact",
+      category: "automotive",
     },
     {
       title: "FULL STACK DEVELOPMENT",
@@ -23,6 +32,7 @@ export const aboutMe = {
       description:
         "I create seamless, end-to-end web applications by combining front-end flair with back-end robustness. From crafting dynamic user interfaces to managing databases and servers, I bring your digital vision to life.",
       link: "/#contact",
+      category: "software",
     },
     {
       title: "FRONTEND DEVELOPMENT",
@@ -30,6 +40,7 @@ export const aboutMe = {
       description:
         "I design engaging, user-friendly interfaces that enhance user experience through interactive and responsive designs. By utilizing the latest technologies and best practices, I bring your ideas to the screen with creativity and precision.",
       link: "/#contact",
+      category: "software",
     },
     {
       title: "BACKEND DEVELOPMENT",
@@ -37,6 +48,7 @@ export const aboutMe = {
       description:
         "I build and maintain the server-side logic that powers your applications, ensuring robust, scalable, and secure solutions. From managing databases to implementing APIs, I create the backbone that supports seamless user interactions.",
       link: "/#contact",
+      category: "software",
     },
   ],
 };
@@ -90,6 +102,7 @@ export const resume = {
   projects: [
     {
       id: "structure-sensitive-flight-control",
+      category: "automotive",
       title: "Structure-Sensitive Adaptive Flight Control for UAV Rotor Arms",
       description:
         "Built a real-time structural health monitoring pipeline for UAV rotor arms in PX4 SITL and Gazebo Harmonic, using force-torque sensing and a 100Hz ROS2 node to log a labeled dataset for ML-based fault classification.",
@@ -112,6 +125,7 @@ export const resume = {
     },
     {
       id: "isa-cruise-control",
+      category: "automotive",
       title: "Intelligent Speed Assistance & Adaptive Cruise Control (CARLA Simulation)",
       description:
         "ADAS prototype combining Intelligent Speed Assistance and Adaptive Cruise Control, simulated end-to-end in CARLA.",
@@ -131,6 +145,7 @@ export const resume = {
 
     {
       id: "vision-based-adas",
+      category: "automotive",
       title: "Vision-Based ADAS System",
       description:
         "Vision-based ADAS prototype for lane detection, vehicle detection, distance estimation, and forward collision warning.",
@@ -149,18 +164,8 @@ export const resume = {
     },
 
     {
-      id: "real-time-workspace",
-      title: "Real-Time Collaborative Workspace",
-      description:
-        "Full-stack collaborative workspace with a shared whiteboard and live, multi-user code editing.",
-      longDescription:
-        "Developed a full-stack collaborative workspace application enabling users to draw on a shared whiteboard and edit code in real-time, utilizing the MERN stack and WebSockets for a dynamic, multi-user experience.",
-      tech: ["MERN Stack", "JWT", "RESTful APIs", "WebSockets"],
-      github: "https://github.com/kenilkalathiya/collab-sphere",
-      imageUrl: "../public/Projects/", // Add image path
-    },
-    {
       id: "health-scal",
+      category: "software",
       title: "Health Scal - Health Care Application",
       description:
         "ML-powered app that predicts disease risk from patient medical reports.",
@@ -172,6 +177,7 @@ export const resume = {
     },
     {
       id: "movie-series-info",
+      category: "software",
       title: "Movie/Series Information System",
       description:
         "MERN app for tracking watched movies/series and discovering new titles.",
@@ -182,7 +188,20 @@ export const resume = {
       imageUrl: Movie, // Add image path
     },
     {
+      id: "real-time-workspace",
+      category: "software",
+      title: "Real-Time Collaborative Workspace",
+      description:
+        "Full-stack collaborative workspace with a shared whiteboard and live, multi-user code editing.",
+      longDescription:
+        "Developed a full-stack collaborative workspace application enabling users to draw on a shared whiteboard and edit code in real-time, utilizing the MERN stack and WebSockets for a dynamic, multi-user experience.",
+      tech: ["MERN Stack", "JWT", "RESTful APIs", "WebSockets"],
+      github: "https://github.com/kenilkalathiya/collab-sphere",
+      imageUrl: "../public/Projects/", // Add image path
+    },
+    {
       id: "spam-predictor",
+      category: "software",
       title: "Spam Predictor",
       description:
         "Web app that detects spam emails and fake news via a machine learning backend.",
@@ -217,6 +236,13 @@ export const resume = {
     { name: "ADAS / PID Control", level: 75 },
     { name: "ISO 26262", level: 70 },
     ],
+    "Autonomous Systems & Robotics": [
+      { name: "ROS2", level: 75 },
+      { name: "PX4 / MAVSDK", level: 75 },
+      { name: "Gazebo Simulation", level: 75 },
+      { name: "Force-Torque Sensing", level: 70 },
+      { name: "UAV Systems", level: 75 },
+    ],
     "Databases & Tools": [
       { name: "MongoDB", level: 75 },
       { name: "SQL", level: 70 },
@@ -246,3 +272,40 @@ export const resume = {
     },
   ],
 };
+
+// Short field-notes/commentary, not project write-ups — general observations
+// on where each area is heading, filtered onto the matching track page.
+export const blog = [
+  {
+    id: "ai-pair-programming",
+    category: "software",
+    date: "2026",
+    title: "AI Pair-Programming Is Now Part of the Workflow, Not a Novelty",
+    excerpt:
+      "AI coding assistants have moved from an experimental novelty to a default part of how I write and review code day-to-day. The bigger shift isn't the autocomplete itself — it's that the bottleneck in software work is quietly moving from typing code to reviewing and reasoning about it, which puts more weight on strong fundamentals, not less.",
+  },
+  {
+    id: "return-of-the-server",
+    category: "software",
+    date: "2026",
+    title: "Server Components and the Return of the Server",
+    excerpt:
+      "After a decade of pushing everything to the client, the ecosystem is swinging back toward server-rendered UI — React Server Components, streaming, and frameworks built around them. For end-to-end apps like the ones I build, it's a good reminder that picking the right place to run logic matters more than defaulting to \"do it all in the browser.\"",
+  },
+  {
+    id: "adas-becoming-default",
+    category: "automotive",
+    date: "2026",
+    title: "ADAS Is Becoming the Default, Not the Option",
+    excerpt:
+      "Features like adaptive cruise control, lane-keeping, and automatic emergency braking are shifting from premium add-ons to expected, often regulation-driven, baseline features across new vehicles. That raises the bar for validation — it's exactly why simulation environments like CARLA matter: you can't road-test every edge case safely, so you have to be able to simulate it convincingly first.",
+  },
+  {
+    id: "drone-regulation-catching-up",
+    category: "automotive",
+    date: "2026",
+    title: "Drone Regulation Is Catching Up to the Technology",
+    excerpt:
+      "Beyond-visual-line-of-sight (BVLOS) rules are gradually loosening in several regions, which opens the door to more serious commercial and research UAV work. The trade-off is that regulators expect stronger guarantees of reliability in return — which is exactly the gap that onboard health-monitoring systems, like the rotor-arm structural sensing I've worked on, are meant to close.",
+  },
+];

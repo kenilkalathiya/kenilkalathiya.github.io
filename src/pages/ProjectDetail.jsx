@@ -50,7 +50,7 @@ export default function ProjectDetail() {
     return (
       <Container className="flex min-h-screen flex-col items-center justify-center gap-6 pt-24 text-center">
         <h2 className="font-heading text-3xl font-bold text-ink">Project not found</h2>
-        <Link to="/#projects" className="btn">
+        <Link to="/autonomous-systems#projects" className="btn">
           Back to Home
         </Link>
       </Container>
@@ -68,7 +68,7 @@ export default function ProjectDetail() {
     if (window.history.state && window.history.state.idx > 0) {
       navigate(-1);
     } else {
-      navigate("/#projects");
+      navigate("/autonomous-systems#projects");
     }
   };
 

@@ -130,9 +130,25 @@ function MoreProjectsCard({ github }) {
   );
 }
 
-export default function Projects() {
-  const featured = resume.projects.filter((p) => !p.isGithubLink).slice(0, FEATURED_COUNT);
-  const rest = resume.projects.filter((p) => !p.isGithubLink).slice(FEATURED_COUNT);
+export default function Projects({ track }) {
+  const eligible = resume.projects.filter((p) => !p.isGithubLink && (!track || p.category === track));
+
+  let featured;
+  if (track) {
+    featured = eligible.slice(0, FEATURED_COUNT);
+  } else {
+    // On the combined "All" view, feature one representative project per
+    // category instead of whichever happen to be first in the raw array —
+    // otherwise both featured slots could land on the same track.
+    const seenCategories = new Set();
+    featured = eligible.filter((p) => {
+      if (seenCategories.has(p.category)) return false;
+      seenCategories.add(p.category);
+      return true;
+    });
+  }
+  const featuredIds = new Set(featured.map((p) => p.id));
+  const rest = eligible.filter((p) => !featuredIds.has(p.id));
   const githubEntry = resume.projects.find((p) => p.isGithubLink);
 
   return (
