@@ -4,6 +4,7 @@ import SectionHeading from "../components/ui/SectionHeading";
 import RevealOnScroll from "../components/ui/RevealOnScroll";
 import Container from "../components/ui/Container";
 import Tag from "../components/ui/Tag";
+import StatusBadge from "../components/ui/StatusBadge";
 import { resume } from "../data/site";
 
 const FEATURED_COUNT = 2;
@@ -42,8 +43,9 @@ function FeaturedMedia({ project }) {
       </Link>
     );
   }
-  if (project.imageUrl) {
-    return <img src={project.imageUrl} alt={project.title} className="h-full w-full object-cover" />;
+  const cover = project.imageUrls?.[0] || project.imageUrl;
+  if (cover) {
+    return <img src={cover} alt={project.title} className="h-full w-full object-cover" />;
   }
   return null;
 }
@@ -64,9 +66,10 @@ function FeaturedProject({ project, index }) {
       </div>
 
       <div className={reversed ? "lg:order-1 lg:text-right" : ""}>
-        <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-accent">
-          Featured Project
-        </p>
+        <div className={`mb-2 flex flex-wrap items-center gap-3 ${reversed ? "lg:justify-end" : ""}`}>
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Featured Project</p>
+          {project.status && <StatusBadge>{project.status}</StatusBadge>}
+        </div>
         <h3 className="font-heading text-2xl font-bold text-ink sm:text-3xl">{project.title}</h3>
         <p className="mt-4 text-sm leading-relaxed text-ink-secondary sm:text-base">
           {project.description}
@@ -97,13 +100,14 @@ function FeaturedProject({ project, index }) {
   );
 }
 
-function ProjectCard({ id, title, description, tech }) {
+function ProjectCard({ id, title, description, tech, status }) {
   return (
     <RevealOnScroll
       as="div"
       className="group flex h-full flex-col rounded-lg border border-hairline bg-panel p-5 shadow-panel transition-all duration-300 hover:-translate-y-2 hover:border-accent-dim hover:shadow-glow md:p-6"
     >
       <Link to={`/project/${id}`} className="flex h-full flex-col">
+        {status && <StatusBadge className="mb-3 self-start">{status}</StatusBadge>}
         <h3 className="font-heading text-lg font-bold text-ink">{title}</h3>
         <p className="mt-3 flex-grow text-sm leading-relaxed text-ink-secondary">{description}</p>
         <div className="mt-5 flex flex-wrap gap-2">

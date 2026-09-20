@@ -5,6 +5,7 @@ import { SiGitlab } from "react-icons/si";
 import { resume } from "../data/site";
 import Container from "../components/ui/Container";
 import Tag from "../components/ui/Tag";
+import StatusBadge from "../components/ui/StatusBadge";
 import Button from "../components/ui/Button";
 import RevealOnScroll from "../components/ui/RevealOnScroll";
 
@@ -25,6 +26,25 @@ function ProjectMedia({ project }) {
       <video controls poster={project.imageUrl} className="aspect-video w-full bg-black object-contain">
         <source src={project.videoUrl} type="video/mp4" />
       </video>
+    );
+  }
+  if (project.imageUrls?.length) {
+    return (
+      <div className={`grid gap-0.5 ${project.imageUrls.length > 1 ? "sm:grid-cols-2" : ""}`}>
+        {project.imageUrls.map((image, index) => {
+          const caption = project.imageCaptions?.[index];
+          return (
+            <figure key={index} className="flex flex-col justify-center bg-black">
+              <img src={image} alt={caption || `${project.title} (${index + 1})`} className="w-full object-contain" />
+              {caption && (
+                <figcaption className="px-4 py-2 text-center font-mono text-xs uppercase tracking-widest text-ink-secondary">
+                  {caption}
+                </figcaption>
+              )}
+            </figure>
+          );
+        })}
+      </div>
     );
   }
   if (project.imageUrl) {
@@ -57,7 +77,7 @@ export default function ProjectDetail() {
     );
   }
 
-  const hasMedia = Boolean(project.videoUrls?.length || project.videoUrl || project.imageUrl);
+  const hasMedia = Boolean(project.videoUrls?.length || project.videoUrl || project.imageUrls?.length || project.imageUrl);
   const isGitLab = project.github?.includes("gitlab");
 
   const handleBack = () => {
@@ -86,10 +106,58 @@ export default function ProjectDetail() {
 
         <div className="px-6 py-8 sm:px-10">
           <RevealOnScroll>
+            {project.status && <StatusBadge className="mb-4">{project.status}</StatusBadge>}
             <h1 className="font-heading text-2xl font-bold text-ink sm:text-3xl">{project.title}</h1>
-            <p className="mt-4 text-sm leading-relaxed text-ink-secondary sm:text-base">
-              {project.longDescription || project.description}
-            </p>
+            {project.details?.length ? (
+              <div className="mt-6 flex flex-col gap-8">
+                {project.details.map((section) => (
+                  <section
+                    key={section.heading}
+                    className={
+                      section.highlight
+                        ? "rounded-lg border border-accent bg-accent/10 p-5"
+                        : undefined
+                    }
+                  >
+                    <p className="mb-3 font-mono text-xs uppercase tracking-widest text-accent">
+                      {section.heading}
+                    </p>
+                    {section.text && (
+                      <p className="text-sm leading-relaxed text-ink-secondary sm:text-base">{section.text}</p>
+                    )}
+                    {section.bullets && (
+                      <ul className="flex flex-col gap-2">
+                        {section.bullets.map((bullet) => (
+                          <li
+                            key={bullet}
+                            className="border-l-2 border-accent-dim pl-4 text-sm leading-relaxed text-ink-secondary sm:text-base"
+                          >
+                            {bullet}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    {section.items && (
+                      <ul className="flex flex-col gap-3">
+                        {section.items.map((item) => (
+                          <li
+                            key={item.label}
+                            className="border-l-2 border-accent-dim pl-4 text-sm leading-relaxed text-ink-secondary sm:text-base"
+                          >
+                            <span className="font-bold text-ink">{item.label}: </span>
+                            {item.text}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </section>
+                ))}
+              </div>
+            ) : (
+              <p className="mt-4 text-sm leading-relaxed text-ink-secondary sm:text-base">
+                {project.longDescription || project.description}
+              </p>
+            )}
 
             <div className="mt-6">
               <p className="mb-3 font-mono text-xs uppercase tracking-widest text-ink-secondary">

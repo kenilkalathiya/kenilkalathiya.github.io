@@ -5,7 +5,7 @@ export default function Education() {
   const entries = resume.education.map((edu) => ({
     title: edu.university,
     badge: edu.duration,
-    subtitle: edu.degree,
+    subtitle: edu.grade ? `${edu.degree} · Grade ${edu.grade}` : edu.degree,
     items: edu.courses,
   }));
 
