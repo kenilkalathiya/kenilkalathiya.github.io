@@ -4,6 +4,10 @@ import Spam from "../assets/projects/spam-predictor.png";
 import adas from "../assets/projects/adas.png";
 import droneSecurity from "../assets/projects/drone-security-inspection.png";
 import droneDetection from "../assets/projects/drone-detection.jpg";
+import droneEvidenceVisual from "../assets/projects/drone-evidence-visual.jpg";
+import droneEvidenceThermal from "../assets/projects/drone-evidence-thermal.jpg";
+import droneEvidenceCropVisual from "../assets/projects/drone-evidence-crop-visual.jpg";
+import droneEvidenceCropThermal from "../assets/projects/drone-evidence-crop-thermal.jpg";
 import isaVideo1 from "../assets/projects/carla-ue4.mp4";
 import isaVideo2 from "../assets/projects/front-camera.mp4";
 import uavDemo from "../assets/projects/UAV1.mp4";
@@ -177,13 +181,13 @@ export const resume = {
       status: "In Development",
       title: "Autonomous Drone Security-Inspection System (ArduPilot SITL + YOLOv8)",
       description:
-        "Autonomous drone security-inspection system combining ArduPilot SITL, Gazebo simulation, and a fine-tuned YOLOv8 model for real-time drone detection — built end-to-end in a simulated airport environment. Currently in active development.",
+        "Autonomous drone security-inspection system — detects intruding drones via a fine-tuned YOLOv8 model, auto-launches an interceptor, and captures visual + thermal evidence for human review, built end-to-end with ArduPilot SITL and Gazebo.",
       longDescription:
-        "An unarmed, human-in-the-loop inspect-and-report drone system built to demonstrate real-time computer vision fused with autonomous flight control, inspired by the August 2026 Leipzig/Halle airport drone incidents. The pipeline connects ArduPilot SITL for flight control with Gazebo Harmonic for physics and camera simulation, streaming live camera frames through gz-transport into an OpenCV/YOLOv8 detection pipeline that overlays bounding boxes in real time. The drone's flight is fully scripted via pymavlink — arm, takeoff, autonomous navigation to a target, and position hold — with no manual piloting required. A key finding from testing: stock YOLOv8 (trained on general COCO classes) misclassified drone shapes as everyday objects like \"bench\" or \"airplane,\" since it had never seen a drone-specific class. Swapping in a fine-tuned drone-detection model corrected this, correctly identifying the intruder drone and demonstrating the practical value of domain-specific fine-tuning over generic pretrained weights. The project also involved solving several low-level environment issues — VirtualBox 3D-acceleration conflicts with Gazebo's sensor rendering pipeline, protobuf version mismatches between ML and simulation libraries, and NED/ENU coordinate frame translation between ArduPilot and Gazebo — all resolved to get a stable, repeatable simulation running end-to-end. The project remains in active development: the core pipeline is functional, and headless rendering is being refined for continuous integration (CI).",
+        "An unarmed, human-in-the-loop inspect-and-report drone system, inspired by the August 2026 Leipzig/Halle airport drone incidents. A stationary sentry drone continuously scans for intruders using a fine-tuned YOLOv8 detection model; on detection, the system autonomously launches an interceptor drone, navigates to the intrusion site, uses live gimbal control to center the target in frame, and captures close-up visual and thermal-style evidence photos before landing and handing the evidence off to a human operator for the final decision — no target is ever engaged autonomously. The pipeline connects ArduPilot SITL for flight control with Gazebo Harmonic for physics and camera simulation, streaming live frames through gz-transport into an OpenCV/YOLOv8 detection stage, with the full mission (arm, takeoff, navigate, center, land) automated via pymavlink. A key technical challenge was self-false-positive filtering: the interceptor's own camera-mounted propellers and ground shadow were repeatedly misclassified as intruder drones. Solved with a layered filter — edge-touch rejection, bounding-box aspect-ratio filtering, and a fixed propeller-exclusion mask — since confidence-threshold tuning alone couldn't separate genuine detections from the aircraft seeing itself. Also demonstrated the gap between general-purpose and domain-specific models: stock YOLOv8 (COCO-trained) misclassified drone shapes as \"bench\" or \"airplane,\" while a fine-tuned drone-detection model correctly identified them, though detection reliability still degrades sharply with distance — a known small-object-detection limitation that motivates future architecture work. Every mission stage is logged to a timestamped JSONL event log, and each detection produces four evidence artifacts: a full-frame photo, a full-frame simulated thermal overlay, and zoomed/sharpened crops of both, isolating the target for close inspection. The project remains in active development: the core pipeline is functional, and headless rendering is being refined for continuous integration (CI).",
       details: [
         {
           heading: "Overview",
-          text: "An unarmed, human-in-the-loop inspect-and-report drone system built to demonstrate real-time computer vision fused with autonomous flight control, inspired by the August 2026 Leipzig/Halle airport drone incidents.",
+          text: "An unarmed, human-in-the-loop inspect-and-report drone system, inspired by the August 2026 Leipzig/Halle airport drone incidents. A sentry drone scans for intruders; on detection, an interceptor drone is launched to capture evidence, which is handed to a human operator for the final decision — no target is ever engaged autonomously.",
         },
         {
           heading: "Project Status",
@@ -191,40 +195,74 @@ export const resume = {
           text: "In active development (since Sep 2026). The core pipeline is functional in simulation; current work focuses on refining headless rendering for continuous integration (CI).",
         },
         {
-          heading: "How It Works",
+          heading: "Mission Flow",
           items: [
             {
-              label: "Flight & simulation",
-              text: "ArduPilot SITL handles flight control, while Gazebo Harmonic provides physics and camera simulation in a simulated airport environment.",
+              label: "1. Scan & detect",
+              text: "A stationary sentry drone continuously scans for intruders using a fine-tuned YOLOv8 detection model.",
             },
             {
-              label: "Vision pipeline",
-              text: "Live camera frames stream through gz-transport into an OpenCV/YOLOv8 detection pipeline that overlays bounding boxes in real time.",
+              label: "2. Launch & navigate",
+              text: "On detection, the system autonomously launches an interceptor drone and navigates it to the intrusion site.",
             },
             {
-              label: "Autonomous mission",
-              text: "Flight is fully scripted via pymavlink — arm, takeoff, autonomous navigation to a target, and position hold — with no manual piloting required.",
+              label: "3. Center & capture",
+              text: "Live gimbal control centers the target in frame, and close-up visual and thermal-style evidence photos are captured.",
+            },
+            {
+              label: "4. Land & hand off",
+              text: "The interceptor lands and hands the evidence to a human operator for the final decision.",
             },
           ],
         },
         {
-          heading: "Key Finding",
-          text: "Stock YOLOv8 (trained on general COCO classes) misclassified drone shapes as everyday objects like \"bench\" or \"airplane,\" since it had never seen a drone-specific class. Swapping in a fine-tuned drone-detection model corrected this, correctly identifying the intruder drone and demonstrating the practical value of domain-specific fine-tuning over generic pretrained weights.",
-        },
-        {
-          heading: "Challenges Solved",
+          heading: "How It Works",
           items: [
             {
-              label: "Rendering",
-              text: "VirtualBox 3D-acceleration conflicts with Gazebo's sensor rendering pipeline, fixed for reliable GUI and headless operation.",
+              label: "Flight & simulation",
+              text: "ArduPilot SITL handles flight control, while Gazebo Harmonic provides physics and camera simulation.",
             },
             {
-              label: "Dependencies",
-              text: "Protobuf version mismatches between the ML and simulation libraries.",
+              label: "Vision pipeline",
+              text: "Live frames stream through gz-transport into an OpenCV/YOLOv8 detection stage.",
             },
             {
-              label: "Coordinate frames",
-              text: "NED/ENU frame translation between ArduPilot and Gazebo.",
+              label: "Mission automation",
+              text: "The full mission — arm, takeoff, navigate, center, land — is automated via pymavlink.",
+            },
+            {
+              label: "Event logging",
+              text: "Every mission stage is logged to a timestamped JSONL event log.",
+            },
+          ],
+        },
+        {
+          heading: "Evidence Output (4 Artifacts per Detection)",
+          bullets: [
+            "Full-frame photo",
+            "Full-frame simulated thermal overlay",
+            "Zoomed and sharpened crop of the photo, isolating the target",
+            "Zoomed and sharpened crop of the thermal overlay, isolating the target",
+          ],
+        },
+        {
+          heading: "Technical Challenges",
+          items: [
+            {
+              label: "Self-false-positives",
+              text: "The interceptor's own camera-mounted propellers and ground shadow were repeatedly misclassified as intruder drones. Solved with a layered filter — edge-touch rejection, bounding-box aspect-ratio filtering, and a fixed propeller-exclusion mask — since confidence-threshold tuning alone couldn't separate genuine detections from the aircraft seeing itself.",
+            },
+            {
+              label: "General vs. domain-specific model",
+              text: "Stock YOLOv8 (COCO-trained) misclassified drone shapes as \"bench\" or \"airplane,\" while a fine-tuned drone-detection model correctly identified them.",
+            },
+            {
+              label: "Detection range",
+              text: "Reliability still degrades sharply with distance — a known small-object-detection limitation that motivates future architecture work.",
+            },
+            {
+              label: "Simulation environment",
+              text: "VirtualBox 3D-acceleration conflicts with Gazebo's rendering (fixed for reliable GUI and headless operation), protobuf version mismatches between ML and simulation libraries, and NED/ENU frame translation between ArduPilot and Gazebo.",
             },
           ],
         },
@@ -233,17 +271,32 @@ export const resume = {
         "Python",
         "ArduPilot SITL",
         "Gazebo Harmonic",
+        "YOLOv8 (Ultralytics)",
+        "OpenCV",
         "pymavlink",
         "MAVSDK",
-        "YOLOv8",
-        "OpenCV",
         "gz-transport",
         "Computer Vision",
         "UAV Simulation",
       ],
-      github: "https://github.com/kenilkalathiya/",
-      imageUrls: [droneDetection, droneSecurity],
-      imageCaptions: ["Live YOLOv8 detection in Gazebo", "Pipeline architecture"],
+      github: "https://github.com/kenilkalathiya/drone-security-inspection",
+      coverImage: droneEvidenceThermal,
+      imageUrls: [
+        droneDetection,
+        droneEvidenceVisual,
+        droneEvidenceThermal,
+        droneEvidenceCropVisual,
+        droneEvidenceCropThermal,
+        droneSecurity,
+      ],
+      imageCaptions: [
+        "Live YOLOv8 detection in Gazebo",
+        "Evidence: full-frame visual capture",
+        "Evidence: simulated thermal overlay",
+        "Evidence: zoomed & sharpened visual crop",
+        "Evidence: zoomed & sharpened thermal crop",
+        "Pipeline architecture",
+      ],
     },
     {
       id: "isa-cruise-control",

@@ -6,53 +6,68 @@ import { resume } from "../data/site";
 import Container from "../components/ui/Container";
 import Tag from "../components/ui/Tag";
 import StatusBadge from "../components/ui/StatusBadge";
+import MediaSlider from "../components/ui/MediaSlider";
 import Button from "../components/ui/Button";
 import RevealOnScroll from "../components/ui/RevealOnScroll";
 
-function ProjectMedia({ project }) {
-  if (project.videoUrls?.length) {
-    return (
-      <div className={`grid gap-0.5 ${project.videoUrls.length > 1 ? "sm:grid-cols-2" : ""}`}>
-        {project.videoUrls.map((video, index) => (
-          <video key={index} controls className="aspect-video w-full bg-black object-contain">
-            <source src={video} type="video/mp4" />
-          </video>
-        ))}
-      </div>
-    );
-  }
-  if (project.videoUrl) {
-    return (
-      <video controls poster={project.imageUrl} className="aspect-video w-full bg-black object-contain">
-        <source src={project.videoUrl} type="video/mp4" />
-      </video>
-    );
-  }
-  if (project.imageUrls?.length) {
-    return (
-      <div className={`grid gap-0.5 ${project.imageUrls.length > 1 ? "sm:grid-cols-2" : ""}`}>
-        {project.imageUrls.map((image, index) => {
-          const caption = project.imageCaptions?.[index];
-          return (
-            <figure key={index} className="flex flex-col justify-center bg-black">
-              <img src={image} alt={caption || `${project.title} (${index + 1})`} className="w-full object-contain" />
-              {caption && (
-                <figcaption className="px-4 py-2 text-center font-mono text-xs uppercase tracking-widest text-ink-secondary">
-                  {caption}
-                </figcaption>
-              )}
-            </figure>
-          );
-        })}
-      </div>
-    );
-  }
-  if (project.imageUrl) {
-    return <img src={project.imageUrl} alt={project.title} className="w-full object-contain" />;
-  }
-  return null;
+// Videos first, then images. Captions line up per kind: videoCaptions[i] for
+// the i-th video, imageCaptions[i] for the i-th image. (A legacy single
+// `videoUrl` uses `imageUrl` as its poster rather than as a separate image.)
+function getMediaItems(project) {
+  const videos = project.videoUrls?.length ? project.videoUrls : project.videoUrl ? [project.videoUrl] : [];
+  const images = project.imageUrls?.length
+    ? project.imageUrls
+    : project.imageUrl && !project.videoUrl
+      ? [project.imageUrl]
+      : [];
+
+  return [
+    ...videos.map((src, i) => ({
+      type: "video",
+      src,
+      poster: project.videoUrl ? project.imageUrl : undefined,
+      caption: project.videoCaptions?.[i],
+    })),
+    ...images.map((src, i) => ({ type: "image", src, caption: project.imageCaptions?.[i] })),
+  ];
 }
 
+function MediaItem({ item, alt }) {
+  return (
+    <figure className="flex flex-col justify-center bg-black">
+      {item.type === "video" ? (
+        <video controls poster={item.poster} className="aspect-video w-full bg-black object-contain">
+          <source src={item.src} type="video/mp4" />
+        </video>
+      ) : (
+        <img src={item.src} alt={item.caption || alt} className="w-full object-contain" />
+      )}
+      {item.caption && (
+        <figcaption className="px-4 py-2 text-center font-mono text-xs uppercase tracking-widest text-ink-secondary">
+          {item.caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
+function ProjectMedia({ project }) {
+  const items = getMediaItems(project);
+  if (items.length === 0) return null;
+
+  // Up to two items (videos and images together) sit side by side; more than
+  // that gets a slider instead.
+  if (items.length > 2) {
+    return <MediaSlider items={items} alt={project.title} />;
+  }
+  return (
+    <div className={`grid gap-0.5 ${items.length > 1 ? "sm:grid-cols-2" : ""}`}>
+      {items.map((item, index) => (
+        <MediaItem key={index} item={item} alt={`${project.title} (${index + 1})`} />
+      ))}
+    </div>
+  );
+}
 export default function ProjectDetail() {
   const { projectId } = useParams();
   const navigate = useNavigate();
@@ -77,7 +92,7 @@ export default function ProjectDetail() {
     );
   }
 
-  const hasMedia = Boolean(project.videoUrls?.length || project.videoUrl || project.imageUrls?.length || project.imageUrl);
+  const hasMedia = getMediaItems(project).length > 0;
   const isGitLab = project.github?.includes("gitlab");
 
   const handleBack = () => {

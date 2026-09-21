@@ -18,6 +18,10 @@ const FEATURED_COUNT = 2;
 const TOP_LEFT_CROP_PROJECT_IDS = ["isa-cruise-control"];
 
 function FeaturedMedia({ project }) {
+  // An explicit cover image wins over the project's video preview.
+  if (project.coverImage) {
+    return <img src={project.coverImage} alt={project.title} className="h-full w-full object-cover" />;
+  }
   if (project.videoUrls?.length) {
     const useTopLeftCrop = TOP_LEFT_CROP_PROJECT_IDS.includes(project.id);
     // No autoPlay: forcing a big video to stream immediately on page load
