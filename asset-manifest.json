@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.5ad1158d.css",
-    "main.js": "/static/js/main.27e0cdda.js",
+    "main.css": "/static/css/main.bf511843.css",
+    "main.js": "/static/js/main.c37bd56e.js",
     "static/media/UAV1.mp4": "/static/media/UAV1.0c408d84ee4ee8e6cebd.mp4",
     "static/media/carla-ue4.mp4": "/static/media/carla-ue4.cc397f75901f93632b54.mp4",
     "static/media/front-camera.mp4": "/static/media/front-camera.f0ad66f3bec4c668e1e2.mp4",
@@ -11,13 +11,17 @@
     "static/media/movie-series.png": "/static/media/movie-series.8c3890392e90b1561690.png",
     "static/media/spam-predictor.png": "/static/media/spam-predictor.5ae5a2cc2ac486b75e86.png",
     "static/media/drone-security-inspection.png": "/static/media/drone-security-inspection.e3543d25c82f91a1935b.png",
+    "static/media/drone-evidence-thermal.jpg": "/static/media/drone-evidence-thermal.e9575619f093a582a38f.jpg",
     "static/media/drone-detection.jpg": "/static/media/drone-detection.4f32bb2b001c56940b60.jpg",
+    "static/media/drone-evidence-visual.jpg": "/static/media/drone-evidence-visual.9e0c2a9a9dc235411fb0.jpg",
+    "static/media/drone-evidence-crop-thermal.jpg": "/static/media/drone-evidence-crop-thermal.4a0bdd955e8827aa1189.jpg",
+    "static/media/drone-evidence-crop-visual.jpg": "/static/media/drone-evidence-crop-visual.13550b765040c383fb7b.jpg",
     "index.html": "/index.html",
-    "main.5ad1158d.css.map": "/static/css/main.5ad1158d.css.map",
-    "main.27e0cdda.js.map": "/static/js/main.27e0cdda.js.map"
+    "main.bf511843.css.map": "/static/css/main.bf511843.css.map",
+    "main.c37bd56e.js.map": "/static/js/main.c37bd56e.js.map"
   },
   "entrypoints": [
-    "static/css/main.5ad1158d.css",
-    "static/js/main.27e0cdda.js"
+    "static/css/main.bf511843.css",
+    "static/js/main.c37bd56e.js"
   ]
 }
