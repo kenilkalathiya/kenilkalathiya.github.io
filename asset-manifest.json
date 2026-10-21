@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.bf511843.css",
-    "main.js": "/static/js/main.c37bd56e.js",
+    "main.js": "/static/js/main.4cee729d.js",
     "static/media/UAV1.mp4": "/static/media/UAV1.0c408d84ee4ee8e6cebd.mp4",
     "static/media/carla-ue4.mp4": "/static/media/carla-ue4.cc397f75901f93632b54.mp4",
     "static/media/front-camera.mp4": "/static/media/front-camera.f0ad66f3bec4c668e1e2.mp4",
@@ -18,10 +18,10 @@
     "static/media/drone-evidence-crop-visual.jpg": "/static/media/drone-evidence-crop-visual.13550b765040c383fb7b.jpg",
     "index.html": "/index.html",
     "main.bf511843.css.map": "/static/css/main.bf511843.css.map",
-    "main.c37bd56e.js.map": "/static/js/main.c37bd56e.js.map"
+    "main.4cee729d.js.map": "/static/js/main.4cee729d.js.map"
   },
   "entrypoints": [
     "static/css/main.bf511843.css",
-    "static/js/main.c37bd56e.js"
+    "static/js/main.4cee729d.js"
   ]
 }
