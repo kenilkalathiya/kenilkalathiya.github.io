@@ -88,7 +88,7 @@ export const resume = {
   experience: [
     {
       company: "Technische Universität Chemnitz - Germany",
-      duration: "Apr 2026 - Present",
+      duration: "Apr 2026 - Oct 2026",
       role: "Research Intern",
       tasks: [
         "Designed a real-time structural health monitoring pipeline for UAV rotor arms (PX4 SITL, Gazebo Harmonic).",
