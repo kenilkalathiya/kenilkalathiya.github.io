@@ -1,27 +1,34 @@
 {
   "files": {
-    "main.css": "/static/css/main.bf511843.css",
-    "main.js": "/static/js/main.4cee729d.js",
-    "static/media/UAV1.mp4": "/static/media/UAV1.0c408d84ee4ee8e6cebd.mp4",
-    "static/media/carla-ue4.mp4": "/static/media/carla-ue4.cc397f75901f93632b54.mp4",
-    "static/media/front-camera.mp4": "/static/media/front-camera.f0ad66f3bec4c668e1e2.mp4",
-    "static/media/adas.png": "/static/media/adas.f1482d42dcb6b9ed353e.png",
-    "static/media/profile-pic.png": "/static/media/profile-pic.e364aa7ffc03d16d05b2.png",
+    "main.css": "/static/css/main.8095717d.css",
+    "main.js": "/static/js/main.32749ee5.js",
+    "static/media/front-camera.mp4": "/static/media/front-camera.36a1ccbe4dc7856b6297.mp4",
+    "static/media/carla-ue4.mp4": "/static/media/carla-ue4.7d927706d21c1d23e46c.mp4",
+    "static/media/UAV1.mp4": "/static/media/UAV1.2589632e5009d8192209.mp4",
     "static/media/health-scal.png": "/static/media/health-scal.8e4d688e949c0f976301.png",
     "static/media/movie-series.png": "/static/media/movie-series.8c3890392e90b1561690.png",
     "static/media/spam-predictor.png": "/static/media/spam-predictor.5ae5a2cc2ac486b75e86.png",
     "static/media/drone-security-inspection.png": "/static/media/drone-security-inspection.e3543d25c82f91a1935b.png",
+    "static/media/adas.webp": "/static/media/adas.125a965f187634cef111.webp",
     "static/media/drone-evidence-thermal.jpg": "/static/media/drone-evidence-thermal.e9575619f093a582a38f.jpg",
     "static/media/drone-detection.jpg": "/static/media/drone-detection.4f32bb2b001c56940b60.jpg",
+    "static/media/profile-pic.webp": "/static/media/profile-pic.01b33aebc573b2570a70.webp",
+    "static/media/structure-sensitive-flight-control.webp": "/static/media/structure-sensitive-flight-control.a7a2083a72636f706b89.webp",
+    "static/media/vision-based-adas.webp": "/static/media/vision-based-adas.da4c789ace8507ae3e66.webp",
+    "static/media/movie-series-info.webp": "/static/media/movie-series-info.1cb08e24778c62c41c37.webp",
+    "static/media/isa-cruise-control.webp": "/static/media/isa-cruise-control.17e17678b7d4ef2e388c.webp",
     "static/media/drone-evidence-visual.jpg": "/static/media/drone-evidence-visual.9e0c2a9a9dc235411fb0.jpg",
+    "static/media/spam-predictor.webp": "/static/media/spam-predictor.d6cb994aae298d085faf.webp",
+    "static/media/health-scal.webp": "/static/media/health-scal.50c702ba7746ed0d0229.webp",
     "static/media/drone-evidence-crop-thermal.jpg": "/static/media/drone-evidence-crop-thermal.4a0bdd955e8827aa1189.jpg",
+    "static/media/drone-security-inspection.webp": "/static/media/drone-security-inspection.fcf34d5f478b18edec2c.webp",
     "static/media/drone-evidence-crop-visual.jpg": "/static/media/drone-evidence-crop-visual.13550b765040c383fb7b.jpg",
     "index.html": "/index.html",
-    "main.bf511843.css.map": "/static/css/main.bf511843.css.map",
-    "main.4cee729d.js.map": "/static/js/main.4cee729d.js.map"
+    "main.8095717d.css.map": "/static/css/main.8095717d.css.map",
+    "main.32749ee5.js.map": "/static/js/main.32749ee5.js.map"
   },
   "entrypoints": [
-    "static/css/main.bf511843.css",
-    "static/js/main.4cee729d.js"
+    "static/css/main.8095717d.css",
+    "static/js/main.32749ee5.js"
   ]
 }
