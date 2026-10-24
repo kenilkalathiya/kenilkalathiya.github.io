@@ -11,10 +11,18 @@ const badgeVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } },
 };
 
-export default function Skills() {
+// Categories in the order configured for the current view, with any category
+// missing from that list appended rather than silently dropped.
+function orderedCategories(track) {
+  const order = resume.skillOrder[track] || resume.skillOrder.default;
+  const all = Object.keys(resume.skills);
+  return [...order.filter((c) => all.includes(c)), ...all.filter((c) => !order.includes(c))];
+}
+
+export default function Skills({ track }) {
   return (
     <div className="flex flex-col gap-8">
-      {Object.entries(resume.skills).map(([category, skills]) => (
+      {orderedCategories(track).map((category) => (
         <div key={category}>
           <h3 className="mb-4 border-b border-hairline pb-2 font-heading text-lg font-bold text-ink">
             {category}
@@ -26,7 +34,7 @@ export default function Skills() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {skills.map((skill) => (
+            {resume.skills[category].map((skill) => (
               <motion.div
                 key={skill.name}
                 variants={badgeVariants}

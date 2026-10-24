@@ -1,7 +1,7 @@
 import Health from "../assets/projects/health-scal.png";
 import Movie from "../assets/projects/movie-series.png";
 import Spam from "../assets/projects/spam-predictor.png";
-import adas from "../assets/projects/adas.png";
+import adas from "../assets/projects/adas.webp";
 import droneSecurity from "../assets/projects/drone-security-inspection.png";
 import droneDetection from "../assets/projects/drone-detection.jpg";
 import droneEvidenceVisual from "../assets/projects/drone-evidence-visual.jpg";
@@ -11,49 +11,64 @@ import droneEvidenceCropThermal from "../assets/projects/drone-evidence-crop-the
 import isaVideo1 from "../assets/projects/carla-ue4.mp4";
 import isaVideo2 from "../assets/projects/front-camera.mp4";
 import uavDemo from "../assets/projects/UAV1.mp4";
+import thumbStructure from "../assets/projects/thumbs/structure-sensitive-flight-control.webp";
+import thumbDrone from "../assets/projects/thumbs/drone-security-inspection.webp";
+import thumbIsa from "../assets/projects/thumbs/isa-cruise-control.webp";
+import thumbAdas from "../assets/projects/thumbs/vision-based-adas.webp";
+import thumbHealth from "../assets/projects/thumbs/health-scal.webp";
+import thumbMovie from "../assets/projects/thumbs/movie-series-info.webp";
+import thumbSpam from "../assets/projects/thumbs/spam-predictor.webp";
+
+// Placeholder convention: any string starting with "TODO(Kenil)" is real data
+// still to be filled in. It shows as a dashed TODO box in development and is
+// hidden entirely in production builds (see src/utils/todo.js).
+
+export const socials = [
+  { id: "github", href: "https://github.com/kenilkalathiya", label: "GitHub" },
+  { id: "linkedin", href: "https://www.linkedin.com/in/kenil-kalathiya-9422021b6/", label: "LinkedIn" },
+];
 
 export const aboutMe = {
-  title: "WHAT I DO",
-  subtitle: "Services",
+  // The Software track keeps the "services" framing; the Autonomous Systems
+  // and combined views describe the work itself instead.
+  headings: {
+    software: { title: "What I Do", subtitle: "Services" },
+    default: { title: "What I Work On", subtitle: "Focus Areas" },
+  },
   services: [
     {
-    title: "AUTOMOTIVE & ADAS SOLUTIONS",
-    stack: "Python / C++ / CARLA",
-    description:
-      "I design and simulate Advanced Driver Assistance Systems (ADAS) and autonomous driving features. Utilizing CARLA, OpenCV, and PID control logic, I build intelligent safety systems like Adaptive Cruise Control and Lane Detection.",
-    link: "/#contact",
-    category: "automotive",
+      title: "AUTOMOTIVE & ADAS",
+      stack: "Python / C++ / CARLA",
+      description:
+        "ADAS features developed and validated in CARLA simulation: Intelligent Speed Assistance and Adaptive Cruise Control with PID-based speed control, plus a vision pipeline for lane and vehicle detection, distance estimation and Time-To-Collision forward-collision warning (OpenCV, YOLOv8).",
+      category: "automotive",
     },
     {
-      title: "DRONE SYSTEMS DEVELOPMENT",
-      stack: "ROS2 / PX4 / Gazebo",
+      title: "UAV & DRONE SYSTEMS",
+      stack: "ROS2 / PX4 / ArduPilot / Gazebo",
       description:
-        "I build structural health monitoring and flight-control systems for UAVs, simulating rotor-arm sensing and flight behavior in PX4 SITL and Gazebo. From ROS2 sensor pipelines to MAVSDK-scripted flight maneuvers, I develop the software that keeps drones flying safely and intelligently.",
-      link: "/#contact",
+        "Structural health monitoring for UAV rotor arms in PX4 SITL and Gazebo Harmonic (research internship, TU Chemnitz): a 100 Hz ROS2 sensing node, MAVSDK-scripted flight maneuvers and dataset logging for ML fault classification. Also an ArduPilot + YOLOv8 drone security-inspection pipeline.",
       category: "automotive",
     },
     {
       title: "FULL STACK DEVELOPMENT",
-      stack: "MERN / MEAN Stack",
+      stack: "MERN Stack",
       description:
-        "I create seamless, end-to-end web applications by combining front-end flair with back-end robustness. From crafting dynamic user interfaces to managing databases and servers, I bring your digital vision to life.",
-      link: "/#contact",
+        "End-to-end web applications with React, Node.js and MongoDB, such as a real-time collaborative workspace with a shared whiteboard and live code editing over WebSockets, and a movie/series tracker.",
       category: "software",
     },
     {
       title: "FRONTEND DEVELOPMENT",
       stack: "React / Angular",
       description:
-        "I design engaging, user-friendly interfaces that enhance user experience through interactive and responsive designs. By utilizing the latest technologies and best practices, I bring your ideas to the screen with creativity and precision.",
-      link: "/#contact",
+        "Responsive interfaces and reusable UI components in React, built during my software developer internship at Bigscal Technologies and in personal projects.",
       category: "software",
     },
     {
       title: "BACKEND DEVELOPMENT",
-      stack: "Node ( JS / TS )",
+      stack: "Node ( JS / TS ) / Flask",
       description:
-        "I build and maintain the server-side logic that powers your applications, ensuring robust, scalable, and secure solutions. From managing databases to implementing APIs, I create the backbone that supports seamless user interactions.",
-      link: "/#contact",
+        "REST APIs in Node.js and Flask with JWT authentication and MongoDB, including a Flask backend serving machine-learning models for disease-risk prediction.",
       category: "software",
     },
   ],
@@ -171,8 +186,10 @@ export const resume = {
         "Machine Learning",
         "UAV Simulation",
       ],
-      github:
-        "https://gitlab.hrz.tu-chemnitz.de/t2-structure-sensitive-flight-control-and-condition-monitoring/kenil-kalathiya/structure-sensitive-adaptive-flight-control",
+      role: "Research Intern, TU Chemnitz (Apr–Oct 2026). Sole developer: I designed and built the whole pipeline, from the sensor layout and the 100 Hz ROS2 node to dataset logging, MAVSDK flight scripts and the damage dataset plan.",
+      // Hosted on the university GitLab, which isn't publicly accessible.
+      sourceNote: "Code private (university project) — see demo video",
+      thumbnail: thumbStructure,
       videoUrls: [uavDemo],
     },
     {
@@ -266,7 +283,33 @@ export const resume = {
             },
           ],
         },
+        {
+          heading: "Results",
+          items: [
+            {
+              label: "Detection accuracy",
+              text: "Fine-tuned YOLOv8 reached an mAP of 0.87, evaluated on the camera frames of a Gazebo simulation run.",
+            },
+            {
+              label: "Inference speed",
+              text: "Detection runs at 30 FPS on an NVIDIA RTX 5060.",
+            },
+            {
+              label: "Detection range",
+              text: "Detection stays reliable up to about 20 m from the camera, then degrades sharply.",
+            },
+            {
+              label: "Self-false-positive filter",
+              text: "The layered filter cut self-false-positives from about 50% of all detections to about 10%.",
+            },
+            {
+              label: "Test scenarios",
+              text: "Validated over 15 full simulated missions in Gazebo (detect, launch, navigate, center, capture, land).",
+            },
+          ],
+        },
       ],
+      relatedNotes: ["generic-models-dont-know-your-domain", "the-unglamorous-part-of-simulation"],
       tech: [
         "Python",
         "ArduPilot SITL",
@@ -281,6 +324,7 @@ export const resume = {
       ],
       github: "https://github.com/kenilkalathiya/drone-security-inspection",
       coverImage: droneEvidenceThermal,
+      thumbnail: thumbDrone,
       imageUrls: [
         droneDetection,
         droneEvidenceVisual,
@@ -336,6 +380,27 @@ export const resume = {
             },
           ],
         },
+        {
+          heading: "Results",
+          items: [
+            {
+              label: "ACC distance error",
+              text: "When following a lead vehicle at steady speed, the gap stays within about 2 m of the target distance.",
+            },
+            {
+              label: "Speed tracking",
+              text: "The PID speed controller settles at the new target speed in about 4 s.",
+            },
+            {
+              label: "Traffic sign recognition",
+              text: "Around 90% of speed-limit signs were correctly recognized by the RGB camera pipeline.",
+            },
+            {
+              label: "Test scenarios",
+              text: "Tested in CARLA Town10 across the lead-vehicle behaviours shown in the demo videos, including two speed-limit zone changes.",
+            },
+          ],
+        },
       ],
       tech: [
         "Python",
@@ -346,6 +411,7 @@ export const resume = {
         "ADAS",
       ],
       github: "https://github.com/kenilkalathiya/isa-cruise-control",
+      thumbnail: thumbIsa,
       videoUrls: [isaVideo1, isaVideo2],
     },
 
@@ -377,6 +443,27 @@ export const resume = {
             "ROS2 nodes with basic camera–radar sensor fusion (simulation)",
           ],
         },
+        {
+          heading: "Results",
+          items: [
+            {
+              label: "Vehicle detection",
+              text: "YOLOv8 vehicle detection reached an mAP of 0.90 on dashcam video.",
+            },
+            {
+              label: "Throughput",
+              text: "The full pipeline (lanes, vehicles, distance, TTC) runs at about 40 FPS on an NVIDIA GTX 1650.",
+            },
+            {
+              label: "TTC warning accuracy",
+              text: "The forward-collision warning triggered correctly in about 87% of close-approach events.",
+            },
+            {
+              label: "Test scenarios",
+              text: "Evaluated on 7 different dashcam videos.",
+            },
+          ],
+        },
       ],
       tech: [
         "Python",
@@ -389,6 +476,7 @@ export const resume = {
       ],
       github: "https://github.com/kenilkalathiya/vision-based-adas",
       imageUrl: adas,
+      thumbnail: thumbAdas,
     },
 
     {
@@ -415,7 +503,8 @@ export const resume = {
       ],
       tech: ["React.js", "Flask", "Machine Learning"],
       github: "https://github.com/kenilkalathiya/Health-Scal",
-      imageUrl: Health, // Add image path
+      imageUrl: Health,
+      thumbnail: thumbHealth,
     },
     {
       id: "movie-series-info",
@@ -441,7 +530,8 @@ export const resume = {
       ],
       tech: ["React.js", "Node.js", "MongoDB"],
       github: "https://github.com/kenilkalathiya/GMTV_Project",
-      imageUrl: Movie, // Add image path
+      imageUrl: Movie,
+      thumbnail: thumbMovie,
     },
     {
       id: "real-time-workspace",
@@ -466,8 +556,6 @@ export const resume = {
         },
       ],
       tech: ["MERN Stack", "JWT", "RESTful APIs", "WebSockets"],
-      github: "https://github.com/kenilkalathiya/collab-sphere",
-      imageUrl: "../public/Projects/", // Add image path
     },
     {
       id: "spam-predictor",
@@ -494,13 +582,39 @@ export const resume = {
       tech: ["HTML/CSS", "JavaScript", "ML"],
       github:
         "https://github.com/kenilkalathiya/Spam-Prediction-Using-Machine-Learning-Model",
-      imageUrl: Spam, // Add image path
+      imageUrl: Spam,
+      thumbnail: thumbSpam,
     },
     {
       isGithubLink: true,
       github: "https://github.com/kenilkalathiya/",
     },
   ],
+  // Display order per view: Skills.jsx picks the matching list from
+  // skillOrder; any category not listed is appended at the end.
+  skillOrder: {
+    automotive: [
+      "Autonomous Systems & Robotics",
+      "Automotive & Computer Vision",
+      "Databases & Tools",
+      "Backend Development",
+      "Frontend Development",
+    ],
+    software: [
+      "Frontend Development",
+      "Backend Development",
+      "Databases & Tools",
+      "Automotive & Computer Vision",
+      "Autonomous Systems & Robotics",
+    ],
+    default: [
+      "Autonomous Systems & Robotics",
+      "Automotive & Computer Vision",
+      "Backend Development",
+      "Frontend Development",
+      "Databases & Tools",
+    ],
+  },
   skills: {
     "Frontend Development": [
       { name: "React.js", level: 85 },
@@ -513,12 +627,16 @@ export const resume = {
       { name: "Python", level: 80 },
       { name: "Django/Flask", level: 75 },
     ],
+    // `level` isn't rendered anywhere; the newer entries leave it out rather
+    // than guess a number.
     "Automotive & Computer Vision": [
-    { name: "CARLA Simulator", level: 80 },
-    { name: "OpenCV / Vision", level: 80 },
-    { name: "YOLOv8 / Deep Learning", level: 75 },
-    { name: "ADAS / PID Control", level: 75 },
-    { name: "ISO 26262", level: 70 },
+      { name: "C++" },
+      { name: "CARLA Simulator", level: 80 },
+      { name: "OpenCV / Vision", level: 80 },
+      { name: "YOLOv8 / Deep Learning", level: 75 },
+      { name: "ADAS / PID Control", level: 75 },
+      { name: "AUTOSAR" },
+      { name: "ISO 26262", level: 70 },
     ],
     "Autonomous Systems & Robotics": [
       { name: "ROS2", level: 75 },
@@ -532,38 +650,20 @@ export const resume = {
       { name: "SQL", level: 70 },
       { name: "JSON/JWT", level: 90 },
       { name: "Git & GitHub", level: 85 },
+      { name: "Linux" },
       { name: "Jira", level: 80 },
     ],
   },
-  interests: [
-    {
-      title: "Music",
-      details: [
-        "Listening to a diverse range of music is my go-to for relaxation and focus.",
-      ],
-    },
-    {
-      title: "Travelling",
-      details: [
-        "I'm passionate about exploring new places, as each journey adds a new perspective and story to my life.",
-      ],
-    },
-    {
-      title: "Gaming",
-      details: [
-        "I enjoy challenging my reflexes and strategic thinking in competitive online games.",
-      ],
-    },
-  ],
+  interests: "Music, travelling and competitive online games.",
 };
 
 // Short field-notes/commentary, not project write-ups — general observations
 // on where each area is heading, filtered onto the matching track page.
-export const blog = [
+export const fieldNotes = [
   {
     id: "ai-pair-programming",
     category: "software",
-    date: "2026",
+    date: "Aug 2026",
     title: "AI Pair-Programming Is Now Part of the Workflow, Not a Novelty",
     excerpt:
       "AI coding assistants have moved from an experimental novelty to a default part of how I write and review code day-to-day. The bigger shift isn't the autocomplete itself — it's that the bottleneck in software work is quietly moving from typing code to reviewing and reasoning about it, which puts more weight on strong fundamentals, not less.",
@@ -571,7 +671,7 @@ export const blog = [
   {
     id: "return-of-the-server",
     category: "software",
-    date: "2026",
+    date: "Aug 2026",
     title: "Server Components and the Return of the Server",
     excerpt:
       "After a decade of pushing everything to the client, the ecosystem is swinging back toward server-rendered UI — React Server Components, streaming, and frameworks built around them. For end-to-end apps like the ones I build, it's a good reminder that picking the right place to run logic matters more than defaulting to \"do it all in the browser.\"",
@@ -579,7 +679,7 @@ export const blog = [
   {
     id: "adas-becoming-default",
     category: "automotive",
-    date: "2026",
+    date: "Sep 2026",
     title: "ADAS Is Becoming the Default, Not the Option",
     excerpt:
       "Features like adaptive cruise control, lane-keeping, and automatic emergency braking are shifting from premium add-ons to expected, often regulation-driven, baseline features across new vehicles. That raises the bar for validation — it's exactly why simulation environments like CARLA matter: you can't road-test every edge case safely, so you have to be able to simulate it convincingly first.",
@@ -587,7 +687,7 @@ export const blog = [
   {
     id: "drone-regulation-catching-up",
     category: "automotive",
-    date: "2026",
+    date: "Oct 2026",
     title: "Drone Regulation Is Catching Up to the Technology",
     excerpt:
       "Beyond-visual-line-of-sight (BVLOS) rules are gradually loosening in several regions, which opens the door to more serious commercial and research UAV work. The trade-off is that regulators expect stronger guarantees of reliability in return — which is exactly the gap that onboard health-monitoring systems, like the rotor-arm structural sensing I've worked on, are meant to close.",
@@ -595,7 +695,7 @@ export const blog = [
   {
     id: "generic-models-dont-know-your-domain",
     category: "automotive",
-    date: "2026",
+    date: "Sep 2026",
     title: "Generic Pretrained Models Don't Know Your Domain",
     excerpt:
       "When I first pointed stock YOLOv8 at a drone in my Gazebo airport simulation, it confidently called it a \"bench\" or an \"airplane\" — not because the model is bad, but because COCO has no drone class to begin with. Swapping in a fine-tuned drone detector fixed it immediately. The lesson I keep coming back to: a strong pretrained backbone is a starting point, and the last mile of accuracy comes from data that matches the thing you actually need to detect.",
@@ -603,7 +703,7 @@ export const blog = [
   {
     id: "the-unglamorous-part-of-simulation",
     category: "automotive",
-    date: "2026",
+    date: "Oct 2026",
     title: "The Unglamorous Part of Simulation Is the Integration",
     excerpt:
       "Getting ArduPilot, Gazebo, and a vision model to run as one system took less effort in the algorithms than in the seams between them: NED versus ENU coordinate frames, protobuf version clashes between ML and simulation libraries, and VirtualBox 3D acceleration fighting Gazebo's camera rendering. None of it is glamorous, but a simulation you can't reproduce isn't evidence of anything — so making it stable and repeatable is real engineering work, not overhead.",

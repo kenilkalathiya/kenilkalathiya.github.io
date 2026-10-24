@@ -8,7 +8,7 @@ import Button from "../components/ui/Button";
 
 const INFO_ITEMS = [
   { icon: FaMapMarkerAlt, label: "Address", value: "Chemnitz, Saxony, Germany" },
-  { icon: BsPersonWorkspace, label: "Freelance", value: "Available Right Now" },
+  { icon: BsPersonWorkspace, label: "Open to", value: "Working student & full-time positions in ADAS / autonomous systems" },
   { icon: FaEnvelope, label: "Email", value: "kenilkalathiya1999@gmail.com" },
   { icon: FaPhoneAlt, label: "Phone", value: "+49 15202856757" },
 ];

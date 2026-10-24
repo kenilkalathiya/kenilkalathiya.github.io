@@ -2,7 +2,7 @@ import Hero from "../sections/Hero";
 import About from "../sections/About";
 import Resume from "../sections/Resume";
 import Projects from "../sections/Projects";
-import Blog from "../sections/Blog";
+import FieldNotes from "../sections/FieldNotes";
 import Contact from "../sections/Contact";
 
 export default function Home({ track }) {
@@ -10,9 +10,9 @@ export default function Home({ track }) {
     <>
       <Hero track={track} />
       <About track={track} />
-      <Resume />
+      <Resume track={track} />
       <Projects track={track} />
-      <Blog track={track} />
+      <FieldNotes track={track} />
       <Contact />
     </>
   );

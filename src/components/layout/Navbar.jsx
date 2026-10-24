@@ -1,20 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { HashLink } from "react-router-hash-link";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { SiInstagram, SiLinkedin, SiX, SiGithub } from "react-icons/si";
 import { HiMenu, HiX } from "react-icons/hi";
 import useActiveSection from "../../hooks/useActiveSection";
 import ThemeToggle from "../ui/ThemeToggle";
+import SocialLinks from "../ui/SocialLinks";
 
 const NAV_LINKS = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "resume", label: "Resume" },
   { id: "projects", label: "Projects" },
-  { id: "blog", label: "Blog" },
+  { id: "field-notes", label: "Field Notes" },
   { id: "contact", label: "Contact" },
 ];
+const SECTION_IDS = NAV_LINKS.map((link) => link.id);
 
 // The tracks, each its own route (Home reused with a `track` prop, "All"
 // leaves it unset for the combined/unfiltered view) — separate from
@@ -23,13 +24,6 @@ const TRACKS = [
   { path: "/all", label: "All" },
   { path: "/software", label: "Software" },
   { path: "/autonomous-systems", label: "Autonomous Systems" },
-];
-
-const SOCIALS = [
-  { icon: SiGithub, href: "https://github.com/kenilkalathiya", label: "GitHub" },
-  { icon: SiLinkedin, href: "https://www.linkedin.com/in/kenil-kalathiya-9422021b6/", label: "LinkedIn" },
-  { icon: SiInstagram, href: "https://www.instagram.com/kenil_kalathiya_007", label: "Instagram" },
-  { icon: SiX, href: "https://twitter.com/KenilKalathiya1", label: "X" },
 ];
 
 function TrackLinks({ className = "", pillClassName = "", onNavigate }) {
@@ -41,7 +35,7 @@ function TrackLinks({ className = "", pillClassName = "", onNavigate }) {
           key={t.path}
           to={t.path}
           onClick={onNavigate}
-          className={`rounded font-mono uppercase tracking-wide transition-colors ${pillClassName} ${
+          className={`whitespace-nowrap rounded font-mono uppercase tracking-wide transition-colors ${pillClassName} ${
             pathname === t.path
               ? "bg-accent text-night"
               : "text-ink-secondary hover:bg-panel-elev hover:text-ink"
@@ -58,7 +52,19 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
-  const activeId = useActiveSection(NAV_LINKS.map((link) => link.id));
+  const isProjectPage = pathname.startsWith("/project/");
+
+  // Section links (and the logo) always target a track page: on a project
+  // page that's the track the visitor came from, or the default track for a
+  // direct link. Updated during render so it's current for this very render.
+  const lastTrackRef = useRef("/autonomous-systems");
+  if (TRACKS.some((t) => t.path === pathname)) lastTrackRef.current = pathname;
+  const basePath = isProjectPage ? lastTrackRef.current : pathname;
+
+  // A project page has none of the scroll-spied sections, so mark "Projects"
+  // as the section it belongs to instead of whatever was last in view.
+  const spiedId = useActiveSection(SECTION_IDS, pathname);
+  const activeId = isProjectPage ? "projects" : spiedId;
 
   useEffect(() => {
     document.documentElement.classList.toggle("overflow-hidden", isOpen);
@@ -81,7 +87,7 @@ export default function Navbar() {
         }`}
       >
         <div className="mx-auto flex h-[70px] max-w-content items-center justify-between px-6 sm:px-10 lg:px-16">
-          <HashLink smooth to="/#home" className="flex items-baseline gap-2">
+          <HashLink smooth to={`${basePath}#home`} className="flex shrink-0 items-baseline gap-2">
             <span className="font-mono text-sm font-bold uppercase tracking-[0.15em] text-accent sm:text-base">
               Mr.
             </span>
@@ -90,16 +96,16 @@ export default function Navbar() {
             </span>
           </HashLink>
 
-          <div className="hidden items-center gap-8 lg:flex">
+          <div className="ml-8 hidden items-center gap-5 xl:flex">
             <TrackLinks className="flex items-center gap-1 rounded border border-hairline p-1" pillClassName="px-3 py-1.5 text-xs" />
             <span className="h-6 w-px bg-hairline" />
-            <nav className="flex items-center gap-8">
+            <nav className="flex items-center gap-6">
               {NAV_LINKS.map((link) => (
                 <HashLink
                   key={link.id}
                   smooth
-                  to={`${pathname}#${link.id}`}
-                  className={`font-mono text-base uppercase tracking-[0.1em] transition-colors ${
+                  to={`${basePath}#${link.id}`}
+                  className={`whitespace-nowrap font-mono text-sm uppercase tracking-[0.1em] transition-colors ${
                     activeId === link.id ? "text-accent" : "text-ink-secondary hover:text-ink"
                   }`}
                 >
@@ -110,7 +116,7 @@ export default function Navbar() {
             <ThemeToggle />
           </div>
 
-          <div className="flex items-center gap-3 lg:hidden">
+          <div className="flex items-center gap-3 xl:hidden">
             <ThemeToggle />
             <button
               aria-label={isOpen ? "Close menu" : "Open menu"}
@@ -144,23 +150,23 @@ export default function Navbar() {
               zIndex: 40,
               backgroundColor: "rgb(var(--color-night))",
             }}
-            className="flex flex-col justify-between border-l border-hairline lg:hidden"
+            className="flex flex-col justify-between border-l border-hairline xl:hidden"
           >
             <div className="flex flex-col items-center gap-8 pt-16">
               <TrackLinks
-                className="flex items-center gap-2"
-                pillClassName="border border-hairline px-4 py-2 text-xs"
+                className="flex flex-wrap items-center justify-center gap-2 px-4"
+                pillClassName="border border-hairline px-3 py-2 text-xs"
                 onNavigate={() => setIsOpen(false)}
               />
 
-              <nav className="flex flex-col items-center gap-3">
+              <nav className="flex w-full flex-col items-center gap-3">
                 {NAV_LINKS.map((link) => (
                   <HashLink
                     key={link.id}
                     smooth
-                    to={`${pathname}#${link.id}`}
+                    to={`${basePath}#${link.id}`}
                     onClick={() => setIsOpen(false)}
-                    className={`w-4/5 max-w-xs rounded px-6 py-3 text-center font-mono text-xl uppercase tracking-[0.15em] transition-colors ${
+                    className={`w-4/5 max-w-xs whitespace-nowrap rounded px-6 py-3 text-center font-mono text-xl uppercase tracking-[0.15em] transition-colors ${
                       activeId === link.id
                         ? "bg-accent text-night"
                         : "text-ink-secondary hover:bg-panel-elev hover:text-ink"
@@ -171,13 +177,7 @@ export default function Navbar() {
                 ))}
               </nav>
             </div>
-            <div className="flex justify-center gap-8 pb-12 text-2xl text-ink-secondary">
-              {SOCIALS.map(({ icon: Icon, href, label }) => (
-                <a key={label} href={href} aria-label={label} className="transition-colors hover:text-accent">
-                  <Icon />
-                </a>
-              ))}
-            </div>
+            <SocialLinks className="flex justify-center gap-8 pb-12 text-2xl text-ink-secondary" />
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { FaGithub, FaArrowLeft } from "react-icons/fa";
-import { SiGitlab } from "react-icons/si";
-import { resume } from "../data/site";
+import { HashLink } from "react-router-hash-link";
+import { FaGithub, FaArrowLeft, FaArrowRight, FaLock } from "react-icons/fa";
+import { resume, fieldNotes } from "../data/site";
+import { isVisible } from "../utils/todo";
+import TodoText from "../components/ui/TodoText";
 import Container from "../components/ui/Container";
 import Tag from "../components/ui/Tag";
 import StatusBadge from "../components/ui/StatusBadge";
@@ -31,6 +33,21 @@ function getMediaItems(project) {
     ...images.map((src, i) => ({ type: "image", src, caption: project.imageCaptions?.[i] })),
   ];
 }
+
+// Drops TODO(Kenil) placeholders that shouldn't render (production builds),
+// and any section left with nothing to show.
+function visibleDetails(details) {
+  return details
+    .map((section) => ({
+      ...section,
+      text: isVisible(section.text) ? section.text : undefined,
+      bullets: section.bullets?.filter(isVisible),
+      items: section.items?.filter((item) => isVisible(item.text)),
+    }))
+    .filter((section) => section.text || section.bullets?.length || section.items?.length);
+}
+
+const TRACK_PATHS = { automotive: "/autonomous-systems", software: "/software" };
 
 function MediaItem({ item, alt }) {
   return (
@@ -93,7 +110,10 @@ export default function ProjectDetail() {
   }
 
   const hasMedia = getMediaItems(project).length > 0;
-  const isGitLab = project.github?.includes("gitlab");
+  const details = visibleDetails(project.details || []);
+  const relatedNotes = (project.relatedNotes || [])
+    .map((id) => fieldNotes.find((note) => note.id === id))
+    .filter(Boolean);
 
   const handleBack = () => {
     // Prefer real browser "back" so the visitor lands exactly where they
@@ -123,9 +143,15 @@ export default function ProjectDetail() {
           <RevealOnScroll>
             {project.status && <StatusBadge className="mb-4">{project.status}</StatusBadge>}
             <h1 className="font-heading text-2xl font-bold text-ink sm:text-3xl">{project.title}</h1>
-            {project.details?.length ? (
+            {isVisible(project.role) && (
+              <p className="mt-4 text-sm leading-relaxed text-ink-secondary sm:text-base">
+                <span className="mr-2 font-mono text-xs uppercase tracking-widest text-accent">My Role</span>
+                <TodoText>{project.role}</TodoText>
+              </p>
+            )}
+            {details.length ? (
               <div className="mt-6 flex flex-col gap-8">
-                {project.details.map((section) => (
+                {details.map((section) => (
                   <section
                     key={section.heading}
                     className={
@@ -138,7 +164,9 @@ export default function ProjectDetail() {
                       {section.heading}
                     </p>
                     {section.text && (
-                      <p className="text-sm leading-relaxed text-ink-secondary sm:text-base">{section.text}</p>
+                      <p className="text-sm leading-relaxed text-ink-secondary sm:text-base">
+                        <TodoText>{section.text}</TodoText>
+                      </p>
                     )}
                     {section.bullets && (
                       <ul className="flex flex-col gap-2">
@@ -147,7 +175,7 @@ export default function ProjectDetail() {
                             key={bullet}
                             className="border-l-2 border-accent-dim pl-4 text-sm leading-relaxed text-ink-secondary sm:text-base"
                           >
-                            {bullet}
+                            <TodoText>{bullet}</TodoText>
                           </li>
                         ))}
                       </ul>
@@ -160,7 +188,7 @@ export default function ProjectDetail() {
                             className="border-l-2 border-accent-dim pl-4 text-sm leading-relaxed text-ink-secondary sm:text-base"
                           >
                             <span className="font-bold text-ink">{item.label}: </span>
-                            {item.text}
+                            <TodoText>{item.text}</TodoText>
                           </li>
                         ))}
                       </ul>
@@ -172,6 +200,26 @@ export default function ProjectDetail() {
               <p className="mt-4 text-sm leading-relaxed text-ink-secondary sm:text-base">
                 {project.longDescription || project.description}
               </p>
+            )}
+
+            {relatedNotes.length > 0 && (
+              <div className="mt-8">
+                <p className="mb-3 font-mono text-xs uppercase tracking-widest text-accent">Related Field Notes</p>
+                <ul className="flex flex-col gap-2">
+                  {relatedNotes.map((note) => (
+                    <li key={note.id}>
+                      <HashLink
+                        smooth
+                        to={`${TRACK_PATHS[note.category]}#note-${note.id}`}
+                        className="group inline-flex items-center gap-2 text-sm text-ink-secondary transition-colors hover:text-accent sm:text-base"
+                      >
+                        {note.title}
+                        <FaArrowRight className="shrink-0 text-xs transition-transform group-hover:translate-x-1" />
+                      </HashLink>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
 
             <div className="mt-6">
@@ -186,9 +234,17 @@ export default function ProjectDetail() {
             </div>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button href={project.github} target="_blank" rel="noopener noreferrer">
-                {isGitLab ? <SiGitlab /> : <FaGithub />} View on {isGitLab ? "GitLab" : "GitHub"}
-              </Button>
+              {project.github ? (
+                <Button href={project.github} target="_blank" rel="noopener noreferrer">
+                  <FaGithub /> View on GitHub
+                </Button>
+              ) : (
+                project.sourceNote && (
+                  <span className="inline-flex items-center gap-2 self-center font-mono text-xs text-ink-muted sm:text-sm">
+                    <FaLock /> {project.sourceNote}
+                  </span>
+                )
+              )}
               <Button variant="ghost" onClick={handleBack}>
                 <FaArrowLeft /> Back to Projects
               </Button>

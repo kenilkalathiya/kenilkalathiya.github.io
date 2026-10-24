@@ -14,18 +14,21 @@ const ICONS = [FaCarSide, TbDrone, FaLayerGroup, FaCode, FaServer];
 export default function About({ track }) {
   const { pathname } = useLocation();
   const services = track ? aboutMe.services.filter((s) => s.category === track) : aboutMe.services;
+  const heading = aboutMe.headings[track] || aboutMe.headings.default;
 
   return (
     <section id="about" className="bg-night py-16 md:py-24">
       <Container>
-        <SectionHeading title={aboutMe.title} subtitle={aboutMe.subtitle} />
+        <SectionHeading title={heading.title} subtitle={heading.subtitle} />
 
         {/* auto-fit + justify-center (instead of a fixed column count) so a
             filtered track with only 2-3 cards centers itself in the row
             rather than sitting left-aligned with empty trailing columns. */}
         <div className="grid justify-center gap-4 [grid-template-columns:repeat(auto-fit,minmax(260px,300px))] md:gap-6">
           {services.map((service, index) => {
-            const Icon = ICONS[index % ICONS.length];
+            // Look up by position in the full list, not the filtered one, so
+            // a card keeps its own icon on every track.
+            const Icon = ICONS[aboutMe.services.indexOf(service)];
             return (
               <RevealOnScroll
                 key={service.title}
