@@ -21,7 +21,7 @@ const TABS = [
   { name: "Interests", icon: FaPalette, component: Interests },
 ];
 
-export default function Resume() {
+export default function Resume({ track }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const ActiveComponent = TABS[activeIndex].component;
 
@@ -74,7 +74,7 @@ export default function Resume() {
                 exit={{ opacity: 0, y: -16 }}
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               >
-                <ActiveComponent />
+                <ActiveComponent track={track} />
               </motion.div>
             </AnimatePresence>
           </div>

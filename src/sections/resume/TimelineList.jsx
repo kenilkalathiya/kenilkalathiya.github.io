@@ -1,6 +1,6 @@
 import RevealOnScroll from "../../components/ui/RevealOnScroll";
 
-// Shared renderer for Education / Experience / Interests — each just maps
+// Shared renderer for Education / Experience / Certifications — each just maps
 // its own data shape into { title, badge, subtitle, items } entries.
 export default function TimelineList({ entries }) {
   return (

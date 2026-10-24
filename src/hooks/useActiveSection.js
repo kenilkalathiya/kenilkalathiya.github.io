@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 
 // Tracks which of the given section ids is currently most visible in the
-// viewport, for scroll-spy style nav highlighting.
-export default function useActiveSection(sectionIds) {
+// viewport, for scroll-spy style nav highlighting. `pageKey` (e.g. the
+// pathname) re-attaches the observer when a different page's sections mount.
+// Pass a stable `sectionIds` array, or the observer is rebuilt every render.
+export default function useActiveSection(sectionIds, pageKey) {
   const [activeId, setActiveId] = useState(sectionIds[0]);
 
   useEffect(() => {
@@ -24,7 +26,7 @@ export default function useActiveSection(sectionIds) {
 
     elements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [sectionIds]);
+  }, [sectionIds, pageKey]);
 
   return activeId;
 }

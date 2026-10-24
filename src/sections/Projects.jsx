@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaArrowRight, FaGithub, FaPlay } from "react-icons/fa";
+import { FaArrowRight, FaGithub, FaLock, FaPlay } from "react-icons/fa";
 import SectionHeading from "../components/ui/SectionHeading";
 import RevealOnScroll from "../components/ui/RevealOnScroll";
 import Container from "../components/ui/Container";
@@ -34,6 +34,7 @@ function FeaturedMedia({ project }) {
             useTopLeftCrop ? "origin-top-left scale-[1.35] object-left-top" : ""
           }`}
           src={project.videoUrls[0]}
+          poster={project.thumbnail}
           muted
           loop
           playsInline
@@ -90,27 +91,48 @@ function FeaturedProject({ project, index }) {
           >
             View Project <FaArrowRight />
           </Link>
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-sm text-ink-secondary transition-colors hover:text-ink"
-          >
-            <FaGithub /> Source
-          </a>
+          {project.github ? (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-mono text-sm text-ink-secondary transition-colors hover:text-ink"
+            >
+              <FaGithub /> Source
+            </a>
+          ) : (
+            project.sourceNote && (
+              <span className="inline-flex items-center gap-2 font-mono text-xs text-ink-muted">
+                <FaLock /> {project.sourceNote}
+              </span>
+            )
+          )}
         </div>
       </div>
     </RevealOnScroll>
   );
 }
 
-function ProjectCard({ id, title, description, tech, status }) {
+function ProjectCard({ id, title, description, tech, status, thumbnail }) {
   return (
     <RevealOnScroll
       as="div"
-      className="group flex h-full flex-col rounded-lg border border-hairline bg-panel p-5 shadow-panel transition-all duration-300 hover:-translate-y-2 hover:border-accent-dim hover:shadow-glow md:p-6"
+      className="group flex h-full flex-col overflow-hidden rounded-lg border border-hairline bg-panel shadow-panel transition-all duration-300 hover:-translate-y-2 hover:border-accent-dim hover:shadow-glow"
     >
-      <Link to={`/project/${id}`} className="flex h-full flex-col">
+      {thumbnail && (
+        <Link to={`/project/${id}`} tabIndex={-1} aria-hidden="true" className="block aspect-video overflow-hidden border-b border-hairline bg-black">
+          <img
+            src={thumbnail}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            width="800"
+            height="450"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </Link>
+      )}
+      <Link to={`/project/${id}`} className="flex flex-grow flex-col p-5 md:p-6">
         {status && <StatusBadge className="mb-3 self-start">{status}</StatusBadge>}
         <h3 className="font-heading text-lg font-bold text-ink">{title}</h3>
         <p className="mt-3 flex-grow text-sm leading-relaxed text-ink-secondary">{description}</p>

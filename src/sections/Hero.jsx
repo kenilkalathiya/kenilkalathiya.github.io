@@ -2,17 +2,18 @@ import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { HashLink } from "react-router-hash-link";
 import { useLocation } from "react-router-dom";
-import { SiInstagram, SiLinkedin, SiX, SiGithub } from "react-icons/si";
 import { HiOutlineArrowDown } from "react-icons/hi";
 import Button from "../components/ui/Button";
-import profilePic from "../assets/home/profile-pic.png";
+import SocialLinks from "../components/ui/SocialLinks";
+import profilePic from "../assets/home/profile-pic.webp";
 
 // Per-track re-emphasis of the same roles/tagline used on the combined "/"
 // page — reordered/trimmed to the relevant half, nothing invented.
 const TRACK_CONTENT = {
   automotive: {
     roles: ["ADAS Engineer", 2000, "Autonomous Systems Engineer", 2000, "Drone & Automation Enthusiast", 2000],
-    tagline: "Autonomous Systems Developer with a Passion for Problem Solving",
+    tagline:
+      "Building ADAS features and UAV autonomy in simulation: YOLOv8 perception, PID control and ROS2 pipelines across CARLA, PX4 SITL, ArduPilot and Gazebo.",
   },
   software: {
     roles: ["Full-Stack Developer", 2000, "Frontend Developer", 2000, "Backend Developer", 2000],
@@ -29,21 +30,12 @@ const TRACK_CONTENT = {
       "Full-Stack Developer",
       2000,
     ],
-    tagline: "Full-Stack Innovator & Automotive Developer with a Passion for Problem Solving",
+    tagline:
+      "MSc Automotive Software Engineering student at TU Chemnitz, building ADAS and UAV autonomy software in simulation with CARLA, ROS2, PX4 and ArduPilot.",
   },
 };
 
-const SOCIALS = [
-  { icon: SiGithub, href: "https://github.com/kenilkalathiya", label: "GitHub" },
-  { icon: SiLinkedin, href: "https://www.linkedin.com/in/kenil-kalathiya-9422021b6/", label: "LinkedIn" },
-  { icon: SiInstagram, href: "https://www.instagram.com/kenil_kalathiya_007", label: "Instagram" },
-  { icon: SiX, href: "https://twitter.com/KenilKalathiya1", label: "X" },
-];
-
-const STATS = [
-  { value: "1+", label: "Years of Experience" },
-  { value: "18+", label: "Completed Projects" },
-];
+const EXPERIENCE_LINE = ["ex-Research Intern @ TU Chemnitz", "ex-SW Dev Intern @ Bigscal"];
 
 export default function Hero({ track }) {
   const { pathname } = useLocation();
@@ -68,13 +60,7 @@ export default function Hero({ track }) {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="order-2 flex flex-col items-center text-center lg:order-1 lg:items-start lg:text-left"
         >
-          <div className="mb-6 flex justify-center gap-5 text-xl text-ink-secondary lg:justify-start">
-            {SOCIALS.map(({ icon: Icon, href, label }) => (
-              <a key={label} href={href} aria-label={label} className="transition-colors hover:text-accent">
-                <Icon />
-              </a>
-            ))}
-          </div>
+          <SocialLinks className="mb-6 flex justify-center gap-5 text-xl text-ink-secondary lg:justify-start" />
 
           <p className="mb-2 font-mono text-sm tracking-[0.2em] text-ink-secondary">
             HI, MY NAME IS
@@ -99,22 +85,20 @@ export default function Hero({ track }) {
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4 lg:justify-start">
-            <Button hash={`${pathname}#contact`}>Hire Me</Button>
+            <Button hash={`${pathname}#contact`}>Get in Touch</Button>
             <Button variant="ghost" href="/Kenil-Kalathiya.pdf" download="Kenil-Kalathiya.pdf">
               Get Resume
             </Button>
           </div>
 
-          <div className="mt-14 flex gap-10">
-            {STATS.map((stat) => (
-              <div key={stat.label} className="text-center lg:text-left">
-                <p className="font-mono text-3xl font-bold text-accent">{stat.value}</p>
-                <p className="mt-1 max-w-[8rem] text-xs uppercase tracking-wide text-ink-secondary">
-                  {stat.label}
-                </p>
-              </div>
+          <p className="mt-12 flex flex-wrap justify-center gap-x-3 gap-y-1 border-accent font-mono lg:border-l-2 lg:pl-4 text-xs uppercase tracking-wide text-ink-secondary sm:text-sm lg:justify-start">
+            {EXPERIENCE_LINE.map((item, i) => (
+              <span key={item}>
+                {item}
+                {i < EXPERIENCE_LINE.length - 1 && <span className="ml-3 text-accent">·</span>}
+              </span>
             ))}
-          </div>
+          </p>
         </motion.div>
 
         <motion.div
@@ -128,6 +112,8 @@ export default function Hero({ track }) {
             <img
               src={profilePic}
               alt="Kenil Kalathiya"
+              width="832"
+              height="832"
               className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
             />
           </div>
